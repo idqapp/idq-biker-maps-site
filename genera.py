@@ -104,6 +104,8 @@ def privacy():
                            ("Pendant la navigation en voiture", "Pendant la navigation à moto"), ("Beim Navigieren im Auto", "Beim Navigieren mit dem Motorrad"),
                            ("Mientras navegas en coche", "Mientras navegas en moto")):
         s = s.replace(vecchio, nuovo)
+    for h, nuovo in METEO_PRIVACY.items():
+        if h in s: s = s.replace(h, nuovo + h, 1)
     print('privacy: ancora "auto":', len(re.findall(r'in auto|by car|en voiture|im Auto|en coche', s)))
     for vecchio, nuovo in (("16 ottobre 2026", "18 ottobre 2026"), ("16 October 2026", "18 October 2026"), ("16 octobre 2026", "18 octobre 2026"),
                            ("16. Oktober 2026", "18. Oktober 2026"), ("16 de octubre de 2026", "18 de octubre de 2026")):
@@ -114,6 +116,14 @@ def privacy():
         return r.group(1) + r.group(2) + r.group(3) if r else t
     s = re.sub(r'<p>[^<]*</p>', senza_doppia, s)
     return s
+
+METEO_PRIVACY = {   # sezione aggiunta all'informativa di Biker Maps: gli avvisi di pioggia mandano punti del percorso al nostro server
+ '<h2>SOS in caso di caduta e tasto Aiuto</h2>': '<h2>Meteo e pioggia lungo il percorso</h2><p>Se lasci accesi gli avvisi di pioggia e temporale, mentre navighi l\'app manda al nostro server alcuni punti del percorso (circa uno ogni 8-25 km) con l\'orario previsto di passaggio, senza nome né identificativi, per sapere che tempo troverai. Il server li usa per chiedere le previsioni a MET Norway e per leggere il radar della pioggia della Protezione Civile, e non li conserva. Puoi spegnere questa funzione da Menu › Impostazioni › Funzioni in sella.</p>',
+ '<h2>SOS in case of a fall and the Help button</h2>': '<h2>Weather and rain along the route</h2><p>If you leave the rain and thunderstorm alerts on, while you navigate the app sends our server a few points of the route (about one every 8-25 km) with the expected time of passage, with no name or identifiers, to know what weather you will find. The server uses them to ask MET Norway for forecasts and to read the Civil Protection rain radar, and does not keep them. You can turn this feature off from Menu › Settings › Riding features.</p>',
+ '<h2>SOS en cas de chute et bouton Aide</h2>': '<h2>Météo et pluie sur l\'itinéraire</h2><p>Si vous laissez activées les alertes de pluie et d\'orage, pendant la navigation l\'application envoie à notre serveur quelques points de l\'itinéraire (environ un tous les 8 à 25 km) avec l\'heure de passage prévue, sans nom ni identifiant, pour savoir quel temps vous allez trouver. Le serveur les utilise pour demander les prévisions à MET Norway et lire le radar de pluie de la Protection civile, et ne les conserve pas. Vous pouvez désactiver cette fonction dans Menu › Réglages › Fonctions en selle.</p>',
+ '<h2>SOS bei einem Sturz und Hilfe-Taste</h2>': '<h2>Wetter und Regen entlang der Route</h2><p>Wenn Sie die Regen- und Gewitterwarnungen eingeschaltet lassen, sendet die App während der Navigation einige Punkte der Route (etwa einen alle 8–25 km) mit der erwarteten Durchfahrtszeit an unseren Server, ohne Namen oder Kennungen, um zu wissen, welches Wetter Sie erwartet. Der Server nutzt sie, um bei MET Norway die Vorhersagen abzufragen und das Regenradar des Zivilschutzes zu lesen, und speichert sie nicht. Sie können diese Funktion unter Menü › Einstellungen › Funktionen unterwegs ausschalten.</p>',
+ '<h2>SOS en caso de caída y botón Ayuda</h2>': '<h2>Tiempo y lluvia en la ruta</h2><p>Si dejas activados los avisos de lluvia y tormenta, mientras navegas la app envía a nuestro servidor algunos puntos de la ruta (uno cada 8-25 km aprox.) con la hora prevista de paso, sin nombre ni identificadores, para saber qué tiempo encontrarás. El servidor los usa para pedir las previsiones a MET Norway y leer el radar de lluvia de Protección Civil, y no los conserva. Puedes desactivar esta función en Menú › Ajustes › Funciones en ruta.</p>',
+}
 
 # --- tutte le funzioni: dalle guide di Biker Maps -------------------------------------------------------------------
 def funzioni():
