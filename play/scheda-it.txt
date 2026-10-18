@@ -1,0 +1,37 @@
+TITOLO (25/30):
+IDQ Biker Maps - Moto GPS
+
+DESCRIZIONE BREVE (77/80):
+Navigatore per moto: online e offline, voce in 5 lingue, avvisi sulla strada.
+
+DESCRIZIONE COMPLETA (1827/4000):
+IDQ Biker Maps è la mappa e il navigatore per chi va in moto. Funziona online e anche senza internet.
+
+PERCORSI PER LA MOTO
+Il percorso è calcolato per la moto. Puoi evitare pedaggi, autostrade e traghetti e aggiungere quante tappe intermedie vuoi.
+
+ONLINE E OFFLINE
+Prima online: mappa, percorsi e ricerca sempre aggiornati. Se manca la rete, l'app passa da sola alle mappe scaricate sul telefono: scarichi l'Italia una sola volta (mappa, percorsi e ricerca degli indirizzi) e le mappe di OpenStreetMap si aggiornano ogni mese.
+
+VOCE IN 5 LINGUE
+Italiano, inglese, francese, tedesco e spagnolo, con voce maschile o femminile. Tutta l'app cambia lingua.
+
+AVVISI SULLA STRADA
+Autovelox, Tutor (velocità media), telecamere ai semafori, varchi ZTL, passaggi a livello e dossi. In più le segnalazioni degli altri utenti: controlli mobili, incidenti, traffico, strade chiuse e pericoli. Segnali anche tu con un tocco.
+
+LIMITI DI VELOCITÀ
+Il limite sul tuo percorso e la tua velocità sempre in vista; diventa rossa se lo superi.
+
+SERVIZI VICINO A TE
+Distributori (con il prezzo aggiornato), ristoranti, parcheggi, farmacie: con distanza e orari di apertura.
+
+TRACCE E ITINERARI
+Registra i tuoi giri in moto, salva gli itinerari e condividili con indirizzo, coordinate e link, oppure come file GPX.
+
+ALTRO
+Mappa 2D o 3D, tema giorno e notte automatico, schermo sempre acceso in navigazione, finestra piccola (Picture-in-Picture), guida completa e tutorial nell'app.
+
+PRIVACY
+Nessun account, nessuna pubblicità, nessun tracciamento. Con le mappe scaricate la tua posizione non lascia il telefono; con i servizi online l'app invia al nostro server solo ciò che serve per rispondere, senza account né identificatori.
+
+Dati di mappa © OpenStreetMap contributors (ODbL). Rispetta sempre il Codice della Strada: l'app è un aiuto alla guida.

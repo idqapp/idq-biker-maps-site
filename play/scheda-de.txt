@@ -1,0 +1,37 @@
+TITOLO (25/30):
+IDQ Biker Maps - Moto GPS
+
+DESCRIZIONE BREVE (78/80):
+Motorrad-Navi: online und offline, Sprache in 5 Sprachen, Warnungen unterwegs.
+
+DESCRIZIONE COMPLETA (1894/4000):
+IDQ Biker Maps ist die Karte und das Navi für Motorradfahrer. Es funktioniert online und auch ohne Internet.
+
+ROUTEN FÜRS MOTORRAD
+Die Route wird für das Motorrad berechnet. Sie können Mautstraßen, Autobahnen und Fähren meiden und beliebig viele Zwischenstopps hinzufügen.
+
+ONLINE UND OFFLINE
+Zuerst online: Karte, Routen und Suche immer aktuell. Fällt das Netz aus, wechselt die App von selbst zu den auf dem Handy geladenen Karten: Italien lädt man nur einmal (Karte, Routen und Adresssuche), die OpenStreetMap-Karten werden jeden Monat aktualisiert.
+
+SPRACHE IN 5 SPRACHEN
+Italienisch, Englisch, Französisch, Deutsch und Spanisch, mit männlicher oder weiblicher Stimme. Die ganze App wechselt die Sprache.
+
+WARNUNGEN AUF DER STRECKE
+Blitzer, Tutor (Durchschnittsgeschwindigkeit), Ampelkameras, ZTL-Zufahrten, Bahnübergänge und Bodenschwellen. Dazu Meldungen anderer Nutzer: mobile Kontrollen, Unfälle, Verkehr, gesperrte Straßen und Gefahren. Auch Sie melden mit einem Fingertipp.
+
+TEMPOLIMITS
+Das Limit auf Ihrer Route und Ihre Geschwindigkeit immer im Blick; rot, wenn Sie es überschreiten.
+
+SERVICES IN DER NÄHE
+Tankstellen (mit aktuellem Preis), Restaurants, Parkplätze, Apotheken: mit Entfernung und Öffnungszeiten.
+
+TRACKS UND ROUTEN
+Zeichnen Sie Ihre Touren auf, speichern Sie Routen und teilen Sie sie mit Adresse, Koordinaten und Link oder als GPX-Datei.
+
+AUSSERDEM
+2D- oder 3D-Karte, automatisches Tag-/Nacht-Design, Bildschirm bleibt bei der Navigation an, kleines Fenster (Bild-im-Bild), vollständige Anleitung und Tutorial in der App.
+
+DATENSCHUTZ
+Kein Konto, keine Werbung, kein Tracking. Mit geladenen Karten verlässt Ihre Position nie das Handy; bei Online-Diensten sendet die App unserem Server nur das, was zur Antwort nötig ist, ohne Konto oder Kennungen.
+
+Kartendaten © OpenStreetMap contributors (ODbL). Beachten Sie stets die Verkehrsregeln: Die App ist eine Fahrhilfe.

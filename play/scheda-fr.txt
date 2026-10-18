@@ -1,0 +1,37 @@
+TITOLO (25/30):
+IDQ Biker Maps - Moto GPS
+
+DESCRIZIONE BREVE (75/80):
+GPS moto : en ligne et hors ligne, voix en 5 langues, alertes sur la route.
+
+DESCRIZIONE COMPLETA (1996/4000):
+IDQ Biker Maps est la carte et le GPS pour les motards. Il fonctionne en ligne et aussi sans internet.
+
+ITINÉRAIRES POUR LA MOTO
+L'itinéraire est calculé pour la moto. Vous pouvez éviter péages, autoroutes et ferries et ajouter autant d'étapes intermédiaires que vous voulez.
+
+EN LIGNE ET HORS LIGNE
+D'abord en ligne : carte, itinéraires et recherche toujours à jour. Si le réseau manque, l'application passe toute seule aux cartes téléchargées sur le téléphone : vous téléchargez l'Italie une seule fois (carte, itinéraires et recherche d'adresses) et les cartes OpenStreetMap sont mises à jour chaque mois.
+
+VOIX EN 5 LANGUES
+Italien, anglais, français, allemand et espagnol, avec une voix masculine ou féminine. Toute l'application change de langue.
+
+ALERTES SUR LA ROUTE
+Radars, Tutor (vitesse moyenne), caméras aux feux, portes ZTL, passages à niveau et dos d'âne. Plus les signalements des autres utilisateurs : contrôles mobiles, accidents, trafic, routes fermées et dangers. Vous pouvez signaler d'un geste.
+
+LIMITES DE VITESSE
+La limite sur votre itinéraire et votre vitesse toujours visibles ; en rouge si vous la dépassez.
+
+SERVICES PRÈS DE VOUS
+Stations-service (avec le prix à jour), restaurants, parkings, pharmacies : avec distance et horaires.
+
+TRACES ET ITINÉRAIRES
+Enregistrez vos balades à moto, sauvegardez vos itinéraires et partagez-les avec adresse, coordonnées et lien, ou en fichier GPX.
+
+ET AUSSI
+Carte 2D ou 3D, thème jour et nuit automatique, écran toujours allumé en navigation, petite fenêtre (Picture-in-Picture), guide complet et tutoriel dans l'application.
+
+CONFIDENTIALITÉ
+Aucun compte, aucune publicité, aucun suivi. Avec les cartes téléchargées, votre position ne quitte pas le téléphone ; avec les services en ligne, l'application envoie à notre serveur seulement ce qu'il faut pour répondre, sans compte ni identifiant.
+
+Données de carte © OpenStreetMap contributors (ODbL). Respectez toujours le code de la route : l'application est une aide à la conduite.

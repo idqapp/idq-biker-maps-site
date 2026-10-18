@@ -1,0 +1,37 @@
+TITOLO (25/30):
+IDQ Biker Maps - Moto GPS
+
+DESCRIZIONE BREVE (69/80):
+Navegador para moto: online y sin conexión, voz en 5 idiomas, avisos.
+
+DESCRIZIONE COMPLETA (1797/4000):
+IDQ Biker Maps es el mapa y el navegador para motoristas. Funciona online y también sin internet.
+
+RUTAS PARA LA MOTO
+La ruta se calcula para la moto. Puedes evitar peajes, autopistas y transbordadores y añadir todas las paradas intermedias que quieras.
+
+ONLINE Y SIN CONEXIÓN
+Primero online: mapa, rutas y búsqueda siempre al día. Si falta la red, la app pasa sola a los mapas descargados en el teléfono: descargas Italia una sola vez (mapa, rutas y búsqueda de direcciones) y los mapas de OpenStreetMap se actualizan cada mes.
+
+VOZ EN 5 IDIOMAS
+Italiano, inglés, francés, alemán y español, con voz masculina o femenina. Toda la app cambia de idioma.
+
+AVISOS EN LA CARRETERA
+Radares, Tutor (velocidad media), cámaras en semáforos, accesos ZTL, pasos a nivel y badenes. Además, avisos de otros usuarios: controles móviles, accidentes, tráfico, carreteras cortadas y peligros. Tú también puedes avisar con un toque.
+
+LÍMITES DE VELOCIDAD
+El límite de tu ruta y tu velocidad siempre a la vista; en rojo si lo superas.
+
+SERVICIOS CERCA DE TI
+Gasolineras (con el precio actual), restaurantes, aparcamientos, farmacias: con distancia y horario.
+
+TRACKS Y RUTAS
+Graba tus salidas en moto, guarda rutas y compártelas con dirección, coordenadas y enlace, o como archivo GPX.
+
+Y MÁS
+Mapa 2D o 3D, tema día y noche automático, pantalla siempre encendida al navegar, ventana pequeña (imagen en imagen), guía completa y tutorial en la app.
+
+PRIVACIDAD
+Sin cuenta, sin publicidad, sin seguimiento. Con los mapas descargados tu posición no sale del teléfono; con los servicios online la app envía a nuestro servidor solo lo necesario para responder, sin cuenta ni identificadores.
+
+Datos de mapa © OpenStreetMap contributors (ODbL). Respeta siempre el código de circulación: la app es una ayuda a la conducción.

@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="it" data-l="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IDQ Biker Maps - Funzioni</title>
+<meta name="description" content="IDQ Biker Maps: navigatore Android con mappe offline OpenStreetMap, voce in 5 lingue, avvisi sulla strada e app per Galaxy Watch.">
+<link rel="icon" href="immagini/icona.png">
+<style>
+:root{--bg:#0a0a0c;--tx:#f3f3f3;--mu:#a8a8b0;--ac:#ff7a00;--ac2:#2f8cff;--card:#16161a;--bd:#2b2b31;--hero:#000}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--ac)}
+header.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 20px;border-bottom:1px solid var(--bd)}
+header.top .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:var(--tx)}
+header.top img{width:38px;height:38px;border-radius:50%}
+.lingue button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:999px;padding:6px 12px;margin:2px;cursor:pointer;font:inherit;font-size:14px}
+.lingue button.on{background:var(--ac);color:#000;border-color:var(--ac);font-weight:700}
+main{max-width:900px;margin:0 auto;padding:0 20px 60px}
+.hero{background:radial-gradient(ellipse at 50% 0%,#1b2a44 0%,#000 70%);color:#fff;padding:56px 20px 48px;text-align:center}
+.hero img{width:min(300px,70vw);height:auto;border-radius:50%;box-shadow:0 0 0 3px #ff7a00,0 12px 50px rgba(255,122,0,.35)}
+.hero h1{font-size:clamp(30px,6vw,48px);margin:18px 0 8px}
+.hero p{max-width:640px;margin:0 auto;color:#d6d6dc;font-size:19px}
+.soon{display:inline-block;margin-top:22px;background:#ff7a00;color:#000;border-radius:999px;padding:12px 26px;font-weight:600}
+h2{margin:44px 0 14px;font-size:26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px 18px}
+.card b{display:block;margin-bottom:4px;color:var(--ac)}.card{border-top:3px solid var(--ac2)}
+.shots{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
+.shots img{height:440px;border-radius:14px;border:1px solid var(--bd)}
+.l{display:none}
+html[data-l=it] .l[data-l=it],html[data-l=en] .l[data-l=en],html[data-l=fr] .l[data-l=fr],html[data-l=de] .l[data-l=de],html[data-l=es] .l[data-l=es]{display:block}
+footer{border-top:1px solid var(--bd);padding:24px 20px;text-align:center;color:var(--mu);font-size:15px}
+.policy h2{font-size:21px;margin-top:30px}.policy p,.policy li{color:var(--tx)}
+.upd{color:var(--mu);font-size:15px}
+
+.fz nav{background:var(--card);border-radius:12px;padding:8px 14px;margin:14px 0}.fz nav a{display:block;text-decoration:none;padding:5px 0}
+.fz b.t{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:0 6px;white-space:nowrap}
+.fz table{border-collapse:collapse;width:100%;font-size:15px;margin:8px 0}.fz td,.fz th{border:1px solid var(--bd);padding:6px 8px;text-align:left;vertical-align:top}.fz th{background:var(--card)}
+.fz .nota{background:var(--card);border-radius:12px;padding:10px 12px;margin:10px 0}.fz .sotto{color:var(--mu)}.fz h3{font-size:17px;margin:18px 0 4px}
+.vid{margin:12px 0;text-align:center}.vid video{max-width:300px;width:100%;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.25);background:#000}.vid p{font-size:14px;margin:6px 0;opacity:.8}</style></head>
+<body>
+<header class="top"><a class="brand" href="index.html"><img src="immagini/icona.png" alt="">IDQ Biker Maps</a><div class="lingue"><button data-l="it">Italiano</button><button data-l="en">English</button><button data-l="fr">Français</button><button data-l="de">Deutsch</button><button data-l="es">Español</button></div></header>
+<main><div class="l fz" data-l="it">
+<h1>Guida a IDQ Biker Maps</h1>
+<p class="sotto">Tutte le funzioni dell'app, spiegate passo per passo.</p>
+
+<nav>
+<a href="#intro-it">1. Cos'è e come funziona</a>
+<a href="#primi-it">2. Primi passi</a>
+<a href="#mappa-it">3. La mappa</a>
+<a href="#dest-it">4. Scegliere la destinazione</a>
+<a href="#partenza-it">5. Scegliere un'altra partenza</a>
+<a href="#veicoli-it">6. Opzioni del percorso</a>
+<a href="#nav-it">7. Navigare</a>
+<a href="#pip-it">8. Finestra piccola e schermo acceso</a>
+<a href="#avvisi-it">9. Avvisi sulla mappa</a>
+<a href="#segnala-it">10. Segnalare un avviso</a>
+<a href="#vicino-it">11. Cerca nelle vicinanze</a>
+<a href="#itin-it">12. Itinerari salvati</a>
+<a href="#tracce-it">13. Tracce registrate</a>
+<a href="#gpx-it">14. Condividere e importare</a>
+<a href="#mappeoff-it">15. Mappe offline e aggiornamenti</a>
+<a href="#imp-it">16. Impostazioni</a>
+<a href="#privacy-it">17. Dati e privacy</a>
+<a href="#prob-it">18. Problemi comuni</a>
+<a href="#online-it">19. Servizi online, ricerca di luoghi e 2D/3D</a>
+<a href="#crediti-it">20. Crediti</a>
+</nav>
+
+<h2 id="intro-it">1. Cos'è e come funziona</h2>
+<p>IDQ Biker Maps è un navigatore per Android che <b>funziona senza internet</b>: le mappe sono su OpenStreetMap, vengono scaricate una volta sul telefono, e i percorsi sono calcolati direttamente dal telefono. Le indicazioni vocali (e tutta l'app) parlano la tua lingua: italiano, inglese, francese, tedesco o spagnolo, con voce maschile o femminile.</p>
+<p>Internet serve solo per scaricare e aggiornare le mappe, per inviare e ricevere le segnalazioni degli altri utenti (controlli mobili, incidenti, traffico...) e per condividere.</p>
+
+<h2 id="primi-it">2. Primi passi</h2>
+<ol>
+<li><b>Permesso di posizione:</b> alla prima apertura l'app chiede di usare il GPS. Senza, la mappa si vede ma non puoi navigare. Scegli "Mentre usi l'app" o "Sempre": con "Sempre" la navigazione e la registrazione continuano anche con lo schermo spento.</li>
+<li><b>Permesso notifiche:</b> serve per la notifica fissa durante navigazione, registrazione e download delle mappe.</li>
+<li><b>Scarica le mappe:</b> <b class="t">Menu</b> › <b class="t">Mappe offline</b> › <b class="t">Gestisci le mappe</b>. Scegli <b>Italia intera</b> (consigliata): contiene mappa, percorsi e ricerca indirizzi. Occupa diversi GB: meglio col Wi-Fi.</li>
+<li>Quando il download finisce, la mappa compare da sola e sei pronto.</li>
+</ol>
+<div class="nota">Il tutorial più breve: <b>cerca un indirizzo</b> in alto, tocca il risultato, tocca <b class="t">Avvia</b>.</div>
+
+<h2 id="mappa-it">3. La mappa</h2>
+<ul>
+<li><b>Trascina</b> con un dito per spostarti, <b>pizzica</b> con due dita per zoomare, <b>due dita ruotate</b> per girare la mappa.</li>
+<li><b>Fuori dalla navigazione</b> la mappa ti segue e, appena ti muovi (oltre circa 4 km/h), in basso a destra compare la <b>velocità</b>: lo stesso succede mentre registri una traccia. Se sposti la mappa col dito compare il tasto <b class="t">◎</b>: un tocco e torna sulla tua posizione.</li>
+<li>Il simbolo sulla mappa è la tua posizione: la moto, che ruota con la direzione di marcia.</li>
+<li>In basso c'è il pulsante <b class="t">Menu</b>; accanto compaiono <b class="t">Avvia</b> e <b class="t">Salva</b> quando c'è un percorso.</li>
+<li>Giorno e notte: la mappa diventa scura da sola tra tramonto e alba (si può cambiare, vedi Impostazioni).</li>
+<li>Lo schermo può essere usato in verticale e in orizzontale: la navigazione non si interrompe ruotando il telefono.</li>
+<li>In basso a destra c'è sempre l'attribuzione "© OpenStreetMap contributors": è un obbligo di licenza.</li>
+</ul>
+
+<h2 id="dest-it">4. Scegliere la destinazione</h2>
+<h3>Con la ricerca</h3>
+<p>Scrivi nella barra in alto: una città, una via, un luogo (es. "colosseo roma"), un indirizzo con il numero civico (es. "viale ceccarini 106 riccione"). I risultati sono ordinati per pertinenza e poi per vicinanza a te: se scrivi "via", "viale", "corso"... o un numero civico compaiono prima vie e indirizzi, altrimenti prima i nomi uguali a quello scritto (anche lontani, come "stazione di Bologna"). Tocca un risultato per calcolare il percorso.</p>
+<h3>Con la voce</h3>
+<p>Tocca il <b>microfono</b> a destra nella barra di ricerca e pronuncia l'indirizzo in italiano.</p>
+<h3>Con il tocco lungo</h3>
+<p>Tieni premuto a lungo un punto della mappa: diventa la destinazione. Utile per posti senza indirizzo (un parcheggio, un sentiero, un punto sul mare).</p>
+<p>Appena la destinazione è scelta, l'app calcola il percorso (di solito in meno di un secondo) e mostra <b>chilometri, durata e orario di arrivo</b>. Il percorso è la linea verde.</p>
+
+<h2 id="partenza-it">5. Scegliere un'altra partenza</h2>
+<p>Di base si parte dalla tua posizione GPS. Per pianificare un percorso lontano (per esempio da casa mentre sei altrove): <b class="t">Menu</b> › <b class="t">Percorso</b> › <b class="t">Scegli un'altra partenza</b>, poi cerca o tieni premuto sulla mappa. Il percorso si calcola da quel punto e puoi vederne chilometri, durata e tracciato. Per guidare davvero con <b class="t">Avvia</b> la partenza deve tornare al GPS: <b class="t">Partenza: torna al GPS</b>.</p>
+
+<h2 id="veicoli-it">6. Opzioni del percorso</h2>
+<h3>Opzioni</h3>
+<p><b class="t">Menu</b> › <b class="t">Percorso</b>: <b>Evita i pedaggi</b>, <b>Evita le autostrade</b>, <b>Evita i traghetti</b>. Sono spunte: toccale per accendere o spegnere, il percorso si ricalcola subito. "Evita" significa "preferisci altro": se non esiste alternativa, la strada può comunque essere usata.</p>
+
+<h3>Tappe intermedie</h3>
+<p>Con una destinazione scelta, <b class="t">Menu</b> › <b class="t">Percorso</b> › <b class="t">Tappe intermedie</b> permette di aggiungere <b>tutte le tappe che vuoi</b>: tocca <b>Aggiungi tappa</b>, poi cerca un luogo o tieni premuto sulla mappa. Nell'elenco puoi spostare le tappe con ▲ ▼ o toglierle con ✕: il percorso si ricalcola da solo. Sulla mappa le tappe sono numerate e, durante la guida, a ogni tappa la voce dice che sei arrivato e poi riparte verso la successiva. Le tappe si salvano insieme all'itinerario.</p>
+
+<h2 id="nav-it">7. Navigare</h2>
+<h3>Avvia, Termina</h3>
+<ul>
+<li><b class="t">▶ Avvia</b>: navigazione vera col GPS.</li>
+<li><b class="t">Termina</b>: ferma la navigazione.</li>
+</ul>
+<h3>Cosa vedi mentre navighi</h3>
+<ul>
+<li><b>Carta blu in alto:</b> freccia della prossima manovra, distanza, indicazione scritta (es. "Entra in rotonda e prendi la 2ª uscita") e in fondo chilometri rimasti, minuti e orario di arrivo.</li>
+<li><b>La mappa ruota</b> in modo che davanti a te ci sia sempre l'alto dello schermo. Se la sposti con il dito compare il tasto <b class="t">◎</b> (Riposiziona): toccandolo torna subito sulla tua posizione; altrimenti ci torna da sola dopo 10 secondi.</li>
+<li><b>Velocità</b> in basso a destra (km/h). Diventa <b>rossa</b> se superi il limite.</li>
+<li><b>Cartello del limite</b> accanto alla velocità (solo auto, moto, camion). Il cartello col bordo pieno viene da OpenStreetMap; con il bordo <b>tratteggiato</b> è un limite <b>presunto</b> dal Codice della Strada (autostrada 130, extraurbana principale 110, extraurbana 90, centro abitato 50) quando il dato manca: può sbagliare, vale sempre la segnaletica vera.</li>
+<li>Sul percorso compaiono <b>cartelli dei limiti</b> a ogni cambio e i simboli degli avvisi (vedi sezione 9).</li>
+</ul>
+<h3>Voce</h3>
+<p>L'app parla in italiano un po' prima di ogni manovra ("Tra 300 metri svolta a destra...") e poi di nuovo vicino alla svolta. Con la voce spenta restano le indicazioni scritte e i bip. Si accende e spegne da <b class="t">Menu</b> › <b class="t">Impostazioni</b> › <b>Voce delle indicazioni</b>. Per ogni lingua serve la voce installata sul telefono (Impostazioni di Android › Sintesi vocale › Google › Installa dati voce).</p>
+<h3>Fuori strada</h3>
+<p>Se sbagli strada l'app lo capisce dopo pochi secondi, dice "Ricalcolo del percorso" e ne calcola un altro dalla posizione in cui sei. Funziona anche senza internet.</p>
+<h3>Gallerie e GPS debole</h3>
+<p>Se il segnale GPS manca (gallerie, palazzi) l'app continua a mostrare la posizione stimata sul percorso, alla velocità di prima, e scrive "Segnale GPS debole: posizione stimata". Un solo punto GPS sbagliato non fa partire il ricalcolo; quando il segnale torna, la posizione si riallinea da sola.</p>
+<h3>Arrivo</h3>
+<p>Quando arrivi compare "Sei arrivato!" e la navigazione si chiude da sola.</p>
+<h3>Notifica</h3>
+<p>Durante la navigazione c'è una notifica fissa: serve ad Android per non fermare l'app quando passi ad altre schermate o spegni lo schermo.</p>
+
+<h2 id="pip-it">8. Finestra piccola e schermo acceso</h2>
+<ul>
+<li><b>Schermo sempre acceso:</b> finché l'app è aperta lo schermo non si spegne, qualunque sia il tempo impostato nel telefono.</li>
+<li><b>Finestra piccola (Picture-in-Picture):</b> se durante la navigazione premi <b>Home</b> (o cambi app), IDQ Biker Maps resta in una piccola finestra sopra le altre app e mostra solo la mappa col percorso e la tua posizione. Toccala una volta: compaiono i comandi di Android, con l'icona per <b>ingrandirla</b> di nuovo a schermo intero, o la X per chiuderla. La voce continua a guidarti.</li>
+</ul>
+
+<h2 id="avvisi-it">9. Avvisi sulla mappa</h2>
+<p>Sulla mappa e lungo il percorso compaiono dei simboli; quando ti avvicini, in basso a destra c'è una <b>pillola</b> con il più vicino (tipo, distanza, limite) e l'app lo dice a voce, con un bip più vicino. Gli avvisi dei dati scaricati funzionano anche <b>senza internet</b>.</p>
+<table>
+<tr><th>Avviso</th><th>Da dove arriva</th></tr>
+<tr><td>Autovelox fissi (con limite quando noto)</td><td>OpenStreetMap + segnalazioni utenti</td></tr>
+<tr><td>Tutor (velocità media): inizio, fine, media in tempo reale e avviso se superi</td><td>OpenStreetMap</td></tr>
+<tr><td>Telecamere ai semafori</td><td>OpenStreetMap</td></tr>
+<tr><td>Varchi ZTL</td><td>OpenStreetMap (i varchi, non le zone intere)</td></tr>
+<tr><td>Passaggi a livello</td><td>OpenStreetMap</td></tr>
+<tr><td>Dossi (solo pillola; la voce parla solo se vai oltre i 50 km/h)</td><td>OpenStreetMap</td></tr>
+<tr><td>Controlli mobili segnalati (validi 2 ore)</td><td>Altri utenti, serve internet</td></tr>
+<tr><td>Incidenti (2 ore), traffico (1 ora), strade chiuse (12 ore), pericoli (4 ore)</td><td>Altri utenti, serve internet</td></tr>
+</table>
+<div class="nota">I dati di OpenStreetMap sono fatti da volontari: sono <b>parziali</b>. Non tutti gli autovelox sono mappati e i controlli mobili e le zone ZTL possono mancare. Guida sempre rispettando segnaletica e limiti.</div>
+<p><b>Strade chiuse:</b> quando altri utenti segnalano una strada chiusa sul tuo percorso, l'app cerca una strada diversa: lo fa sia quando scegli la destinazione ("Percorso cambiato: evita 1 strade chiuse segnalate") sia durante la guida, con un ricalcolo automatico e un avviso a voce. Serve internet per ricevere le segnalazioni.</p>
+<h3>Accendere e spegnere i tipi di avviso</h3>
+<p><b class="t">Menu</b> › <b class="t">Avvisi sulla mappa</b>: una spunta per ogni tipo. Spento = niente simbolo e niente avviso. A piedi e in bici gli avvisi pensati per le auto non compaiono.</p>
+
+<h2 id="segnala-it">10. Segnalare un avviso</h2>
+<p>Aiuti gli altri conducenti, e loro aiutano te. Mentre guidi, in basso a destra, c'è il pulsante <b>Segnala</b>: toccalo e compare una tabella con <b>tasti grandi</b>, facili da leggere e da toccare. <b>Posto di blocco</b> e <b>Autovelox fisso</b> sono in alto, in evidenza; sotto trovi:</p>
+<ul>
+<li>Controllo mobile</li>
+<li>Incidente</li>
+<li>Traffico</li>
+<li>Strada bloccata (temporanea)</li>
+<li>Pericolo sulla strada</li>
+<li>Portale Tutor</li>
+<li>Autovelox che <b>non c'è più</b></li>
+</ul>
+<p>Si può segnalare anche da fermi: <b class="t">Menu</b> › <b class="t">Segnala</b>. La segnalazione prende la tua posizione del momento. Se non c'è internet, resta nel telefono e parte da sola appena torna la rete.</p>
+<p>Controlli mobili, posti di blocco, incidenti, traffico, strade bloccate e pericoli sono visibili agli altri subito, per un tempo limitato. Gli autovelox fissi, i Tutor e "non c'è più" non si mostrano agli altri: vengono verificati a parte. Tutto avviene in forma anonima (vedi Dati e privacy).</p>
+
+<h3>"C'è ancora?"</h3>
+<p>Quando passi dove un altro utente ha segnalato qualcosa di temporaneo (controllo mobile, posto di blocco, incidente, traffico, strada chiusa, pericolo), l'app ti chiede se c'è ancora, con due tasti grandi <b>Sì</b> e <b>No</b>. Le risposte tengono la mappa aggiornata: se più persone dicono che non c'è più, la segnalazione sparisce. Per gli autovelox fissi, i Tutor e le altre cose fisse non viene chiesta nessuna conferma agli altri utenti: vengono verificati a parte.</p>
+
+<h2 id="vicino-it">11. Cerca nelle vicinanze</h2>
+<p><b class="t">Menu</b> › <b class="t">Cerca nelle vicinanze</b>: <b>Benzinai</b> (con carburanti disponibili, GPL, metano...), <b>Colonnine di ricarica</b> (con tipo di presa), <b>Parcheggi</b>, <b>Aree di servizio</b>. L'elenco è ordinato per distanza da te; tocca una voce per vederla sulla mappa e calcolare il percorso. La prima volta l'app chiede di scaricare un piccolo file (circa 15 MB); poi funziona offline e si aggiorna da sola con il Wi-Fi.</p>
+
+<h2 id="itin-it">12. Itinerari salvati</h2>
+<p>Un itinerario è una destinazione (con partenza, tappe e veicolo) che vuoi ritrovare.</p>
+<ol>
+<li>Scegli la destinazione e aspetta che compaiano km e minuti.</li>
+<li>Tocca <b class="t">Salva</b> (o <b class="t">Menu</b> › <b class="t">Percorso</b> › <b class="t">Salva questo itinerario</b>) e dagli un nome.</li>
+</ol>
+<p>Li trovi in <b class="t">Menu</b> › <b class="t">Itinerari e tracce</b> › <b class="t">Itinerari salvati</b>. Toccando un itinerario puoi:</p>
+<ul>
+<li><b>Apri e naviga</b> – lo riporta sulla mappa.</li>
+<li><b>Rinomina</b> – cambia il nome (cambia anche il nome del file che condividi).</li>
+<li><b>Modifica</b> – lo apre sulla mappa; cambia partenza, destinazione o veicolo e poi <b class="t">Menu</b> › <b class="t">Percorso</b> › <b class="t">Aggiorna itinerario</b>.</li>
+<li><b>Condividi</b> – vedi sezione 14.</li>
+<li><b>Elimina</b> – con conferma.</li>
+</ul>
+
+<h3>Posizioni salvate</h3>
+<p>Per salvare un <b>punto preciso</b>, senza creare un itinerario, tocca la <b>puntina</b> in basso a destra (o <b class="t">Menu</b> › <b class="t">Itinerari e tracce</b> › <b class="t">Salva la mia posizione</b>): l'app propone l'indirizzo, se lo conosce, o la data, e puoi scrivere subito il nome che vuoi. Con un tocco lungo sulla puntina (o da <b class="t">Posizioni salvate</b>) vedi l'elenco: da lì puoi <b>andare lì</b>, vederla sulla mappa, <b>rinominarla</b>, <b>condividerla</b> (indirizzo, coordinate e link) o eliminarla.</p>
+
+<h2 id="tracce-it">13. Tracce registrate</h2>
+<p>Una traccia è la registrazione di dove sei passato, utile per escursioni, giri in moto o in bici. Non servono partenza e arrivo.</p>
+<ul>
+<li><b>Registra:</b> <b class="t">Menu</b> › <b class="t">Itinerari e tracce</b> › <b class="t">Registra una traccia</b>. Sul pulsante Menu compare "● REC" con chilometri e tempo, e nella barra in basso c'è il pulsante rosso <b class="t">■ Stop REC</b>. La registrazione continua anche con lo schermo spento e l'app in secondo piano.</li>
+<li><b>Ferma:</b> tocca <b class="t">■ Stop REC</b>, oppure <b>Stop</b> nella notifica, oppure <b class="t">Menu</b> › <b>Ferma la registrazione</b>. La traccia si salva da sola.</li>
+<li><b>Elenco:</b> <b class="t">Tracce registrate</b>. Per ogni traccia: <b>usa come itinerario</b> (calcola un percorso dalla tua posizione che passa dai punti della traccia), <b>mostra sulla mappa</b>, <b>rinomina</b>, <b>accorcia</b> (crea una copia senza i primi o gli ultimi chilometri; l'originale non cambia), <b>condividi</b>, <b>elimina</b>.</li>
+</ul>
+<p>Le tracce sono file GPX standard: li leggono Strava, Komoot, OsmAnd, Organic Maps e quasi tutte le app per escursioni.</p>
+
+<h2 id="gpx-it">14. Condividere e importare</h2>
+<h3>Condividere</h3>
+<p>Su itinerari e tracce, <b>Condividi</b> chiede cosa mandare:</p>
+<ul>
+<li><b>Testo</b> – nome, chilometri e durata; destinazione con <b>indirizzo completo</b> e <b>coordinate scritte</b>; link a Google Maps (itinerari) o a OpenStreetMap (tracce). Lo capisce chiunque, anche senza la nostra app.</li>
+<li><b>File GPX</b> – per chi vuole aprirlo in un'altra app di navigazione. Contiene la rotta e la destinazione con nome e indirizzo.</li>
+</ul>
+<p>Molte app di messaggi scartano il testo quando c'è un file allegato: per questo si sceglie una cosa alla volta. Per mandare entrambe, condividi due volte.</p>
+<p>L'indirizzo viene ricavato offline dalla ricerca; se vicino al punto non ce n'è uno, restano comunque le coordinate.</p>
+<h3>Importare</h3>
+<p>Quando ricevi un file GPX (in una chat, per email...), toccalo e scegli IDQ Biker Maps. Una <b>traccia</b> finisce in Tracce registrate; una <b>rotta</b> si apre come itinerario con partenza dal tuo GPS.</p>
+
+<h2 id="mappeoff-it">15. Mappe offline e aggiornamenti</h2>
+<h3>Cosa c'è nel catalogo</h3>
+<p>Per ogni area (Italia intera, Nord-Ovest, Nord-Est, Centro, Sud, Isole) ci sono tre file: <b>mappa</b>, <b>percorsi</b> e <b>ricerca indirizzi</b>.</p>
+<div class="nota"><b>Consiglio:</b> scarica "Italia intera". L'app usa un solo gruppo di file alla volta: con una regione sola i percorsi funzionano solo al suo interno.</div>
+<h3>Scaricare ed eliminare</h3>
+<p><b class="t">Menu</b> › <b class="t">Mappe offline</b> › <b class="t">Gestisci le mappe</b>. Il download si fa in secondo piano con una notifica (e il pulsante Annulla), continua a schermo spento, <b>riprende da solo</b> dopo una caduta di rete e controlla che i file siano integri. Se usi la rete dati e il pacchetto supera i 200 MB, l'app ti propone di <b>aspettare il Wi-Fi</b>: il download parte da solo appena c'è una rete Wi-Fi. Prima di scaricare controlla lo spazio libero (negli aggiornamenti serve il doppio, perché il file vecchio resta finché il nuovo non è verificato). Se il telefono si riavvia durante il download, riprende da solo.</p>
+<h3>Aggiornamenti</h3>
+<p>Le mappe sono aggiornate ogni mese. All'apertura l'app controlla se ce ne sono di nuove e ti avvisa (anche con una notifica). Il pulsante <b>Aggiorna</b> scarica solo ciò che è cambiato.</p>
+<p><b class="t">Menu</b> › <b class="t">Mappe offline</b> › <b>Aggiorna da sole</b>: se attiva, il telefono scarica da solo gli aggiornamenti, ma solo con il <b>Wi-Fi</b> e <b>in carica</b>, senza usare i tuoi dati.</p>
+
+<h2 id="imp-it">16. Impostazioni</h2>
+<ul>
+<li><b>Voce delle indicazioni</b> – accesa/spenta.</li>
+<li><b>Lingua e voce</b> – scegli italiano, inglese, francese, tedesco o spagnolo. Cambiano il testo dell'app, le indicazioni di svolta, gli avvisi e la voce. Poi scegli una voce <b>femminile</b> o <b>maschile</b>: tocca un nome per ascoltare un campione. L'app riparte da sola con la nuova lingua. La lingua si sceglie anche alla primissima apertura dell'app.</li>
+<li><b>Avvisi sull'orologio</b> – spento di base. Se acceso, durante la navigazione l'app manda notifiche brevi a circa 300 e 50 metri da ogni svolta (es. "Tra 300 m: Svolta a destra su Via Dante"), pensate per gli orologi collegati (Galaxy Watch, Wear OS, Xiaomi e altri che inoltrano le notifiche), che le mostrano e vibrano al polso. Sul telefono la notifica non ha suono né finestra a comparsa (solo una breve vibrazione, che è quella che fa accendere e vibrare l'orologio) e sparisce da sola: Android non permette di mandare una notifica solo all'orologio. Nell'app Galaxy Wearable controlla che IDQ Biker Maps sia abilitato tra le app che mandano notifiche. La notifica fissa della navigazione riporta comunque sempre manovra, distanza e nome della via. <b>App per l'orologio:</b> sui Galaxy Watch e gli altri Wear OS puoi installare <b>IDQ Biker Maps</b>: se è installata, le indicazioni (freccia grande, distanza, via, tempo e km rimanenti) vanno direttamente lì, con vibrazioni diverse (due brevi a destra, tre a sinistra, una lunga per arrivo o fuori strada) a circa 300 e 50 metri, e sul telefono non arriva nessuna notifica doppia. Sull'orologio ci sono anche i tasti Voce SI/NO e Termina navigazione. Se il telefono smette di inviare dati, l'orologio lo segnala ("Nessun segnale dal telefono").</li>
+<li><b>Aspetto</b> – automatico (scuro tra tramonto e alba nel punto in cui ti trovi), sempre giorno, sempre notte.</li>
+<li><b>Informazioni</b> – il <b>tutorial introduttivo</b> (si apre da solo la prima volta dopo l'installazione, e si può rivedere quando vuoi), questa guida e <b>Informazioni e licenze</b> (versione, sviluppatore, licenze, privacy policy).</li>
+</ul>
+
+<h2 id="privacy-it">17. Dati e privacy</h2>
+<ul>
+<li>Con le mappe scaricate la tua posizione <b>non viene inviata</b> a nessuno. Con i servizi online (percorsi, ricerca, mappa, distributori) l'app invia al nostro server solo ciò che serve per rispondere: punti di partenza e arrivo o il testo cercato. Non c'è un account e il server non salva queste richieste né le collega a te.</li>
+<li>Quando <b>segnali</b> qualcosa, viene inviato solo: tipo di segnalazione, il punto e l'ora. Non viene salvato il tuo indirizzo IP né il tuo nome.</li>
+<li>Mentre navighi in auto, ogni circa 90 secondi l'app chiede al servizio le segnalazioni vicine a te (serve internet).</li>
+<li>Le tracce e gli itinerari restano nella memoria dell'app, sul tuo telefono. Se li condividi, decidi tu con chi.</li>
+<li>L'app non ha pubblicità e non richiede un account.</li>
+</ul>
+
+<h2 id="prob-it">18. Problemi comuni</h2>
+<table>
+<tr><th>Problema</th><th>Cosa fare</th></tr>
+<tr><td>"Posizione GPS non ancora disponibile"</td><td>Vai all'aperto e aspetta qualche secondo; controlla che la posizione del telefono sia accesa.</td></tr>
+<tr><td>La mappa è vuota o grigia</td><td>Scarica le mappe (sezione 15). Se le hai già scaricate, riapri l'app.</td></tr>
+<tr><td>Il percorso non si trova</td><td>La destinazione deve stare nell'area delle mappe scaricate. Prova "Italia intera".</td></tr>
+<tr><td>Nessuna voce</td><td>Controlla in Impostazioni che la voce sia accesa e il volume alzato; installa la sintesi vocale italiana di Google.</td></tr>
+<tr><td>La navigazione si ferma con lo schermo spento</td><td>Concedi la posizione "Sempre" e togli l'app dal risparmio energetico del telefono.</td></tr>
+<tr><td>Non vedo i controlli mobili o gli incidenti</td><td>Servono internet e almeno una segnalazione recente vicino a te. Controlla anche che il tipo sia acceso in Avvisi sulla mappa.</td></tr>
+<tr><td>Il limite di velocità manca o è tratteggiato</td><td>Il dato non c'è su OpenStreetMap: il tratteggio indica un limite presunto.</td></tr>
+<tr><td>Il download non parte</td><td>Controlla la connessione e lo spazio libero: servono diversi GB.</td></tr>
+</table>
+<p>Se il problema resta, scrivi a <b>info.idq.26@gmail.com</b> dicendo cosa stavi facendo e la versione dell'app (Menu › Informazioni).</p>
+
+<h2 id="online-it">19. Servizi online, ricerca di luoghi e 2D/3D</h2>
+<h3>Con internet</h3>
+<p>Senza scaricare nulla, con la connessione l'app usa il nostro server: la mappa, la ricerca degli indirizzi, il calcolo dei percorsi (con limiti di velocità, avvisi e strade chiuse già pronti) e il ricalcolo quando esci dal percorso. Se la rete manca o il server non risponde, passa da sola alle mappe offline scaricate, se le hai.</p>
+<h3>Cerca servizi e negozi</h3>
+<p>Nella barra di ricerca scrivi cosa cerchi: <i>distributore gasolio</i>, <i>distributore benzina</i>, <i>colonnina</i>, <i>ristorante</i>, <i>pizzeria</i>, <i>bar</i>, <i>farmacia</i>, <i>ospedale</i>, <i>parcheggio</i>, <i>bancomat</i>, <i>supermercato</i>, <i>hotel</i>, <i>campeggio</i>... Compaiono i più vicini; se hai già un percorso, quelli lungo il percorso. Per i distributori vedi il prezzo aggiornato (dati aperti del Ministero, self e servito) del carburante scelto. In ogni risultato c'è la distanza dalla tua posizione, in metri o chilometri.</p>
+<h3>Mappa in 2D o 3D</h3>
+<p>Da Menu › Impostazioni attiva o spegni <b>Mappa in 3D (inclinata)</b>: in 3D la mappa è inclinata e i palazzi sono in rilievo; in 2D è piatta. La scelta resta salvata.</p>
+<h3>Mentre navighi</h3>
+<p>L'auto resta ferma al centro dello schermo e si muove la mappa; il percorso è verde. La voce si accende e si spegne da Menu › Impostazioni › Voce delle indicazioni: se è spenta senti solo i bip.</p>
+<h2 id="crediti-it">20. Crediti</h2>
+<ul>
+<li>Dati di mappa: © OpenStreetMap contributors (licenza ODbL).</li>
+<li>Disegno della mappa: MapLibre Native.</li>
+<li>Calcolo dei percorsi: Valhalla.</li>
+<li>Caratteri: Noto Sans.</li>
+<li>Sviluppo: IDQ Developer.</li>
+</ul>
+<p class="sotto">IDQ Biker Maps indica la strada ma non sostituisce la prudenza: rispetta sempre il Codice della Strada e la segnaletica, e non usare il telefono mentre guidi.</p>
+
+<script>
+function tema(n){ document.body.className = n ? 'notte' : ''; }
+</script>
+</div>
+<div class="l fz" data-l="en">
+<h1>IDQ Biker Maps guide</h1>
+<p class="sotto">All the features of the app, explained step by step.</p>
+
+<nav>
+<a href="#intro-en">1. What it is and how it works</a>
+<a href="#primi-en">2. First steps</a>
+<a href="#mappa-en">3. The map</a>
+<a href="#dest-en">4. Choosing the destination</a>
+<a href="#partenza-en">5. Choosing another starting point</a>
+<a href="#veicoli-en">6. Route options</a>
+<a href="#nav-en">7. Navigating</a>
+<a href="#pip-en">8. Small window and screen on</a>
+<a href="#avvisi-en">9. Map alerts</a>
+<a href="#segnala-en">10. Reporting an alert</a>
+<a href="#vicino-en">11. Search nearby</a>
+<a href="#itin-en">12. Saved routes</a>
+<a href="#tracce-en">13. Recorded tracks</a>
+<a href="#gpx-en">14. Sharing and importing</a>
+<a href="#mappeoff-en">15. Offline maps and updates</a>
+<a href="#imp-en">16. Settings</a>
+<a href="#privacy-en">17. Data and privacy</a>
+<a href="#prob-en">18. Common problems</a>
+<a href="#online-en">19. Online services, place search and 2D/3D</a>
+<a href="#crediti-en">20. Credits</a>
+</nav>
+
+<h2 id="intro-en">1. What it is and how it works</h2>
+<p>IDQ Biker Maps is a navigation app for Android that <b>works without internet</b>: the maps come from OpenStreetMap and are downloaded once onto the phone, and routes are calculated directly by the phone. The voice guidance (and the whole app) speaks your language: Italian, English, French, German or Spanish, with a male or female voice.</p>
+<p>Internet is only needed to download and update the maps, to send and receive reports from other users (mobile checks, accidents, traffic...) and to share.</p>
+
+<h2 id="primi-en">2. First steps</h2>
+<ol>
+<li><b>Location permission:</b> the first time you open the app it asks to use the GPS. Without it the map is visible but you cannot navigate. Choose "While using the app" or "Always": with "Always", navigation and recording continue even with the screen off.</li>
+<li><b>Notification permission:</b> needed for the fixed notification during navigation, recording and map downloads.</li>
+<li><b>Download the maps:</b> <b class="t">Menu</b> › <b class="t">Offline maps</b> › <b class="t">Manage maps</b>. Choose <b>Whole Italy</b> (recommended): it contains the map, routes and address search. It takes several GB: better on Wi-Fi.</li>
+<li>When the download finishes, the map appears by itself and you are ready.</li>
+</ol>
+<div class="nota">The shortest tutorial: <b>search for an address</b> at the top, tap the result, tap <b class="t">Start</b>.</div>
+
+<h2 id="mappa-en">3. The map</h2>
+<ul>
+<li><b>Drag</b> with one finger to move, <b>pinch</b> with two fingers to zoom, <b>rotate two fingers</b> to turn the map.</li>
+<li><b>Outside navigation</b> the map follows you and, as soon as you move (above about 4 km/h), your <b>speed</b> appears at the bottom right: the same happens while you record a track. If you move the map with your finger the <b class="t">◎</b> button appears: one tap and it returns to your position.</li>
+<li>The symbol on the map is your position: the motorcycle, which turns with your direction of travel.</li>
+<li>At the bottom there is the <b class="t">Menu</b> button; next to it <b class="t">Start</b> and <b class="t">Save</b> appear when there is a route.</li>
+<li>Day and night: the map turns dark by itself between sunset and sunrise (it can be changed, see Settings).</li>
+<li>The screen can be used in portrait and landscape: navigation does not stop when you rotate the phone.</li>
+<li>At the bottom right there is always the credit "© OpenStreetMap contributors": it is a licence requirement.</li>
+</ul>
+
+<h2 id="dest-en">4. Choosing the destination</h2>
+<h3>With search</h3>
+<p>Type in the bar at the top: a city, a street, a place (e.g. "colosseo roma"), an address with house number (e.g. "viale ceccarini 106 riccione"). Results are sorted by relevance and then by distance from you: if you write "via", "viale", "corso"... or a house number, streets and addresses come first, otherwise names identical to what you typed come first (even far away, such as "stazione di Bologna"). Tap a result to calculate the route.</p>
+<h3>With your voice</h3>
+<p>Tap the <b>microphone</b> on the right of the search bar and say the address.</p>
+<h3>With a long press</h3>
+<p>Long-press a point on the map: it becomes the destination. Useful for places without an address (a car park, a path, a spot at sea).</p>
+<p>As soon as the destination is chosen, the app calculates the route (usually in less than a second) and shows <b>kilometres, duration and arrival time</b>. The route is the green line.</p>
+
+<h2 id="partenza-en">5. Choosing another starting point</h2>
+<p>By default you start from your GPS position. To plan a distant route (for example from home while you are elsewhere): <b class="t">Menu</b> › <b class="t">Route</b> › <b class="t">Choose another starting point</b>, then search or long-press on the map. The route is calculated from that point. To really drive with <b class="t">Start</b> the start must go back to the GPS: <b class="t">Start: back to GPS</b>.</p>
+
+<h2 id="veicoli-en">6. Route options</h2>
+<h3>Options</h3>
+<p><b class="t">Menu</b> › <b class="t">Route</b>: <b>Avoid tolls</b>, <b>Avoid motorways</b>, <b>Avoid ferries</b>. They are check marks: tap to switch on or off, the route is recalculated immediately. "Avoid" means "prefer something else": if there is no alternative, the road may still be used.</p>
+
+<h3>Intermediate stops</h3>
+<p>With a destination chosen, <b class="t">Menu</b> › <b class="t">Route</b> › <b class="t">Intermediate stops</b> lets you add <b>as many stops as you like</b>: tap <b>Add stop</b>, then search for a place or long-press on the map. In the list you can move stops with ▲ ▼ or remove them with ✕: the route is recalculated by itself. On the map the stops are numbered and, while driving, at each stop the voice says you have arrived and then continues to the next one. Stops are saved with the route.</p>
+
+<h2 id="nav-en">7. Navigating</h2>
+<h3>Start, Stop</h3>
+<ul>
+<li><b class="t">▶ Start</b>: real navigation with the GPS.</li>
+<li><b class="t">Stop</b>: stops the navigation.</li>
+</ul>
+<h3>What you see while navigating</h3>
+<ul>
+<li><b>Blue card at the top:</b> arrow of the next manoeuvre, distance, written instruction (e.g. "Enter the roundabout and take the 2nd exit") and at the bottom remaining kilometres, minutes and arrival time.</li>
+<li><b>The map rotates</b> so that the top of the screen is always ahead of you. If you move it with your finger the <b class="t">◎</b> (Recenter) button appears: tap it to return to your position at once; otherwise it returns by itself after 10 seconds.</li>
+<li><b>Speed</b> at the bottom right (km/h). It turns <b>red</b> if you exceed the limit.</li>
+<li><b>Speed limit sign</b> next to the speed (car, motorcycle and truck only). A sign with a solid border comes from OpenStreetMap; with a <b>dashed</b> border it is a limit <b>presumed</b> from the Highway Code (motorway 130, main extra-urban road 110, extra-urban road 90, built-up area 50) when the data is missing: it may be wrong, the real road sign always prevails.</li>
+<li>On the route you see <b>limit signs</b> at each change and the alert symbols (see section 9).</li>
+</ul>
+<h3>Voice</h3>
+<p>The app speaks a little before every manoeuvre ("In 300 meters turn right...") and again near the turn. With the voice off, the written directions and the beeps remain. Switch it on and off from <b class="t">Menu</b> › <b class="t">Settings</b> › <b>Voice guidance</b>. For each language the voice must be installed on the phone (Android Settings › Text-to-speech › Google › Install voice data).</p>
+<h3>Off route</h3>
+<p>If you take a wrong road the app notices after a few seconds, says "Recalculating route" and calculates another one from where you are. It works even without internet.</p>
+<h3>Tunnels and weak GPS</h3>
+<p>If the GPS signal is missing (tunnels, buildings) the app keeps showing the estimated position on the route, at the previous speed, and writes "Weak GPS signal: position estimated". A single wrong GPS point does not trigger a recalculation; when the signal returns, the position realigns by itself.</p>
+<h3>Arrival</h3>
+<p>When you arrive "You have arrived!" appears and the navigation closes by itself.</p>
+<h3>Notification</h3>
+<p>During navigation there is a fixed notification: Android needs it so it does not stop the app when you switch to other screens or turn off the display.</p>
+
+<h2 id="pip-en">8. Small window and screen on</h2>
+<ul>
+<li><b>Screen always on:</b> as long as the app is open the screen does not turn off, whatever time is set in the phone.</li>
+<li><b>Small window (Picture-in-Picture):</b> if during navigation you press <b>Home</b> (or switch app), IDQ Biker Maps stays in a small window above the other apps and shows only the map with the route and your position. Tap it once: Android's controls appear, with the icon to <b>enlarge it</b> back to full screen, or the X to close it. The voice keeps guiding you.</li>
+</ul>
+
+<h2 id="avvisi-en">9. Map alerts</h2>
+<p>Symbols appear on the map and along the route; when you get close, at the bottom right there is a <b>pill</b> with the nearest one (type, distance, limit) and the app announces it by voice, with a beep closer up. The alerts from the downloaded data also work <b>without internet</b>.</p>
+<table>
+<tr><th>Alert</th><th>Where it comes from</th></tr>
+<tr><td>Fixed speed cameras (with the limit when known)</td><td>OpenStreetMap + user reports</td></tr>
+<tr><td>Tutor (average speed): start, end, live average and alert if you exceed it</td><td>OpenStreetMap</td></tr>
+<tr><td>Red light cameras</td><td>OpenStreetMap</td></tr>
+<tr><td>ZTL gates (restricted traffic zones)</td><td>OpenStreetMap (the gates, not the whole zones)</td></tr>
+<tr><td>Level crossings</td><td>OpenStreetMap</td></tr>
+<tr><td>Speed bumps (pill only; the voice speaks only if you go above 50 km/h)</td><td>OpenStreetMap</td></tr>
+<tr><td>Reported mobile checks (valid 2 hours)</td><td>Other users, internet needed</td></tr>
+<tr><td>Accidents (2 hours), traffic (1 hour), road closures (12 hours), hazards (4 hours)</td><td>Other users, internet needed</td></tr>
+</table>
+<div class="nota">OpenStreetMap data is made by volunteers: it is <b>partial</b>. Not all speed cameras are mapped and mobile checks and ZTL zones may be missing. Always drive respecting road signs and limits.</div>
+<p><b>Closed roads:</b> when other users report a closed road on your route, the app looks for a different road: it does so both when you choose the destination ("Route changed: avoids 1 reported road closures") and while driving, with an automatic recalculation and a voice warning. Internet is needed to receive the reports.</p>
+<h3>Switching alert types on and off</h3>
+<p><b class="t">Menu</b> › <b class="t">Map alerts</b>: one check mark for each type. Off = no symbol and no alert. On foot and by bike the alerts meant for cars do not appear.</p>
+
+<h2 id="segnala-en">10. Reporting an alert</h2>
+<p>You help other drivers, and they help you. While driving, at the bottom right, there is the <b>Report</b> button: tap it and a panel with <b>big buttons</b> appears, easy to read and to tap. <b>Checkpoint</b> and <b>Fixed speed camera</b> are at the top, highlighted; below you find:</p>
+<ul>
+<li>Mobile check</li>
+<li>Accident</li>
+<li>Traffic</li>
+<li>Road blocked (temporary)</li>
+<li>Hazard on the road</li>
+<li>Tutor gate</li>
+<li>Speed camera that is <b>no longer there</b></li>
+</ul>
+<p>You can also report while stopped: <b class="t">Menu</b> › <b class="t">Report</b>. The report takes your position at that moment. If there is no internet it stays on the phone and is sent by itself as soon as the network is back.</p>
+<p>Mobile checks, checkpoints, accidents, traffic, blocked roads and hazards are visible to others immediately, for a limited time. Fixed speed cameras, Tutor and "no longer there" are not shown to others: they are checked separately. Everything is anonymous (see Data and privacy).</p>
+
+<h3>"Is it still there?"</h3>
+<p>When you pass where another user reported something temporary (mobile check, checkpoint, accident, traffic, closed road, hazard), the app asks whether it is still there, with two big buttons <b>Yes</b> and <b>No</b>. The answers keep the map up to date: if more people say it is gone, the report disappears. For fixed speed cameras, Tutor and other fixed things, other users are not asked for confirmation: they are checked separately.</p>
+
+<h2 id="vicino-en">11. Search nearby</h2>
+<p><b class="t">Menu</b> › <b class="t">Search nearby</b>: <b>Petrol stations</b> (with available fuels, LPG, methane...), <b>Charging points</b> (with connector type), <b>Car parks</b>, <b>Service areas</b>. The list is sorted by distance from you; tap an item to see it on the map and calculate the route. The first time the app asks to download a small file (about 15 MB); after that it works offline and updates itself on Wi-Fi.</p>
+
+<h2 id="itin-en">12. Saved routes</h2>
+<p>A route is a destination (with start, stops and vehicle) that you want to find again.</p>
+<ol>
+<li>Choose the destination and wait for km and minutes to appear.</li>
+<li>Tap <b class="t">Save</b> (or <b class="t">Menu</b> › <b class="t">Route</b> › <b class="t">Save this route</b>) and give it a name.</li>
+</ol>
+<p>You find them in <b class="t">Menu</b> › <b class="t">Routes and tracks</b> › <b class="t">Saved routes</b>. By tapping a route you can:</p>
+<ul>
+<li><b>Open and navigate</b> – brings it back on the map.</li>
+<li><b>Rename</b> – changes the name (it also changes the name of the file you share).</li>
+<li><b>Edit</b> – opens it on the map; change start, destination or vehicle and then <b class="t">Menu</b> › <b class="t">Route</b> › <b class="t">Update route</b>.</li>
+<li><b>Share</b> – see section 14.</li>
+<li><b>Delete</b> – with confirmation.</li>
+</ul>
+
+<h3>Saved positions</h3>
+<p>To save an <b>exact point</b> without creating a route, tap the <b>pin</b> at the bottom right (or <b class="t">Menu</b> › <b class="t">Routes and tracks</b> › <b class="t">Save my position</b>): the app suggests the address, if it knows it, or the date, and you can type the name you want straight away. A long press on the pin (or <b class="t">Saved positions</b>) shows the list: from there you can <b>go there</b>, see it on the map, <b>rename</b> it, <b>share</b> it (address, coordinates and link) or delete it.</p>
+
+<h2 id="tracce-en">13. Recorded tracks</h2>
+<p>A track is the recording of where you have been, useful for hikes, motorcycle or bike rides. No start or destination needed.</p>
+<ul>
+<li><b>Record:</b> <b class="t">Menu</b> › <b class="t">Routes and tracks</b> › <b class="t">Record a track</b>. "● REC" appears on the Menu button with kilometres and time, and in the bottom bar there is the red button <b class="t">■ Stop REC</b>. Recording continues even with the screen off and the app in the background.</li>
+<li><b>Stop:</b> tap <b class="t">■ Stop REC</b>, or <b>Stop</b> in the notification, or <b class="t">Menu</b> › <b>Stop recording</b>. The track saves itself.</li>
+<li><b>List:</b> <b class="t">Recorded tracks</b>. For each track: <b>use as route</b> (calculates a route from your position through the points of the track), <b>show on map</b>, <b>rename</b>, <b>shorten</b> (creates a copy without the first or last kilometres; the original does not change), <b>share</b>, <b>delete</b>.</li>
+</ul>
+<p>Tracks are standard GPX files: Strava, Komoot, OsmAnd, Organic Maps and almost all hiking apps can read them.</p>
+
+<h2 id="gpx-en">14. Sharing and importing</h2>
+<h3>Sharing</h3>
+<p>On routes and tracks, <b>Share</b> asks what to send:</p>
+<ul>
+<li><b>Text</b> – name, kilometres and duration; destination with <b>full address</b> and <b>written coordinates</b>; link to Google Maps (routes) or OpenStreetMap (tracks). Anyone can understand it, even without our app.</li>
+<li><b>GPX file</b> – for whoever wants to open it in another navigation app. It contains the route and the destination with name and address.</li>
+</ul>
+<p>Many messaging apps discard the text when there is an attached file: that is why you choose one thing at a time. To send both, share twice.</p>
+<p>The address is obtained offline from the search; if there is none near the point, the coordinates are still there.</p>
+<h3>Importing</h3>
+<p>When you receive a GPX file (in a chat, by email...), tap it and choose IDQ Biker Maps. A <b>track</b> goes to Recorded tracks; a <b>route</b> opens as a route with the start from your GPS.</p>
+
+<h2 id="mappeoff-en">15. Offline maps and updates</h2>
+<h3>What is in the catalogue</h3>
+<p>For each area (Whole Italy, North-West, North-East, Centre, South, Islands) there are three files: <b>map</b>, <b>routes</b> and <b>address search</b>.</p>
+<div class="nota"><b>Tip:</b> download "Whole Italy". The app uses only one group of files at a time: with a single region, routes only work inside it.</div>
+<h3>Downloading and deleting</h3>
+<p><b class="t">Menu</b> › <b class="t">Offline maps</b> › <b class="t">Manage maps</b>. The download runs in the background with a notification (and a Cancel button), continues with the screen off, <b>resumes by itself</b> after a network drop and checks that the files are intact. If you use mobile data and the package is over 200 MB, the app offers to <b>wait for Wi-Fi</b>: the download starts by itself as soon as there is a Wi-Fi network. Before downloading it checks the free space (updates need double, because the old file stays until the new one is verified). If the phone restarts during the download, it resumes by itself.</p>
+<h3>Updates</h3>
+<p>The maps are updated every month. When opened, the app checks whether there are new ones and notifies you (also with a notification). The <b>Update</b> button downloads only what has changed.</p>
+<p><b class="t">Menu</b> › <b class="t">Offline maps</b> › <b>Update automatically</b>: if on, the phone downloads updates by itself, but only on <b>Wi-Fi</b> and <b>while charging</b>, without using your data.</p>
+
+<h2 id="imp-en">16. Settings</h2>
+<ul>
+<li><b>Voice guidance</b> – on/off.</li>
+<li><b>Language and voice</b> – choose Italian, English, French, German or Spanish. They change the app text, the turn directions, the alerts and the voice. Then choose a <b>female</b> or <b>male</b> voice: tap a name to hear a sample. The app restarts by itself with the new language. The language is also chosen the very first time you open the app.</li>
+<li><b>Smartwatch alerts</b> – off by default. If on, during navigation the app sends short notifications about 300 and 50 metres before each turn (e.g. "In 300 m: Turn right onto Via Dante"), meant for connected watches (Galaxy Watch, Wear OS, Xiaomi and others that forward notifications), which show them and vibrate on your wrist. On the phone the notification has no sound and no pop-up (only a brief vibration, which is what wakes and vibrates the watch) and disappears by itself: Android does not allow sending a notification only to the watch. In the Galaxy Wearable app check that IDQ Biker Maps is enabled among the apps that send notifications. The fixed navigation notification always shows manoeuvre, distance and street name. <b>Watch app:</b> on Galaxy Watch and other Wear OS watches you can install <b>IDQ Biker Maps</b>: if it is installed, the directions (big arrow, distance, street, time and km remaining) go straight to it, with different vibrations (two short for right, three for left, one long for arrival or off route) at about 300 and 50 metres, and no duplicate notification reaches the phone. The watch also has the Voice ON/OFF and End navigation buttons. If the phone stops sending data, the watch says so ("No signal from phone").</li>
+<li><b>Appearance</b> – automatic (dark between sunset and sunrise where you are), always day, always night.</li>
+<li><b>About</b> – the <b>introductory tutorial</b> (it opens by itself the first time after installation, and you can watch it again whenever you like), this guide and <b>About and licences</b> (version, developer, licences, privacy policy).</li>
+</ul>
+
+<h2 id="privacy-en">17. Data and privacy</h2>
+<ul>
+<li>With downloaded maps your position is <b>not sent</b> to anyone. With the online services (routes, search, map, fuel stations) the app sends our server only what is needed to answer: start and destination points or the searched text. There is no account and the server does not store these requests or link them to you.</li>
+<li>When you <b>report</b> something, only this is sent: type of report, the point and the time. Your IP address and your name are not stored: only an anonymous code that changes every month, used to count how many different people confirm the same thing.</li>
+<li>While navigating by car, about every 90 seconds the app asks the service for reports near you (internet needed).</li>
+<li>Tracks and routes stay in the app's memory, on your phone. If you share them, you decide with whom.</li>
+<li>The app has no advertising and requires no account.</li>
+</ul>
+
+<h2 id="prob-en">18. Common problems</h2>
+<table>
+<tr><th>Problem</th><th>What to do</th></tr>
+<tr><td>"GPS position not available yet"</td><td>Go outdoors and wait a few seconds; check that the phone's location is on.</td></tr>
+<tr><td>The map is empty or grey</td><td>Download the maps (section 15). If you already have, reopen the app.</td></tr>
+<tr><td>The route is not found</td><td>The destination must be inside the area of the downloaded maps. Try "Whole Italy".</td></tr>
+<tr><td>No voice</td><td>Check in Settings that the voice is on and the volume is up; install the Google text-to-speech voice for your language.</td></tr>
+<tr><td>Navigation stops with the screen off</td><td>Grant "Always" location and remove the app from the phone's battery saving.</td></tr>
+<tr><td>I do not see mobile checks or accidents</td><td>Internet and at least one recent report near you are needed. Also check that the type is on in Map alerts.</td></tr>
+<tr><td>The speed limit is missing or dashed</td><td>The data is not on OpenStreetMap: the dashes indicate a presumed limit.</td></tr>
+<tr><td>The download does not start</td><td>Check the connection and the free space: several GB are needed.</td></tr>
+</table>
+<p>If the problem remains, write to <b>info.idq.26@gmail.com</b> saying what you were doing and the app version (Menu › About).</p>
+
+<h2 id="online-en">19. Online services, place search and 2D/3D</h2>
+<h3>With internet</h3>
+<p>Without downloading anything, when you are online the app uses our server: the map, address search, route calculation (with speed limits, alerts and closed roads already included) and rerouting when you leave the route. If there is no network or the server does not answer, the app switches by itself to the offline maps you downloaded, if you have them.</p>
+<h3>Search for services and shops</h3>
+<p>Type what you are looking for in the search bar: <i>diesel station</i>, <i>petrol station</i>, <i>charging point</i>, <i>restaurant</i>, <i>pizzeria</i>, <i>bar</i>, <i>pharmacy</i>, <i>hospital</i>, <i>parking</i>, <i>ATM</i>, <i>supermarket</i>, <i>hotel</i>, <i>campsite</i>... The nearest ones appear; if you already have a route, the ones along the route. For fuel stations you see the updated price (Italian Ministry open data, self-service and served) of the chosen fuel. Every result shows its distance from your position, in metres or kilometres.</p>
+<h3>2D or 3D map</h3>
+<p>In Menu › Settings turn <b>3D map (tilted)</b> on or off: in 3D the map is tilted and buildings are raised; in 2D it is flat. Your choice is saved.</p>
+<h3>While navigating</h3>
+<p>The car stays still at the centre of the screen and the map moves; the route is green. Voice guidance is turned on and off in Menu › Settings › Voice guidance: when it is off you only hear beeps.</p>
+<h2 id="crediti-en">20. Credits</h2>
+<ul>
+<li>Map data: © OpenStreetMap contributors (ODbL licence).</li>
+<li>Map rendering: MapLibre Native.</li>
+<li>Route calculation: Valhalla.</li>
+<li>Fonts: Noto Sans.</li>
+<li>Development: IDQ Developer.</li>
+</ul>
+<p class="sotto">IDQ Biker Maps shows the way but does not replace caution: always follow the Highway Code and road signs, and do not use the phone while driving.</p>
+
+<script>
+function tema(n){ document.body.className = n ? 'notte' : ''; }
+</script>
+</div>
+<div class="l fz" data-l="fr">
+<h1>Guide d'IDQ Biker Maps</h1>
+<p class="sotto">Toutes les fonctions de l'application, expliquées pas à pas.</p>
+
+<nav>
+<a href="#intro-fr">1. Ce que c'est et comment ça marche</a>
+<a href="#primi-fr">2. Premiers pas</a>
+<a href="#mappa-fr">3. La carte</a>
+<a href="#dest-fr">4. Choisir la destination</a>
+<a href="#partenza-fr">5. Choisir un autre départ</a>
+<a href="#veicoli-fr">6. Options d'itinéraire</a>
+<a href="#nav-fr">7. Naviguer</a>
+<a href="#pip-fr">8. Petite fenêtre et écran allumé</a>
+<a href="#avvisi-fr">9. Alertes sur la carte</a>
+<a href="#segnala-fr">10. Signaler une alerte</a>
+<a href="#vicino-fr">11. Rechercher à proximité</a>
+<a href="#itin-fr">12. Itinéraires enregistrés</a>
+<a href="#tracce-fr">13. Traces enregistrées</a>
+<a href="#gpx-fr">14. Partager et importer</a>
+<a href="#mappeoff-fr">15. Cartes hors ligne et mises à jour</a>
+<a href="#imp-fr">16. Paramètres</a>
+<a href="#privacy-fr">17. Données et confidentialité</a>
+<a href="#prob-fr">18. Problèmes courants</a>
+<a href="#online-fr">19. Services en ligne, recherche de lieux et 2D/3D</a>
+<a href="#crediti-fr">20. Crédits</a>
+</nav>
+
+<h2 id="intro-fr">1. Ce que c'est et comment ça marche</h2>
+<p>IDQ Biker Maps est une application de navigation pour Android qui <b>fonctionne sans internet</b> : les cartes viennent d'OpenStreetMap et sont téléchargées une fois sur le téléphone, et les itinéraires sont calculés directement par le téléphone. Le guidage vocal (et toute l'application) parle votre langue : italien, anglais, français, allemand ou espagnol, avec une voix masculine ou féminine.</p>
+<p>Internet ne sert qu'à télécharger et mettre à jour les cartes, à envoyer et recevoir les signalements des autres utilisateurs (contrôles mobiles, accidents, trafic...) et à partager.</p>
+
+<h2 id="primi-fr">2. Premiers pas</h2>
+<ol>
+<li><b>Autorisation de localisation :</b> à la première ouverture, l'application demande d'utiliser le GPS. Sans elle, la carte s'affiche mais vous ne pouvez pas naviguer. Choisissez « Pendant l'utilisation de l'appli » ou « Toujours » : avec « Toujours », la navigation et l'enregistrement continuent même écran éteint.</li>
+<li><b>Autorisation des notifications :</b> nécessaire pour la notification fixe pendant la navigation, l'enregistrement et le téléchargement des cartes.</li>
+<li><b>Téléchargez les cartes :</b> <b class="t">Menu</b> › <b class="t">Cartes hors ligne</b> › <b class="t">Gérer les cartes</b>. Choisissez <b>Italie entière</b> (recommandé) : elle contient la carte, les itinéraires et la recherche d'adresses. Plusieurs Go : de préférence en Wi-Fi.</li>
+<li>Quand le téléchargement est terminé, la carte apparaît toute seule et vous êtes prêt.</li>
+</ol>
+<div class="nota">Le tutoriel le plus court : <b>recherchez une adresse</b> en haut, touchez le résultat, touchez <b class="t">Démarrer</b>.</div>
+
+<h2 id="mappa-fr">3. La carte</h2>
+<ul>
+<li><b>Faites glisser</b> avec un doigt pour vous déplacer, <b>pincez</b> avec deux doigts pour zoomer, <b>faites pivoter deux doigts</b> pour tourner la carte.</li>
+<li><b>Hors navigation</b>, la carte vous suit et, dès que vous bougez (au-dessus de 4 km/h environ), votre <b>vitesse</b> apparaît en bas à droite : c'est pareil quand vous enregistrez une trace. Si vous déplacez la carte avec le doigt, le bouton <b class="t">◎</b> apparaît : un toucher et elle revient sur votre position.</li>
+<li>Le symbole sur la carte est votre position : la moto, qui tourne avec votre direction.</li>
+<li>En bas se trouve le bouton <b class="t">Menu</b> ; à côté apparaissent <b class="t">Démarrer</b> et <b class="t">Enregistrer</b> quand il y a un itinéraire.</li>
+<li>Jour et nuit : la carte devient sombre toute seule entre le coucher et le lever du soleil (modifiable, voir Paramètres).</li>
+<li>L'écran peut être utilisé en vertical et en horizontal : la navigation ne s'interrompt pas quand vous tournez le téléphone.</li>
+<li>En bas à droite figure toujours la mention « © OpenStreetMap contributors » : c'est une obligation de licence.</li>
+</ul>
+
+<h2 id="dest-fr">4. Choisir la destination</h2>
+<h3>Avec la recherche</h3>
+<p>Saisissez dans la barre du haut : une ville, une rue, un lieu (ex. « colosseo roma »), une adresse avec numéro (ex. « viale ceccarini 106 riccione »). Les résultats sont classés par pertinence puis par proximité : si vous écrivez « via », « viale », « corso »... ou un numéro, les rues et adresses viennent d'abord, sinon les noms identiques à ce que vous avez écrit (même éloignés, comme « stazione di Bologna »). Touchez un résultat pour calculer l'itinéraire.</p>
+<h3>Avec la voix</h3>
+<p>Touchez le <b>micro</b> à droite de la barre de recherche et dites l'adresse.</p>
+<h3>Avec l'appui long</h3>
+<p>Faites un appui long sur un point de la carte : il devient la destination. Utile pour les endroits sans adresse (un parking, un sentier, un point en mer).</p>
+<p>Dès que la destination est choisie, l'application calcule l'itinéraire (en général en moins d'une seconde) et affiche <b>les kilomètres, la durée et l'heure d'arrivée</b>. L'itinéraire est la ligne verte.</p>
+
+<h2 id="partenza-fr">5. Choisir un autre départ</h2>
+<p>Par défaut, vous partez de votre position GPS. Pour planifier un itinéraire éloigné (par exemple depuis chez vous alors que vous êtes ailleurs) : <b class="t">Menu</b> › <b class="t">Itinéraire</b> › <b class="t">Choisir un autre départ</b>, puis recherchez ou faites un appui long sur la carte. L'itinéraire est calculé depuis ce point. Pour rouler vraiment avec <b class="t">Démarrer</b>, le départ doit revenir au GPS : <b class="t">Départ : revenir au GPS</b>.</p>
+
+<h2 id="veicoli-fr">6. Options d'itinéraire</h2>
+<h3>Options</h3>
+<p><b class="t">Menu</b> › <b class="t">Itinéraire</b> : <b>Éviter les péages</b>, <b>Éviter les autoroutes</b>, <b>Éviter les ferries</b>. Ce sont des cases à cocher : touchez pour activer ou désactiver, l'itinéraire est recalculé tout de suite. « Éviter » signifie « préférer autre chose » : s'il n'y a pas d'alternative, la route peut quand même être utilisée.</p>
+
+<h3>Étapes intermédiaires</h3>
+<p>Une destination choisie, <b class="t">Menu</b> › <b class="t">Itinéraire</b> › <b class="t">Étapes intermédiaires</b> permet d'ajouter <b>autant d'étapes que vous voulez</b> : touchez <b>Ajouter une étape</b>, puis cherchez un lieu ou faites un appui long sur la carte. Dans la liste, vous pouvez déplacer les étapes avec ▲ ▼ ou les supprimer avec ✕ : l'itinéraire se recalcule tout seul. Sur la carte, les étapes sont numérotées et, en conduisant, à chaque étape la voix dit que vous êtes arrivé puis repart vers la suivante. Les étapes sont enregistrées avec l'itinéraire.</p>
+
+<h2 id="nav-fr">7. Naviguer</h2>
+<h3>Démarrer, Terminer</h3>
+<ul>
+<li><b class="t">▶ Démarrer</b> : navigation réelle avec le GPS.</li>
+<li><b class="t">Terminer</b> : arrête la navigation.</li>
+</ul>
+<h3>Ce que vous voyez en naviguant</h3>
+<ul>
+<li><b>Carte bleue en haut :</b> flèche de la prochaine manœuvre, distance, indication écrite (ex. « Entrez dans le rond-point et prenez la 2e sortie ») et en bas les kilomètres restants, les minutes et l'heure d'arrivée.</li>
+<li><b>La carte pivote</b> pour que le haut de l'écran soit toujours devant vous. Si vous la déplacez avec le doigt, le bouton <b class="t">◎</b> (Recentrer) apparaît : touchez-le pour revenir tout de suite à votre position ; sinon elle y revient toute seule après 10 secondes.</li>
+<li><b>Vitesse</b> en bas à droite (km/h). Elle devient <b>rouge</b> si vous dépassez la limite.</li>
+<li><b>Panneau de limitation</b> à côté de la vitesse (voiture, moto, camion uniquement). Un panneau au bord plein vient d'OpenStreetMap ; au bord <b>en pointillés</b>, c'est une limite <b>présumée</b> d'après le code de la route (autoroute 130, voie rapide 110, route extra-urbaine 90, agglomération 50) quand la donnée manque : elle peut être fausse, la vraie signalisation prime toujours.</li>
+<li>Sur l'itinéraire apparaissent des <b>panneaux de limite</b> à chaque changement et les symboles des alertes (voir section 9).</li>
+</ul>
+<h3>Voix</h3>
+<p>L'application parle un peu avant chaque manœuvre (« Dans 300 mètres, tournez à droite... ») puis de nouveau près du virage. Avec la voix coupée, restent les indications écrites et les bips. On l'active ou la coupe dans <b class="t">Menu</b> › <b class="t">Paramètres</b> › <b>Guidage vocal</b>. Pour chaque langue, la voix doit être installée sur le téléphone (Paramètres Android › Synthèse vocale › Google › Installer les données vocales).</p>
+<h3>Hors itinéraire</h3>
+<p>Si vous vous trompez de route, l'application s'en rend compte après quelques secondes, dit « Recalcul de l'itinéraire » et en calcule un autre depuis l'endroit où vous êtes. Cela fonctionne même sans internet.</p>
+<h3>Tunnels et GPS faible</h3>
+<p>Si le signal GPS manque (tunnels, immeubles), l'application continue d'afficher la position estimée sur l'itinéraire, à la vitesse précédente, et écrit « Signal GPS faible : position estimée ». Un seul point GPS erroné ne déclenche pas de recalcul ; quand le signal revient, la position se réaligne toute seule.</p>
+<h3>Arrivée</h3>
+<p>À l'arrivée, « Vous êtes arrivé ! » s'affiche et la navigation se ferme toute seule.</p>
+<h3>Notification</h3>
+<p>Pendant la navigation, une notification fixe est présente : Android en a besoin pour ne pas arrêter l'application quand vous passez à d'autres écrans ou éteignez l'écran.</p>
+
+<h2 id="pip-fr">8. Petite fenêtre et écran allumé</h2>
+<ul>
+<li><b>Écran toujours allumé :</b> tant que l'application est ouverte, l'écran ne s'éteint pas, quel que soit le délai réglé dans le téléphone.</li>
+<li><b>Petite fenêtre (Picture-in-Picture) :</b> si pendant la navigation vous appuyez sur <b>Accueil</b> (ou changez d'application), IDQ Biker Maps reste dans une petite fenêtre au-dessus des autres applications et n'affiche que la carte avec l'itinéraire et votre position. Touchez-la une fois : les commandes d'Android apparaissent, avec l'icône pour l'<b>agrandir</b> de nouveau en plein écran, ou la croix pour la fermer. La voix continue de vous guider.</li>
+</ul>
+
+<h2 id="avvisi-fr">9. Alertes sur la carte</h2>
+<p>Des symboles apparaissent sur la carte et le long de l'itinéraire ; quand vous approchez, en bas à droite s'affiche une <b>pastille</b> avec le plus proche (type, distance, limite) et l'application l'annonce à voix haute, avec un bip plus près. Les alertes des données téléchargées fonctionnent aussi <b>sans internet</b>.</p>
+<table>
+<tr><th>Alerte</th><th>D'où elle vient</th></tr>
+<tr><td>Radars fixes (avec la limite quand elle est connue)</td><td>OpenStreetMap + signalements des utilisateurs</td></tr>
+<tr><td>Tutor (vitesse moyenne) : début, fin, moyenne en temps réel et alerte si vous la dépassez</td><td>OpenStreetMap</td></tr>
+<tr><td>Radars de feu rouge</td><td>OpenStreetMap</td></tr>
+<tr><td>Accès ZTL (zones à trafic limité)</td><td>OpenStreetMap (les accès, pas les zones entières)</td></tr>
+<tr><td>Passages à niveau</td><td>OpenStreetMap</td></tr>
+<tr><td>Ralentisseurs (pastille seulement ; la voix ne parle que si vous dépassez 50 km/h)</td><td>OpenStreetMap</td></tr>
+<tr><td>Contrôles mobiles signalés (valables 2 heures)</td><td>Autres utilisateurs, internet nécessaire</td></tr>
+<tr><td>Accidents (2 heures), trafic (1 heure), routes fermées (12 heures), dangers (4 heures)</td><td>Autres utilisateurs, internet nécessaire</td></tr>
+</table>
+<div class="nota">Les données d'OpenStreetMap sont réalisées par des bénévoles : elles sont <b>partielles</b>. Tous les radars ne sont pas cartographiés et les contrôles mobiles et les zones ZTL peuvent manquer. Conduisez toujours en respectant la signalisation et les limites.</div>
+<p><b>Routes fermées :</b> quand d'autres utilisateurs signalent une route fermée sur votre itinéraire, l'application cherche une autre route : elle le fait aussi bien quand vous choisissez la destination (« Itinéraire modifié : évite 1 routes fermées signalées ») qu'en conduisant, avec un recalcul automatique et un avertissement vocal. Internet est nécessaire pour recevoir les signalements.</p>
+<h3>Activer et désactiver les types d'alerte</h3>
+<p><b class="t">Menu</b> › <b class="t">Alertes sur la carte</b> : une case pour chaque type. Désactivé = ni symbole ni alerte. À pied et à vélo, les alertes prévues pour les voitures n'apparaissent pas.</p>
+
+<h2 id="segnala-fr">10. Signaler une alerte</h2>
+<p>Vous aidez les autres conducteurs, et ils vous aident. Pendant la conduite, en bas à droite, il y a le bouton <b>Signaler</b> : touchez-le et un panneau avec de <b>grands boutons</b> apparaît, faciles à lire et à toucher. <b>Contrôle routier</b> et <b>Radar fixe</b> sont en haut, en évidence ; en dessous vous trouvez :</p>
+<ul>
+<li>Contrôle mobile</li>
+<li>Accident</li>
+<li>Trafic</li>
+<li>Route bloquée (temporaire)</li>
+<li>Danger sur la route</li>
+<li>Portique Tutor</li>
+<li>Radar qui <b>n'existe plus</b></li>
+</ul>
+<p>Vous pouvez aussi signaler à l'arrêt : <b class="t">Menu</b> › <b class="t">Signaler</b>. Le signalement prend votre position du moment. S'il n'y a pas internet, il reste sur le téléphone et part tout seul dès que le réseau revient.</p>
+<p>Contrôles mobiles, contrôles routiers, accidents, trafic, routes bloquées et dangers sont visibles tout de suite par les autres, pour un temps limité. Les radars fixes, les Tutor et « n'existe plus » ne sont pas montrés aux autres : ils sont vérifiés à part. Tout est anonyme (voir Données et confidentialité).</p>
+
+<h3>« Est-il toujours là ? »</h3>
+<p>Quand vous passez là où un autre utilisateur a signalé quelque chose de temporaire (contrôle mobile, contrôle routier, accident, trafic, route fermée, danger), l'application demande s'il y est toujours, avec deux grands boutons <b>Oui</b> et <b>Non</b>. Les réponses maintiennent la carte à jour : si plusieurs personnes disent qu'il n'y est plus, le signalement disparaît. Pour les radars fixes, les Tutor et les autres éléments fixes, aucune confirmation n'est demandée aux autres utilisateurs : ils sont vérifiés à part.</p>
+
+<h2 id="vicino-fr">11. Rechercher à proximité</h2>
+<p><b class="t">Menu</b> › <b class="t">Rechercher à proximité</b> : <b>Stations-service</b> (avec les carburants disponibles, GPL, méthane...), <b>Bornes de recharge</b> (avec le type de prise), <b>Parkings</b>, <b>Aires de service</b>. La liste est classée par distance ; touchez un élément pour le voir sur la carte et calculer l'itinéraire. La première fois, l'application demande de télécharger un petit fichier (environ 15 Mo) ; ensuite elle fonctionne hors ligne et se met à jour toute seule en Wi-Fi.</p>
+
+<h2 id="itin-fr">12. Itinéraires enregistrés</h2>
+<p>Un itinéraire est une destination (avec départ, étapes et véhicule) que vous voulez retrouver.</p>
+<ol>
+<li>Choisissez la destination et attendez l'affichage des km et des minutes.</li>
+<li>Touchez <b class="t">Enregistrer</b> (ou <b class="t">Menu</b> › <b class="t">Itinéraire</b> › <b class="t">Enregistrer cet itinéraire</b>) et donnez-lui un nom.</li>
+</ol>
+<p>Vous les retrouvez dans <b class="t">Menu</b> › <b class="t">Itinéraires et traces</b> › <b class="t">Itinéraires enregistrés</b>. En touchant un itinéraire, vous pouvez :</p>
+<ul>
+<li><b>Ouvrir et naviguer</b> – le ramène sur la carte.</li>
+<li><b>Renommer</b> – change le nom (change aussi le nom du fichier que vous partagez).</li>
+<li><b>Modifier</b> – l'ouvre sur la carte ; changez départ, destination ou véhicule puis <b class="t">Menu</b> › <b class="t">Itinéraire</b> › <b class="t">Mettre à jour l'itinéraire</b>.</li>
+<li><b>Partager</b> – voir section 14.</li>
+<li><b>Supprimer</b> – avec confirmation.</li>
+</ul>
+
+<h3>Positions enregistrées</h3>
+<p>Pour enregistrer un <b>point précis</b> sans créer d'itinéraire, touchez l'<b>épingle</b> en bas à droite (ou <b class="t">Menu</b> › <b class="t">Itinéraires et traces</b> › <b class="t">Enregistrer ma position</b>) : l'application propose l'adresse, si elle la connaît, ou la date, et vous pouvez saisir tout de suite le nom voulu. Un appui long sur l'épingle (ou <b class="t">Positions enregistrées</b>) affiche la liste : vous pouvez <b>y aller</b>, la voir sur la carte, la <b>renommer</b>, la <b>partager</b> (adresse, coordonnées et lien) ou la supprimer.</p>
+
+<h2 id="tracce-fr">13. Traces enregistrées</h2>
+<p>Une trace est l'enregistrement de l'endroit où vous êtes passé, utile pour les randonnées, les sorties en moto ou à vélo. Pas besoin de départ ni d'arrivée.</p>
+<ul>
+<li><b>Enregistrer :</b> <b class="t">Menu</b> › <b class="t">Itinéraires et traces</b> › <b class="t">Enregistrer une trace</b>. « ● REC » apparaît sur le bouton Menu avec les kilomètres et le temps, et dans la barre du bas se trouve le bouton rouge <b class="t">■ Stop REC</b>. L'enregistrement continue même écran éteint et application en arrière-plan.</li>
+<li><b>Arrêter :</b> touchez <b class="t">■ Stop REC</b>, ou <b>Stop</b> dans la notification, ou <b class="t">Menu</b> › <b>Arrêter l'enregistrement</b>. La trace s'enregistre toute seule.</li>
+<li><b>Liste :</b> <b class="t">Traces enregistrées</b>. Pour chaque trace : <b>utiliser comme itinéraire</b> (calcule un itinéraire depuis votre position passant par les points de la trace), <b>afficher sur la carte</b>, <b>renommer</b>, <b>raccourcir</b> (crée une copie sans les premiers ou derniers kilomètres ; l'original ne change pas), <b>partager</b>, <b>supprimer</b>.</li>
+</ul>
+<p>Les traces sont des fichiers GPX standard : Strava, Komoot, OsmAnd, Organic Maps et presque toutes les applications de randonnée les lisent.</p>
+
+<h2 id="gpx-fr">14. Partager et importer</h2>
+<h3>Partager</h3>
+<p>Sur les itinéraires et les traces, <b>Partager</b> demande ce qu'il faut envoyer :</p>
+<ul>
+<li><b>Texte</b> – nom, kilomètres et durée ; destination avec <b>adresse complète</b> et <b>coordonnées écrites</b> ; lien vers Google Maps (itinéraires) ou OpenStreetMap (traces). Tout le monde le comprend, même sans notre application.</li>
+<li><b>Fichier GPX</b> – pour qui veut l'ouvrir dans une autre application de navigation. Il contient l'itinéraire et la destination avec nom et adresse.</li>
+</ul>
+<p>Beaucoup d'applications de messagerie suppriment le texte quand il y a un fichier joint : c'est pourquoi on choisit une chose à la fois. Pour envoyer les deux, partagez deux fois.</p>
+<p>L'adresse est obtenue hors ligne grâce à la recherche ; s'il n'y en a pas près du point, les coordonnées restent de toute façon.</p>
+<h3>Importer</h3>
+<p>Quand vous recevez un fichier GPX (dans un chat, par e-mail...), touchez-le et choisissez IDQ Biker Maps. Une <b>trace</b> va dans Traces enregistrées ; un <b>parcours</b> s'ouvre comme un itinéraire avec départ depuis votre GPS.</p>
+
+<h2 id="mappeoff-fr">15. Cartes hors ligne et mises à jour</h2>
+<h3>Ce que contient le catalogue</h3>
+<p>Pour chaque zone (Italie entière, Nord-Ouest, Nord-Est, Centre, Sud, Îles), il y a trois fichiers : <b>carte</b>, <b>itinéraires</b> et <b>recherche d'adresses</b>.</p>
+<div class="nota"><b>Conseil :</b> téléchargez « Italie entière ». L'application n'utilise qu'un seul groupe de fichiers à la fois : avec une seule région, les itinéraires ne fonctionnent qu'à l'intérieur.</div>
+<h3>Télécharger et supprimer</h3>
+<p><b class="t">Menu</b> › <b class="t">Cartes hors ligne</b> › <b class="t">Gérer les cartes</b>. Le téléchargement se fait en arrière-plan avec une notification (et un bouton Annuler), continue écran éteint, <b>reprend tout seul</b> après une coupure du réseau et vérifie que les fichiers sont intacts. Si vous utilisez les données mobiles et que le paquet dépasse 200 Mo, l'application propose d'<b>attendre le Wi-Fi</b> : le téléchargement démarre tout seul dès qu'il y a un réseau Wi-Fi. Avant de télécharger, elle vérifie l'espace libre (les mises à jour demandent le double, car l'ancien fichier reste tant que le nouveau n'est pas vérifié). Si le téléphone redémarre pendant le téléchargement, il reprend tout seul.</p>
+<h3>Mises à jour</h3>
+<p>Les cartes sont mises à jour chaque mois. À l'ouverture, l'application vérifie s'il y en a de nouvelles et vous prévient (aussi par notification). Le bouton <b>Mettre à jour</b> ne télécharge que ce qui a changé.</p>
+<p><b class="t">Menu</b> › <b class="t">Cartes hors ligne</b> › <b>Mise à jour automatique</b> : si activée, le téléphone télécharge seul les mises à jour, mais uniquement en <b>Wi-Fi</b> et <b>en charge</b>, sans utiliser vos données.</p>
+
+<h2 id="imp-fr">16. Paramètres</h2>
+<ul>
+<li><b>Guidage vocal</b> – activé/désactivé.</li>
+<li><b>Langue et voix</b> – choisissez italien, anglais, français, allemand ou espagnol. Cela change le texte de l'application, les indications de virage, les alertes et la voix. Choisissez ensuite une voix <b>féminine</b> ou <b>masculine</b> : touchez un nom pour écouter un échantillon. L'application redémarre toute seule avec la nouvelle langue. La langue se choisit aussi à la toute première ouverture de l'application.</li>
+<li><b>Alertes sur la montre</b> – désactivées par défaut. Si activées, pendant la navigation l'application envoie de courtes notifications à environ 300 et 50 mètres de chaque virage (ex. « Dans 300 m : Tournez à droite sur Via Dante »), destinées aux montres connectées (Galaxy Watch, Wear OS, Xiaomi et autres qui transfèrent les notifications), qui les affichent et vibrent au poignet. Sur le téléphone, la notification n'a ni son ni fenêtre contextuelle (seulement une brève vibration, celle qui allume et fait vibrer la montre) et disparaît toute seule : Android ne permet pas d'envoyer une notification uniquement à la montre. Dans l'application Galaxy Wearable, vérifiez qu'IDQ Biker Maps est activé parmi les applications qui envoient des notifications. La notification fixe de navigation indique toujours manœuvre, distance et nom de la rue. <b>Application pour la montre :</b> sur les Galaxy Watch et autres montres Wear OS, vous pouvez installer <b>IDQ Biker Maps</b> : si elle est installée, les indications (grande flèche, distance, rue, temps et km restants) y vont directement, avec des vibrations différentes (deux courtes à droite, trois à gauche, une longue pour l'arrivée ou hors itinéraire) à environ 300 et 50 mètres, et aucune notification en double n'arrive sur le téléphone. La montre a aussi les boutons Voix OUI/NON et Terminer. Si le téléphone cesse d'envoyer des données, la montre l'indique (« Pas de signal du téléphone »).</li>
+<li><b>Apparence</b> – automatique (sombre entre coucher et lever du soleil là où vous êtes), toujours jour, toujours nuit.</li>
+<li><b>À propos</b> – le <b>tutoriel d'introduction</b> (il s'ouvre tout seul la première fois après l'installation, et vous pouvez le revoir quand vous voulez), ce guide et <b>À propos et licences</b> (version, développeur, licences, politique de confidentialité).</li>
+</ul>
+
+<h2 id="privacy-fr">17. Données et confidentialité</h2>
+<ul>
+<li>Avec les cartes téléchargées, votre position n'est <b>envoyée à personne</b>. Avec les services en ligne (itinéraires, recherche, carte, stations-service), l'application envoie à notre serveur uniquement ce qui est nécessaire pour répondre : points de départ et d'arrivée ou texte recherché. Il n'y a pas de compte et le serveur ne conserve pas ces requêtes ni ne les relie à vous.</li>
+<li>Quand vous <b>signalez</b> quelque chose, seuls sont envoyés : le type de signalement, le point et l'heure. Votre adresse IP et votre nom ne sont pas enregistrés : seulement un code anonyme qui change chaque mois, utilisé pour compter combien de personnes différentes confirment la même chose.</li>
+<li>Pendant la navigation en voiture, environ toutes les 90 secondes, l'application demande au service les signalements proches de vous (internet nécessaire).</li>
+<li>Les traces et les itinéraires restent dans la mémoire de l'application, sur votre téléphone. Si vous les partagez, c'est vous qui décidez avec qui.</li>
+<li>L'application n'a pas de publicité et ne demande pas de compte.</li>
+</ul>
+
+<h2 id="prob-fr">18. Problèmes courants</h2>
+<table>
+<tr><th>Problème</th><th>Que faire</th></tr>
+<tr><td>« Position GPS pas encore disponible »</td><td>Allez à l'extérieur et attendez quelques secondes ; vérifiez que la localisation du téléphone est activée.</td></tr>
+<tr><td>La carte est vide ou grise</td><td>Téléchargez les cartes (section 15). Si vous les avez déjà, rouvrez l'application.</td></tr>
+<tr><td>L'itinéraire est introuvable</td><td>La destination doit se trouver dans la zone des cartes téléchargées. Essayez « Italie entière ».</td></tr>
+<tr><td>Pas de voix</td><td>Vérifiez dans Paramètres que la voix est activée et le volume monté ; installez la synthèse vocale Google de votre langue.</td></tr>
+<tr><td>La navigation s'arrête écran éteint</td><td>Accordez la localisation « Toujours » et retirez l'application des économies d'énergie du téléphone.</td></tr>
+<tr><td>Je ne vois pas les contrôles mobiles ou les accidents</td><td>Il faut internet et au moins un signalement récent près de vous. Vérifiez aussi que le type est activé dans Alertes sur la carte.</td></tr>
+<tr><td>La limite de vitesse manque ou est en pointillés</td><td>La donnée n'est pas sur OpenStreetMap : les pointillés indiquent une limite présumée.</td></tr>
+<tr><td>Le téléchargement ne démarre pas</td><td>Vérifiez la connexion et l'espace libre : il faut plusieurs Go.</td></tr>
+</table>
+<p>Si le problème persiste, écrivez à <b>info.idq.26@gmail.com</b> en précisant ce que vous faisiez et la version de l'application (Menu › À propos).</p>
+
+<h2 id="online-fr">19. Services en ligne, recherche de lieux et 2D/3D</h2>
+<h3>Avec internet</h3>
+<p>Sans rien télécharger, quand vous êtes connecté l'application utilise notre serveur : la carte, la recherche d'adresses, le calcul des itinéraires (avec limites de vitesse, alertes et routes fermées déjà inclus) et le recalcul quand vous quittez l'itinéraire. Sans réseau ou si le serveur ne répond pas, l'application passe toute seule aux cartes hors ligne téléchargées, si vous en avez.</p>
+<h3>Chercher des services et des commerces</h3>
+<p>Dans la barre de recherche, écrivez ce que vous cherchez : <i>station gazole</i>, <i>station essence</i>, <i>borne de recharge</i>, <i>restaurant</i>, <i>pizzeria</i>, <i>bar</i>, <i>pharmacie</i>, <i>hôpital</i>, <i>parking</i>, <i>distributeur de billets</i>, <i>supermarché</i>, <i>hôtel</i>, <i>camping</i>... Les plus proches apparaissent ; si vous avez déjà un itinéraire, ceux situés le long de l'itinéraire. Pour les stations-service, vous voyez le prix à jour (données ouvertes du ministère italien, self et servi) du carburant choisi. Chaque résultat indique sa distance depuis votre position, en mètres ou kilomètres.</p>
+<h3>Carte en 2D ou 3D</h3>
+<p>Dans Menu › Réglages, activez ou désactivez <b>Carte en 3D (inclinée)</b> : en 3D la carte est inclinée et les bâtiments sont en relief ; en 2D elle est plate. Votre choix est enregistré.</p>
+<h3>Pendant la navigation</h3>
+<p>La voiture reste immobile au centre de l'écran et c'est la carte qui bouge ; l'itinéraire est vert. Le guidage vocal s'active et se désactive dans Menu › Réglages › Guidage vocal : s'il est désactivé, vous n'entendez que des bips.</p>
+<h2 id="crediti-fr">20. Crédits</h2>
+<ul>
+<li>Données cartographiques : © OpenStreetMap contributors (licence ODbL).</li>
+<li>Affichage de la carte : MapLibre Native.</li>
+<li>Calcul des itinéraires : Valhalla.</li>
+<li>Polices : Noto Sans.</li>
+<li>Développement : IDQ Developer.</li>
+</ul>
+<p class="sotto">IDQ Biker Maps indique la route mais ne remplace pas la prudence : respectez toujours le code de la route et la signalisation, et n'utilisez pas le téléphone en conduisant.</p>
+
+<script>
+function tema(n){ document.body.className = n ? 'notte' : ''; }
+</script>
+</div>
+<div class="l fz" data-l="de">
+<h1>Anleitung zu IDQ Biker Maps</h1>
+<p class="sotto">Alle Funktionen der App, Schritt für Schritt erklärt.</p>
+
+<nav>
+<a href="#intro-de">1. Was es ist und wie es funktioniert</a>
+<a href="#primi-de">2. Erste Schritte</a>
+<a href="#mappa-de">3. Die Karte</a>
+<a href="#dest-de">4. Das Ziel wählen</a>
+<a href="#partenza-de">5. Einen anderen Start wählen</a>
+<a href="#veicoli-de">6. Routenoptionen</a>
+<a href="#nav-de">7. Navigieren</a>
+<a href="#pip-de">8. Kleines Fenster und Bildschirm an</a>
+<a href="#avvisi-de">9. Hinweise auf der Karte</a>
+<a href="#segnala-de">10. Einen Hinweis melden</a>
+<a href="#vicino-de">11. In der Nähe suchen</a>
+<a href="#itin-de">12. Gespeicherte Routen</a>
+<a href="#tracce-de">13. Aufgezeichnete Tracks</a>
+<a href="#gpx-de">14. Teilen und importieren</a>
+<a href="#mappeoff-de">15. Offline-Karten und Aktualisierungen</a>
+<a href="#imp-de">16. Einstellungen</a>
+<a href="#privacy-de">17. Daten und Datenschutz</a>
+<a href="#prob-de">18. Häufige Probleme</a>
+<a href="#online-de">19. Online-Dienste, Ortssuche und 2D/3D</a>
+<a href="#crediti-de">20. Danksagungen</a>
+</nav>
+
+<h2 id="intro-de">1. Was es ist und wie es funktioniert</h2>
+<p>IDQ Biker Maps ist eine Navigations-App für Android, die <b>ohne Internet funktioniert</b>: Die Karten stammen von OpenStreetMap und werden einmal auf das Telefon geladen, die Routen berechnet das Telefon selbst. Die Sprachführung (und die ganze App) spricht Ihre Sprache: Italienisch, Englisch, Französisch, Deutsch oder Spanisch, mit männlicher oder weiblicher Stimme.</p>
+<p>Internet wird nur zum Herunterladen und Aktualisieren der Karten, zum Senden und Empfangen von Meldungen anderer Nutzer (mobile Kontrollen, Unfälle, Verkehr...) und zum Teilen gebraucht.</p>
+
+<h2 id="primi-de">2. Erste Schritte</h2>
+<ol>
+<li><b>Standortberechtigung:</b> Beim ersten Öffnen fragt die App nach dem GPS. Ohne GPS ist die Karte sichtbar, aber Sie können nicht navigieren. Wählen Sie „Nur bei Nutzung der App“ oder „Immer“: Mit „Immer“ laufen Navigation und Aufzeichnung auch bei ausgeschaltetem Bildschirm weiter.</li>
+<li><b>Benachrichtigungsberechtigung:</b> Sie wird für die feste Benachrichtigung bei Navigation, Aufzeichnung und Karten-Download benötigt.</li>
+<li><b>Karten herunterladen:</b> <b class="t">Menü</b> › <b class="t">Offline-Karten</b> › <b class="t">Karten verwalten</b>. Wählen Sie <b>Ganz Italien</b> (empfohlen): Es enthält Karte, Routen und Adresssuche. Mehrere GB: am besten per WLAN.</li>
+<li>Wenn der Download fertig ist, erscheint die Karte von selbst und Sie sind bereit.</li>
+</ol>
+<div class="nota">Das kürzeste Tutorial: <b>Adresse oben suchen</b>, Ergebnis antippen, <b class="t">Start</b> antippen.</div>
+
+<h2 id="mappa-de">3. Die Karte</h2>
+<ul>
+<li><b>Ziehen</b> mit einem Finger zum Verschieben, <b>zusammenziehen</b> mit zwei Fingern zum Zoomen, <b>zwei Finger drehen</b>, um die Karte zu drehen.</li>
+<li><b>Außerhalb der Navigation</b> folgt Ihnen die Karte und, sobald Sie sich bewegen (über etwa 4 km/h), erscheint unten rechts Ihre <b>Geschwindigkeit</b>: das gilt auch während Sie einen Track aufzeichnen. Verschieben Sie die Karte mit dem Finger, erscheint die Schaltfläche <b class="t">◎</b>: ein Tipp und sie kehrt zu Ihrer Position zurück.</li>
+<li>Das Symbol auf der Karte ist Ihre Position: das Motorrad, das sich mit Ihrer Fahrtrichtung dreht.</li>
+<li>Unten ist die Schaltfläche <b class="t">Menü</b>; daneben erscheinen <b class="t">Start</b> und <b class="t">Speichern</b>, wenn eine Route vorhanden ist.</li>
+<li>Tag und Nacht: Die Karte wird zwischen Sonnenuntergang und Sonnenaufgang von selbst dunkel (änderbar, siehe Einstellungen).</li>
+<li>Der Bildschirm kann hoch und quer verwendet werden: Die Navigation wird beim Drehen des Telefons nicht unterbrochen.</li>
+<li>Unten rechts steht immer der Vermerk „© OpenStreetMap contributors“: Er ist eine Lizenzpflicht.</li>
+</ul>
+
+<h2 id="dest-de">4. Das Ziel wählen</h2>
+<h3>Mit der Suche</h3>
+<p>Geben Sie oben in die Leiste ein: eine Stadt, eine Straße, einen Ort (z. B. „colosseo roma“), eine Adresse mit Hausnummer (z. B. „viale ceccarini 106 riccione“). Die Ergebnisse sind nach Relevanz und dann nach Nähe sortiert: Schreiben Sie „via“, „viale“, „corso“... oder eine Hausnummer, kommen zuerst Straßen und Adressen, sonst zuerst Namen, die dem Eingegebenen entsprechen (auch weit entfernte, etwa „stazione di Bologna“). Tippen Sie auf ein Ergebnis, um die Route zu berechnen.</p>
+<h3>Mit der Stimme</h3>
+<p>Tippen Sie rechts in der Suchleiste auf das <b>Mikrofon</b> und sagen Sie die Adresse.</p>
+<h3>Mit langem Tippen</h3>
+<p>Tippen Sie lange auf einen Punkt der Karte: Er wird zum Ziel. Praktisch für Orte ohne Adresse (ein Parkplatz, ein Pfad, ein Punkt auf dem Meer).</p>
+<p>Sobald das Ziel gewählt ist, berechnet die App die Route (meist in weniger als einer Sekunde) und zeigt <b>Kilometer, Dauer und Ankunftszeit</b>. Die Route ist die grüne Linie.</p>
+
+<h2 id="partenza-de">5. Einen anderen Start wählen</h2>
+<p>Standardmäßig starten Sie von Ihrer GPS-Position. Um eine entfernte Route zu planen (zum Beispiel von zu Hause aus, während Sie woanders sind): <b class="t">Menü</b> › <b class="t">Route</b> › <b class="t">Anderen Startpunkt wählen</b>, dann suchen oder lange auf die Karte tippen. Die Route wird von diesem Punkt berechnet. Um mit <b class="t">Start</b> wirklich zu fahren, muss der Start wieder das GPS sein: <b class="t">Start: zurück zum GPS</b>.</p>
+
+<h2 id="veicoli-de">6. Routenoptionen</h2>
+<h3>Optionen</h3>
+<p><b class="t">Menü</b> › <b class="t">Route</b>: <b>Mautstraßen meiden</b>, <b>Autobahnen meiden</b>, <b>Fähren meiden</b>. Es sind Häkchen: Zum Ein- oder Ausschalten antippen, die Route wird sofort neu berechnet. „Meiden“ bedeutet „etwas anderes bevorzugen“: Gibt es keine Alternative, kann die Straße trotzdem benutzt werden.</p>
+
+<h3>Zwischenstopps</h3>
+<p>Ist ein Ziel gewählt, können Sie unter <b class="t">Menü</b> › <b class="t">Route</b> › <b class="t">Zwischenstopps</b> <b>beliebig viele Zwischenstopps</b> hinzufügen: Tippen Sie auf <b>Zwischenstopp hinzufügen</b>, dann einen Ort suchen oder lange auf die Karte tippen. In der Liste verschieben Sie die Stopps mit ▲ ▼ oder entfernen sie mit ✕: Die Route wird von selbst neu berechnet. Auf der Karte sind die Stopps nummeriert, und beim Fahren sagt die Stimme bei jedem Stopp, dass Sie angekommen sind, und führt dann zum nächsten. Die Stopps werden mit der Route gespeichert.</p>
+
+<h2 id="nav-de">7. Navigieren</h2>
+<h3>Start, Beenden</h3>
+<ul>
+<li><b class="t">▶ Start</b>: echte Navigation mit dem GPS.</li>
+<li><b class="t">Beenden</b>: beendet die Navigation.</li>
+</ul>
+<h3>Was Sie beim Navigieren sehen</h3>
+<ul>
+<li><b>Blaue Karte oben:</b> Pfeil des nächsten Manövers, Entfernung, Texthinweis (z. B. „Fahren Sie in den Kreisverkehr und nehmen Sie die 2. Ausfahrt“) und unten die verbleibenden Kilometer, Minuten und die Ankunftszeit.</li>
+<li><b>Die Karte dreht sich</b>, sodass die Oberseite des Bildschirms immer vor Ihnen liegt. Wenn Sie sie mit dem Finger verschieben, erscheint die Schaltfläche <b class="t">◎</b> (Neu zentrieren): Tippen Sie darauf, um sofort zu Ihrer Position zurückzukehren; sonst folgt sie Ihnen nach 10 Sekunden wieder.</li>
+<li><b>Geschwindigkeit</b> unten rechts (km/h). Sie wird <b>rot</b>, wenn Sie das Limit überschreiten.</li>
+<li><b>Tempolimit-Schild</b> neben der Geschwindigkeit (nur Auto, Motorrad, Lkw). Ein Schild mit durchgehendem Rand stammt von OpenStreetMap; mit <b>gestricheltem</b> Rand ist es ein nach der Straßenverkehrsordnung <b>angenommenes</b> Limit (Autobahn 130, Schnellstraße 110, Landstraße 90, Ortschaft 50), wenn die Daten fehlen: Es kann falsch sein, es gilt immer die echte Beschilderung.</li>
+<li>Auf der Route erscheinen <b>Limit-Schilder</b> bei jeder Änderung und die Symbole der Hinweise (siehe Abschnitt 9).</li>
+</ul>
+<h3>Stimme</h3>
+<p>Die App spricht etwas vor jedem Manöver („In 300 Metern rechts abbiegen...“) und noch einmal kurz vor der Abbiegung. Bei ausgeschalteter Stimme bleiben die Texthinweise und die Signaltöne. Ein- und ausschalten unter <b class="t">Menü</b> › <b class="t">Einstellungen</b> › <b>Sprachführung</b>. Für jede Sprache muss die Stimme auf dem Telefon installiert sein (Android-Einstellungen › Sprachausgabe › Google › Sprachdaten installieren).</p>
+<h3>Abseits der Route</h3>
+<p>Wenn Sie falsch fahren, bemerkt die App das nach wenigen Sekunden, sagt „Route wird neu berechnet“ und berechnet eine neue von Ihrer aktuellen Position. Das funktioniert auch ohne Internet.</p>
+<h3>Tunnel und schwaches GPS</h3>
+<p>Fehlt das GPS-Signal (Tunnel, Gebäude), zeigt die App weiter die geschätzte Position auf der Route, mit der vorherigen Geschwindigkeit, und schreibt „Schwaches GPS-Signal: Position geschätzt“. Ein einzelner falscher GPS-Punkt löst keine Neuberechnung aus; kehrt das Signal zurück, gleicht sich die Position von selbst an.</p>
+<h3>Ankunft</h3>
+<p>Bei der Ankunft erscheint „Sie sind angekommen!“ und die Navigation schließt sich von selbst.</p>
+<h3>Benachrichtigung</h3>
+<p>Während der Navigation gibt es eine feste Benachrichtigung: Android braucht sie, um die App nicht zu beenden, wenn Sie zu anderen Bildschirmen wechseln oder den Bildschirm ausschalten.</p>
+
+<h2 id="pip-de">8. Kleines Fenster und Bildschirm an</h2>
+<ul>
+<li><b>Bildschirm immer an:</b> Solange die App geöffnet ist, schaltet sich der Bildschirm nicht aus, egal welche Zeit im Telefon eingestellt ist.</li>
+<li><b>Kleines Fenster (Bild-im-Bild):</b> Wenn Sie während der Navigation <b>Home</b> drücken (oder die App wechseln), bleibt IDQ Biker Maps in einem kleinen Fenster über den anderen Apps und zeigt nur die Karte mit Route und Ihrer Position. Tippen Sie einmal darauf: Die Android-Steuerelemente erscheinen, mit dem Symbol zum <b>Vergrößern</b> auf Vollbild oder dem X zum Schließen. Die Stimme führt Sie weiter.</li>
+</ul>
+
+<h2 id="avvisi-de">9. Hinweise auf der Karte</h2>
+<p>Auf der Karte und entlang der Route erscheinen Symbole; wenn Sie näher kommen, erscheint unten rechts eine <b>Pille</b> mit dem nächsten (Typ, Entfernung, Limit) und die App sagt es per Stimme an, mit einem Signalton näher davor. Die Hinweise aus den heruntergeladenen Daten funktionieren auch <b>ohne Internet</b>.</p>
+<table>
+<tr><th>Hinweis</th><th>Woher er kommt</th></tr>
+<tr><td>Feste Blitzer (mit Limit, wenn bekannt)</td><td>OpenStreetMap + Nutzermeldungen</td></tr>
+<tr><td>Tutor (Durchschnittsgeschwindigkeit): Beginn, Ende, Durchschnitt in Echtzeit und Warnung bei Überschreitung</td><td>OpenStreetMap</td></tr>
+<tr><td>Rotlichtkameras</td><td>OpenStreetMap</td></tr>
+<tr><td>ZTL-Zufahrten (verkehrsbeschränkte Zonen)</td><td>OpenStreetMap (die Zufahrten, nicht die ganzen Zonen)</td></tr>
+<tr><td>Bahnübergänge</td><td>OpenStreetMap</td></tr>
+<tr><td>Bodenschwellen (nur Pille; die Stimme spricht nur über 50 km/h)</td><td>OpenStreetMap</td></tr>
+<tr><td>Gemeldete mobile Kontrollen (2 Stunden gültig)</td><td>Andere Nutzer, Internet nötig</td></tr>
+<tr><td>Unfälle (2 Stunden), Verkehr (1 Stunde), Straßensperrungen (12 Stunden), Gefahren (4 Stunden)</td><td>Andere Nutzer, Internet nötig</td></tr>
+</table>
+<div class="nota">Die OpenStreetMap-Daten werden von Freiwilligen erstellt: Sie sind <b>unvollständig</b>. Nicht alle Blitzer sind erfasst, und mobile Kontrollen und ZTL-Zonen können fehlen. Fahren Sie immer unter Beachtung von Beschilderung und Limits.</div>
+<p><b>Gesperrte Straßen:</b> Melden andere Nutzer eine gesperrte Straße auf Ihrer Route, sucht die App eine andere Strecke: sowohl bei der Zielwahl („Route geändert: umgeht 1 gemeldete Straßensperrungen“) als auch während der Fahrt, mit automatischer Neuberechnung und Sprachwarnung. Zum Empfang der Meldungen ist Internet nötig.</p>
+<h3>Hinweisarten ein- und ausschalten</h3>
+<p><b class="t">Menü</b> › <b class="t">Hinweise auf der Karte</b>: ein Häkchen für jede Art. Aus = kein Symbol und keine Warnung. Zu Fuß und mit dem Fahrrad erscheinen die für Autos gedachten Hinweise nicht.</p>
+
+<h2 id="segnala-de">10. Einen Hinweis melden</h2>
+<p>Sie helfen anderen Fahrern, und sie helfen Ihnen. Beim Fahren finden Sie unten rechts die Schaltfläche <b>Melden</b>: Tippen Sie darauf und es erscheint eine Tafel mit <b>großen Tasten</b>, leicht zu lesen und zu treffen. <b>Kontrollstelle</b> und <b>Fester Blitzer</b> stehen oben, hervorgehoben; darunter finden Sie:</p>
+<ul>
+<li>Mobile Kontrolle</li>
+<li>Unfall</li>
+<li>Verkehr</li>
+<li>Straße gesperrt (vorübergehend)</li>
+<li>Gefahr auf der Straße</li>
+<li>Tutor-Portal</li>
+<li>Blitzer, den es <b>nicht mehr gibt</b></li>
+</ul>
+<p>Sie können auch im Stand melden: <b class="t">Menü</b> › <b class="t">Melden</b>. Die Meldung nimmt Ihre Position im Moment. Ohne Internet bleibt sie auf dem Telefon und wird von selbst gesendet, sobald das Netz wieder da ist.</p>
+<p>Mobile Kontrollen, Kontrollstellen, Unfälle, Verkehr, gesperrte Straßen und Gefahren sind für andere sofort sichtbar, für begrenzte Zeit. Feste Blitzer, Tutor und „gibt es nicht mehr“ werden anderen nicht angezeigt: Sie werden gesondert geprüft. Alles geschieht anonym (siehe Daten und Datenschutz).</p>
+
+<h3>„Ist sie noch da?“</h3>
+<p>Wenn Sie dort vorbeikommen, wo ein anderer Nutzer etwas Vorübergehendes gemeldet hat (mobile Kontrolle, Kontrollstelle, Unfall, Stau, Sperrung, Gefahr), fragt die App, ob es noch da ist, mit zwei großen Tasten <b>Ja</b> und <b>Nein</b>. Die Antworten halten die Karte aktuell: sagen mehrere, dass es weg ist, verschwindet die Meldung. Bei festen Blitzern, Tutor und anderen festen Dingen wird keine Bestätigung abgefragt: Sie werden gesondert geprüft.</p>
+
+<h2 id="vicino-de">11. In der Nähe suchen</h2>
+<p><b class="t">Menü</b> › <b class="t">In der Nähe suchen</b>: <b>Tankstellen</b> (mit verfügbaren Kraftstoffen, LPG, Methan...), <b>Ladesäulen</b> (mit Steckertyp), <b>Parkplätze</b>, <b>Raststätten</b>. Die Liste ist nach Entfernung sortiert; tippen Sie auf einen Eintrag, um ihn auf der Karte zu sehen und die Route zu berechnen. Beim ersten Mal fragt die App, ob eine kleine Datei (etwa 15 MB) heruntergeladen werden soll; danach funktioniert es offline und aktualisiert sich per WLAN von selbst.</p>
+
+<h2 id="itin-de">12. Gespeicherte Routen</h2>
+<p>Eine Route ist ein Ziel (mit Start, Zwischenzielen und Fahrzeug), das Sie wiederfinden möchten.</p>
+<ol>
+<li>Wählen Sie das Ziel und warten Sie, bis km und Minuten erscheinen.</li>
+<li>Tippen Sie auf <b class="t">Speichern</b> (oder <b class="t">Menü</b> › <b class="t">Route</b> › <b class="t">Diese Route speichern</b>) und geben Sie einen Namen ein.</li>
+</ol>
+<p>Sie finden sie unter <b class="t">Menü</b> › <b class="t">Routen und Aufzeichnungen</b> › <b class="t">Gespeicherte Routen</b>. Durch Antippen einer Route können Sie:</p>
+<ul>
+<li><b>Öffnen und navigieren</b> – bringt sie zurück auf die Karte.</li>
+<li><b>Umbenennen</b> – ändert den Namen (und damit den Namen der Datei, die Sie teilen).</li>
+<li><b>Bearbeiten</b> – öffnet sie auf der Karte; ändern Sie Start, Ziel oder Fahrzeug und dann <b class="t">Menü</b> › <b class="t">Route</b> › <b class="t">Route aktualisieren</b>.</li>
+<li><b>Teilen</b> – siehe Abschnitt 14.</li>
+<li><b>Löschen</b> – mit Bestätigung.</li>
+</ul>
+
+<h3>Gespeicherte Positionen</h3>
+<p>Um einen <b>genauen Punkt</b> ohne Route zu speichern, tippen Sie unten rechts auf die <b>Stecknadel</b> (oder <b class="t">Menü</b> › <b class="t">Routen und Aufzeichnungen</b> › <b class="t">Meine Position speichern</b>): Die App schlägt die Adresse vor, falls sie sie kennt, sonst das Datum, und Sie können sofort einen Namen eingeben. Langes Tippen auf die Stecknadel (oder <b class="t">Gespeicherte Positionen</b>) zeigt die Liste: Von dort können Sie <b>hinfahren</b>, den Punkt auf der Karte sehen, ihn <b>umbenennen</b>, <b>teilen</b> (Adresse, Koordinaten und Link) oder löschen.</p>
+
+<h2 id="tracce-de">13. Aufgezeichnete Tracks</h2>
+<p>Ein Track ist die Aufzeichnung, wo Sie unterwegs waren, nützlich für Wanderungen, Motorrad- oder Radtouren. Start und Ziel sind nicht nötig.</p>
+<ul>
+<li><b>Aufzeichnen:</b> <b class="t">Menü</b> › <b class="t">Routen und Aufzeichnungen</b> › <b class="t">Track aufzeichnen</b>. Auf der Menü-Schaltfläche erscheint „● REC“ mit Kilometern und Zeit, und in der unteren Leiste ist die rote Schaltfläche <b class="t">■ Stop REC</b>. Die Aufzeichnung läuft auch bei ausgeschaltetem Bildschirm und App im Hintergrund weiter.</li>
+<li><b>Beenden:</b> Tippen Sie auf <b class="t">■ Stop REC</b>, oder auf <b>Stopp</b> in der Benachrichtigung, oder <b class="t">Menü</b> › <b>Aufzeichnung beenden</b>. Der Track speichert sich von selbst.</li>
+<li><b>Liste:</b> <b class="t">Aufgezeichnete Tracks</b>. Für jeden Track: <b>als Route verwenden</b> (berechnet eine Route von Ihrer Position über die Punkte des Tracks), <b>auf der Karte zeigen</b>, <b>umbenennen</b>, <b>kürzen</b> (erstellt eine Kopie ohne die ersten oder letzten Kilometer; das Original bleibt unverändert), <b>teilen</b>, <b>löschen</b>.</li>
+</ul>
+<p>Tracks sind Standard-GPX-Dateien: Strava, Komoot, OsmAnd, Organic Maps und fast alle Wander-Apps können sie lesen.</p>
+
+<h2 id="gpx-de">14. Teilen und importieren</h2>
+<h3>Teilen</h3>
+<p>Bei Routen und Tracks fragt <b>Teilen</b>, was gesendet werden soll:</p>
+<ul>
+<li><b>Text</b> – Name, Kilometer und Dauer; Ziel mit <b>vollständiger Adresse</b> und <b>geschriebenen Koordinaten</b>; Link zu Google Maps (Routen) oder OpenStreetMap (Tracks). Jeder versteht ihn, auch ohne unsere App.</li>
+<li><b>GPX-Datei</b> – für alle, die sie in einer anderen Navigations-App öffnen möchten. Sie enthält die Route und das Ziel mit Name und Adresse.</li>
+</ul>
+<p>Viele Messenger verwerfen den Text, wenn eine Datei angehängt ist: Deshalb wählt man eines nach dem anderen. Um beides zu senden, teilen Sie zweimal.</p>
+<p>Die Adresse wird offline aus der Suche ermittelt; ist in der Nähe des Punktes keine vorhanden, bleiben trotzdem die Koordinaten.</p>
+<h3>Importieren</h3>
+<p>Wenn Sie eine GPX-Datei erhalten (im Chat, per E-Mail...), tippen Sie darauf und wählen Sie IDQ Biker Maps. Ein <b>Track</b> landet unter Aufgezeichnete Tracks; eine <b>Route</b> öffnet sich als Route mit Start von Ihrem GPS.</p>
+
+<h2 id="mappeoff-de">15. Offline-Karten und Aktualisierungen</h2>
+<h3>Was im Katalog ist</h3>
+<p>Für jedes Gebiet (Ganz Italien, Nordwest, Nordost, Mitte, Süd, Inseln) gibt es drei Dateien: <b>Karte</b>, <b>Routen</b> und <b>Adresssuche</b>.</p>
+<div class="nota"><b>Tipp:</b> Laden Sie „Ganz Italien“ herunter. Die App verwendet immer nur eine Dateigruppe: Mit nur einer Region funktionieren Routen nur innerhalb dieser Region.</div>
+<h3>Herunterladen und löschen</h3>
+<p><b class="t">Menü</b> › <b class="t">Offline-Karten</b> › <b class="t">Karten verwalten</b>. Der Download läuft im Hintergrund mit einer Benachrichtigung (und einer Abbrechen-Schaltfläche), geht bei ausgeschaltetem Bildschirm weiter, <b>setzt von selbst fort</b> nach einem Netzabbruch und prüft, ob die Dateien intakt sind. Wenn Sie mobile Daten nutzen und das Paket über 200 MB groß ist, bietet die App an, <b>auf WLAN zu warten</b>: Der Download startet von selbst, sobald ein WLAN verfügbar ist. Vor dem Download prüft sie den freien Speicher (Aktualisierungen brauchen das Doppelte, weil die alte Datei bleibt, bis die neue geprüft ist). Startet das Telefon während des Downloads neu, geht er von selbst weiter.</p>
+<h3>Aktualisierungen</h3>
+<p>Die Karten werden jeden Monat aktualisiert. Beim Öffnen prüft die App, ob es neue gibt, und benachrichtigt Sie (auch per Benachrichtigung). Die Schaltfläche <b>Aktualisieren</b> lädt nur das Geänderte herunter.</p>
+<p><b class="t">Menü</b> › <b class="t">Offline-Karten</b> › <b>Automatisch aktualisieren</b>: Wenn aktiv, lädt das Telefon Aktualisierungen von selbst herunter, aber nur per <b>WLAN</b> und <b>beim Laden</b>, ohne Ihre Daten zu verbrauchen.</p>
+
+<h2 id="imp-de">16. Einstellungen</h2>
+<ul>
+<li><b>Sprachführung</b> – ein/aus.</li>
+<li><b>Sprache und Stimme</b> – wählen Sie Italienisch, Englisch, Französisch, Deutsch oder Spanisch. Sie ändern den Text der App, die Abbiegehinweise, die Hinweise und die Stimme. Wählen Sie dann eine <b>weibliche</b> oder <b>männliche</b> Stimme: Tippen Sie auf einen Namen, um eine Hörprobe zu hören. Die App startet von selbst mit der neuen Sprache neu. Die Sprache wird auch beim allerersten Öffnen der App gewählt.</li>
+<li><b>Hinweise auf der Smartwatch</b> – standardmäßig aus. Wenn aktiv, sendet die App während der Navigation kurze Benachrichtigungen etwa 300 und 50 Meter vor jeder Abbiegung (z. B. „In 300 m: Rechts abbiegen auf Via Dante“), gedacht für verbundene Uhren (Galaxy Watch, Wear OS, Xiaomi und andere, die Benachrichtigungen weiterleiten), die sie anzeigen und am Handgelenk vibrieren. Auf dem Telefon hat die Benachrichtigung keinen Ton und kein Pop-up (nur eine kurze Vibration, die die Uhr einschaltet und vibrieren lässt) und verschwindet von selbst: Android erlaubt es nicht, eine Benachrichtigung nur an die Uhr zu senden. Prüfen Sie in der Galaxy-Wearable-App, dass IDQ Biker Maps unter den Apps mit Benachrichtigungen aktiviert ist. Die feste Navigationsbenachrichtigung zeigt immer Manöver, Entfernung und Straßennamen. <b>App für die Uhr:</b> Auf Galaxy Watch und anderen Wear-OS-Uhren können Sie <b>IDQ Biker Maps</b> installieren: Ist sie installiert, gehen die Hinweise (großer Pfeil, Entfernung, Straße, Restzeit und Rest-km) direkt dorthin, mit unterschiedlichen Vibrationen (zweimal kurz für rechts, dreimal für links, einmal lang für Ankunft oder abseits der Route) bei etwa 300 und 50 Metern, und aufs Telefon kommt keine doppelte Benachrichtigung. Auf der Uhr gibt es auch die Tasten Stimme EIN/AUS und Navigation beenden. Sendet das Telefon keine Daten mehr, meldet die Uhr das („Kein Signal vom Telefon“).</li>
+<li><b>Darstellung</b> – automatisch (dunkel zwischen Sonnenuntergang und Sonnenaufgang an Ihrem Standort), immer Tag, immer Nacht.</li>
+<li><b>Info</b> – das <b>Einführungs-Tutorial</b> (es öffnet sich beim ersten Mal nach der Installation von selbst und kann jederzeit erneut angesehen werden), diese Anleitung und <b>Info und Lizenzen</b> (Version, Entwickler, Lizenzen, Datenschutzerklärung).</li>
+</ul>
+
+<h2 id="privacy-de">17. Daten und Datenschutz</h2>
+<ul>
+<li>Mit heruntergeladenen Karten wird Ihre Position <b>an niemanden gesendet</b>. Bei den Online-Diensten (Routen, Suche, Karte, Tankstellen) sendet die App an unseren Server nur, was zur Antwort nötig ist: Start- und Zielpunkte oder den gesuchten Text. Es gibt kein Konto, und der Server speichert diese Anfragen nicht und verknüpft sie nicht mit Ihnen.</li>
+<li>Wenn Sie etwas <b>melden</b>, werden nur gesendet: Art der Meldung, der Punkt und die Uhrzeit. Ihre IP-Adresse und Ihr Name werden nicht gespeichert: nur ein anonymer Code, der sich jeden Monat ändert und dazu dient zu zählen, wie viele verschiedene Personen dasselbe bestätigen.</li>
+<li>Beim Navigieren im Auto fragt die App etwa alle 90 Sekunden beim Dienst nach Meldungen in Ihrer Nähe (Internet nötig).</li>
+<li>Tracks und Routen bleiben im Speicher der App auf Ihrem Telefon. Wenn Sie sie teilen, entscheiden Sie, mit wem.</li>
+<li>Die App hat keine Werbung und braucht kein Konto.</li>
+</ul>
+
+<h2 id="prob-de">18. Häufige Probleme</h2>
+<table>
+<tr><th>Problem</th><th>Was tun</th></tr>
+<tr><td>„GPS-Position noch nicht verfügbar“</td><td>Gehen Sie ins Freie und warten Sie ein paar Sekunden; prüfen Sie, ob der Standort des Telefons eingeschaltet ist.</td></tr>
+<tr><td>Die Karte ist leer oder grau</td><td>Laden Sie die Karten herunter (Abschnitt 15). Haben Sie sie schon, öffnen Sie die App erneut.</td></tr>
+<tr><td>Die Route wird nicht gefunden</td><td>Das Ziel muss im Gebiet der heruntergeladenen Karten liegen. Versuchen Sie „Ganz Italien“.</td></tr>
+<tr><td>Keine Stimme</td><td>Prüfen Sie in den Einstellungen, dass die Stimme an und die Lautstärke hoch ist; installieren Sie die Google-Sprachausgabe für Ihre Sprache.</td></tr>
+<tr><td>Die Navigation stoppt bei ausgeschaltetem Bildschirm</td><td>Erlauben Sie den Standort „Immer“ und nehmen Sie die App aus der Energiesparfunktion des Telefons.</td></tr>
+<tr><td>Ich sehe keine mobilen Kontrollen oder Unfälle</td><td>Internet und mindestens eine aktuelle Meldung in Ihrer Nähe sind nötig. Prüfen Sie auch, dass die Art unter Hinweise auf der Karte eingeschaltet ist.</td></tr>
+<tr><td>Das Tempolimit fehlt oder ist gestrichelt</td><td>Die Angabe fehlt bei OpenStreetMap: Die Striche zeigen ein angenommenes Limit an.</td></tr>
+<tr><td>Der Download startet nicht</td><td>Prüfen Sie die Verbindung und den freien Speicher: Es werden mehrere GB benötigt.</td></tr>
+</table>
+<p>Bleibt das Problem bestehen, schreiben Sie an <b>info.idq.26@gmail.com</b> und nennen Sie, was Sie getan haben, sowie die App-Version (Menü › Info).</p>
+
+<h2 id="online-de">19. Online-Dienste, Ortssuche und 2D/3D</h2>
+<h3>Mit Internet</h3>
+<p>Ohne etwas herunterzuladen nutzt die App bei bestehender Verbindung unseren Server: die Karte, die Adresssuche, die Routenberechnung (mit Tempolimits, Warnungen und gesperrten Straßen bereits enthalten) und die Neuberechnung, wenn Sie die Route verlassen. Gibt es kein Netz oder antwortet der Server nicht, wechselt die App von selbst zu den heruntergeladenen Offline-Karten, falls vorhanden.</p>
+<h3>Dienste und Geschäfte suchen</h3>
+<p>Geben Sie in der Suchleiste ein, was Sie suchen: <i>Diesel-Tankstelle</i>, <i>Benzin-Tankstelle</i>, <i>Ladesäule</i>, <i>Restaurant</i>, <i>Pizzeria</i>, <i>Bar</i>, <i>Apotheke</i>, <i>Krankenhaus</i>, <i>Parkplatz</i>, <i>Geldautomat</i>, <i>Supermarkt</i>, <i>Hotel</i>, <i>Campingplatz</i>... Die nächstgelegenen erscheinen; wenn Sie schon eine Route haben, die entlang der Route. Bei Tankstellen sehen Sie den aktuellen Preis (offene Daten des italienischen Ministeriums, Selbstbedienung und Bedienung) des gewählten Kraftstoffs. Jedes Ergebnis zeigt die Entfernung von Ihrer Position in Metern oder Kilometern.</p>
+<h3>Karte in 2D oder 3D</h3>
+<p>Unter Menü › Einstellungen schalten Sie <b>3D-Karte (geneigt)</b> ein oder aus: in 3D ist die Karte geneigt und die Gebäude sind plastisch; in 2D ist sie flach. Ihre Wahl wird gespeichert.</p>
+<h3>Während der Navigation</h3>
+<p>Das Auto bleibt in der Bildschirmmitte stehen und die Karte bewegt sich; die Route ist grün. Die Sprachführung schalten Sie unter Menü › Einstellungen › Sprachführung ein und aus: ist sie aus, hören Sie nur Pieptöne.</p>
+<h2 id="crediti-de">20. Danksagungen</h2>
+<ul>
+<li>Kartendaten: © OpenStreetMap contributors (ODbL-Lizenz).</li>
+<li>Kartendarstellung: MapLibre Native.</li>
+<li>Routenberechnung: Valhalla.</li>
+<li>Schriften: Noto Sans.</li>
+<li>Entwicklung: IDQ Developer.</li>
+</ul>
+<p class="sotto">IDQ Biker Maps zeigt den Weg, ersetzt aber keine Vorsicht: Beachten Sie immer die Straßenverkehrsordnung und die Beschilderung und benutzen Sie das Telefon nicht beim Fahren.</p>
+
+<script>
+function tema(n){ document.body.className = n ? 'notte' : ''; }
+</script>
+</div>
+<div class="l fz" data-l="es">
+<h1>Guía de IDQ Biker Maps</h1>
+<p class="sotto">Todas las funciones de la app, explicadas paso a paso.</p>
+
+<nav>
+<a href="#intro-es">1. Qué es y cómo funciona</a>
+<a href="#primi-es">2. Primeros pasos</a>
+<a href="#mappa-es">3. El mapa</a>
+<a href="#dest-es">4. Elegir el destino</a>
+<a href="#partenza-es">5. Elegir otra salida</a>
+<a href="#veicoli-es">6. Opciones de ruta</a>
+<a href="#nav-es">7. Navegar</a>
+<a href="#pip-es">8. Ventana pequeña y pantalla encendida</a>
+<a href="#avvisi-es">9. Avisos en el mapa</a>
+<a href="#segnala-es">10. Informar de un aviso</a>
+<a href="#vicino-es">11. Buscar cerca</a>
+<a href="#itin-es">12. Rutas guardadas</a>
+<a href="#tracce-es">13. Tracks grabados</a>
+<a href="#gpx-es">14. Compartir e importar</a>
+<a href="#mappeoff-es">15. Mapas sin conexión y actualizaciones</a>
+<a href="#imp-es">16. Ajustes</a>
+<a href="#privacy-es">17. Datos y privacidad</a>
+<a href="#prob-es">18. Problemas comunes</a>
+<a href="#online-es">19. Servicios en línea, búsqueda de lugares y 2D/3D</a>
+<a href="#crediti-es">20. Créditos</a>
+</nav>
+
+<h2 id="intro-es">1. Qué es y cómo funciona</h2>
+<p>IDQ Biker Maps es una app de navegación para Android que <b>funciona sin internet</b>: los mapas proceden de OpenStreetMap y se descargan una vez en el teléfono, y las rutas las calcula directamente el teléfono. La guía por voz (y toda la app) habla tu idioma: italiano, inglés, francés, alemán o español, con voz masculina o femenina.</p>
+<p>Internet solo hace falta para descargar y actualizar los mapas, para enviar y recibir los avisos de otros usuarios (controles móviles, accidentes, tráfico...) y para compartir.</p>
+
+<h2 id="primi-es">2. Primeros pasos</h2>
+<ol>
+<li><b>Permiso de ubicación:</b> la primera vez que abres la app pide usar el GPS. Sin él el mapa se ve pero no puedes navegar. Elige "Mientras usas la app" o "Siempre": con "Siempre" la navegación y la grabación continúan incluso con la pantalla apagada.</li>
+<li><b>Permiso de notificaciones:</b> sirve para la notificación fija durante la navegación, la grabación y la descarga de mapas.</li>
+<li><b>Descarga los mapas:</b> <b class="t">Menú</b> › <b class="t">Mapas sin conexión</b> › <b class="t">Gestionar los mapas</b>. Elige <b>Toda Italia</b> (recomendado): contiene el mapa, las rutas y la búsqueda de direcciones. Ocupa varios GB: mejor con Wi-Fi.</li>
+<li>Cuando termina la descarga, el mapa aparece solo y estás listo.</li>
+</ol>
+<div class="nota">El tutorial más corto: <b>busca una dirección</b> arriba, toca el resultado, toca <b class="t">Iniciar</b>.</div>
+
+<h2 id="mappa-es">3. El mapa</h2>
+<ul>
+<li><b>Arrastra</b> con un dedo para moverte, <b>pellizca</b> con dos dedos para hacer zoom, <b>gira dos dedos</b> para girar el mapa.</li>
+<li><b>Fuera de la navegación</b> el mapa te sigue y, en cuanto te mueves (por encima de unos 4 km/h), abajo a la derecha aparece tu <b>velocidad</b>: lo mismo ocurre mientras grabas un track. Si mueves el mapa con el dedo aparece el botón <b class="t">◎</b>: un toque y vuelve a tu posición.</li>
+<li>El símbolo del mapa es tu posición: la moto, que gira con tu dirección de marcha.</li>
+<li>Abajo está el botón <b class="t">Menú</b>; al lado aparecen <b class="t">Iniciar</b> y <b class="t">Guardar</b> cuando hay una ruta.</li>
+<li>Día y noche: el mapa se oscurece solo entre el atardecer y el amanecer (se puede cambiar, ver Ajustes).</li>
+<li>La pantalla se puede usar en vertical y en horizontal: la navegación no se interrumpe al girar el teléfono.</li>
+<li>Abajo a la derecha siempre está la atribución "© OpenStreetMap contributors": es una obligación de licencia.</li>
+</ul>
+
+<h2 id="dest-es">4. Elegir el destino</h2>
+<h3>Con la búsqueda</h3>
+<p>Escribe en la barra superior: una ciudad, una calle, un lugar (p. ej. "colosseo roma"), una dirección con número (p. ej. "viale ceccarini 106 riccione"). Los resultados se ordenan por pertinencia y luego por cercanía: si escribes "via", "viale", "corso"... o un número, salen primero calles y direcciones; si no, primero los nombres idénticos a lo escrito (aunque estén lejos, como "stazione di Bologna"). Toca un resultado para calcular la ruta.</p>
+<h3>Con la voz</h3>
+<p>Toca el <b>micrófono</b> a la derecha de la barra de búsqueda y di la dirección.</p>
+<h3>Con la pulsación larga</h3>
+<p>Mantén pulsado un punto del mapa: se convierte en el destino. Útil para sitios sin dirección (un aparcamiento, un sendero, un punto en el mar).</p>
+<p>En cuanto se elige el destino, la app calcula la ruta (normalmente en menos de un segundo) y muestra <b>kilómetros, duración y hora de llegada</b>. La ruta es la línea verde.</p>
+
+<h2 id="partenza-es">5. Elegir otra salida</h2>
+<p>Por defecto se sale de tu posición GPS. Para planificar una ruta lejana (por ejemplo desde casa mientras estás en otro sitio): <b class="t">Menú</b> › <b class="t">Ruta</b> › <b class="t">Elegir otro punto de salida</b>, luego busca o mantén pulsado en el mapa. La ruta se calcula desde ese punto. Para conducir de verdad con <b class="t">Iniciar</b> la salida debe volver al GPS: <b class="t">Salida: volver al GPS</b>.</p>
+
+<h2 id="veicoli-es">6. Opciones de ruta</h2>
+<h3>Opciones</h3>
+<p><b class="t">Menú</b> › <b class="t">Ruta</b>: <b>Evitar peajes</b>, <b>Evitar autopistas</b>, <b>Evitar transbordadores</b>. Son casillas: tócalas para activar o desactivar, la ruta se recalcula al instante. "Evitar" significa "preferir otra cosa": si no hay alternativa, la carretera puede usarse igualmente.</p>
+
+<h3>Paradas intermedias</h3>
+<p>Con un destino elegido, <b class="t">Menú</b> › <b class="t">Ruta</b> › <b class="t">Paradas intermedias</b> permite añadir <b>todas las paradas que quieras</b>: toca <b>Añadir parada</b>, luego busca un lugar o mantén pulsado en el mapa. En la lista puedes mover las paradas con ▲ ▼ o quitarlas con ✕: la ruta se recalcula sola. En el mapa las paradas están numeradas y, mientras conduces, en cada parada la voz dice que has llegado y luego continúa hacia la siguiente. Las paradas se guardan con la ruta.</p>
+
+<h2 id="nav-es">7. Navegar</h2>
+<h3>Iniciar, Terminar</h3>
+<ul>
+<li><b class="t">▶ Iniciar</b>: navegación real con el GPS.</li>
+<li><b class="t">Terminar</b>: detiene la navegación.</li>
+</ul>
+<h3>Qué ves mientras navegas</h3>
+<ul>
+<li><b>Tarjeta azul arriba:</b> flecha de la próxima maniobra, distancia, indicación escrita (p. ej. "Entra en la rotonda y toma la 2.ª salida") y abajo los kilómetros restantes, los minutos y la hora de llegada.</li>
+<li><b>El mapa gira</b> para que delante de ti esté siempre la parte superior de la pantalla. Si lo mueves con el dedo aparece el botón <b class="t">◎</b> (Recentrar): tócalo para volver al instante a tu posición; si no, vuelve sola a los 10 segundos.</li>
+<li><b>Velocidad</b> abajo a la derecha (km/h). Se pone <b>roja</b> si superas el límite.</li>
+<li><b>Señal del límite</b> junto a la velocidad (solo coche, moto, camión). La señal con borde continuo viene de OpenStreetMap; con borde <b>discontinuo</b> es un límite <b>presunto</b> según el código de circulación (autopista 130, vía rápida 110, carretera interurbana 90, zona urbana 50) cuando falta el dato: puede equivocarse, siempre vale la señalización real.</li>
+<li>En la ruta aparecen <b>señales de límite</b> en cada cambio y los símbolos de los avisos (ver sección 9).</li>
+</ul>
+<h3>Voz</h3>
+<p>La app habla un poco antes de cada maniobra ("En 300 metros gira a la derecha...") y de nuevo cerca del giro. Con la voz apagada quedan las indicaciones escritas y los pitidos. Se activa y desactiva en <b class="t">Menú</b> › <b class="t">Ajustes</b> › <b>Guía por voz</b>. Para cada idioma la voz debe estar instalada en el teléfono (Ajustes de Android › Texto a voz › Google › Instalar datos de voz).</p>
+<h3>Fuera de ruta</h3>
+<p>Si te equivocas de camino, la app lo detecta a los pocos segundos, dice "Recalculando la ruta" y calcula otra desde donde estás. Funciona también sin internet.</p>
+<h3>Túneles y GPS débil</h3>
+<p>Si falta la señal GPS (túneles, edificios) la app sigue mostrando la posición estimada en la ruta, a la velocidad anterior, y escribe "Señal GPS débil: posición estimada". Un solo punto GPS erróneo no provoca un recálculo; cuando vuelve la señal, la posición se realinea sola.</p>
+<h3>Llegada</h3>
+<p>Al llegar aparece "¡Has llegado!" y la navegación se cierra sola.</p>
+<h3>Notificación</h3>
+<p>Durante la navegación hay una notificación fija: Android la necesita para no detener la app cuando pasas a otras pantallas o apagas la pantalla.</p>
+
+<h2 id="pip-es">8. Ventana pequeña y pantalla encendida</h2>
+<ul>
+<li><b>Pantalla siempre encendida:</b> mientras la app está abierta la pantalla no se apaga, sea cual sea el tiempo configurado en el teléfono.</li>
+<li><b>Ventana pequeña (imagen en imagen):</b> si durante la navegación pulsas <b>Inicio</b> (o cambias de app), IDQ Biker Maps se queda en una ventana pequeña sobre las demás apps y muestra solo el mapa con la ruta y tu posición. Tócala una vez: aparecen los controles de Android, con el icono para <b>ampliarla</b> de nuevo a pantalla completa, o la X para cerrarla. La voz sigue guiándote.</li>
+</ul>
+
+<h2 id="avvisi-es">9. Avisos en el mapa</h2>
+<p>En el mapa y a lo largo de la ruta aparecen símbolos; cuando te acercas, abajo a la derecha hay una <b>píldora</b> con el más cercano (tipo, distancia, límite) y la app lo dice en voz alta, con un pitido más cerca. Los avisos de los datos descargados funcionan también <b>sin internet</b>.</p>
+<table>
+<tr><th>Aviso</th><th>De dónde viene</th></tr>
+<tr><td>Radares fijos (con límite cuando se conoce)</td><td>OpenStreetMap + avisos de usuarios</td></tr>
+<tr><td>Tutor (velocidad media): inicio, fin, media en tiempo real y aviso si la superas</td><td>OpenStreetMap</td></tr>
+<tr><td>Cámaras de semáforo</td><td>OpenStreetMap</td></tr>
+<tr><td>Accesos ZTL (zonas de tráfico limitado)</td><td>OpenStreetMap (los accesos, no las zonas enteras)</td></tr>
+<tr><td>Pasos a nivel</td><td>OpenStreetMap</td></tr>
+<tr><td>Resaltos (solo píldora; la voz habla solo si pasas de 50 km/h)</td><td>OpenStreetMap</td></tr>
+<tr><td>Controles móviles señalados (válidos 2 horas)</td><td>Otros usuarios, hace falta internet</td></tr>
+<tr><td>Accidentes (2 horas), tráfico (1 hora), carreteras cortadas (12 horas), peligros (4 horas)</td><td>Otros usuarios, hace falta internet</td></tr>
+</table>
+<div class="nota">Los datos de OpenStreetMap los hacen voluntarios: son <b>parciales</b>. No todos los radares están cartografiados y pueden faltar controles móviles y zonas ZTL. Conduce siempre respetando la señalización y los límites.</div>
+<p><b>Carreteras cortadas:</b> cuando otros usuarios señalan una carretera cortada en tu ruta, la app busca otro camino: lo hace tanto al elegir el destino ("Ruta cambiada: evita 1 carreteras cortadas señaladas") como mientras conduces, con un recálculo automático y un aviso por voz. Hace falta internet para recibir los avisos.</p>
+<h3>Activar y desactivar los tipos de aviso</h3>
+<p><b class="t">Menú</b> › <b class="t">Avisos en el mapa</b>: una casilla por cada tipo. Apagado = sin símbolo y sin aviso. A pie y en bici no aparecen los avisos pensados para coches.</p>
+
+<h2 id="segnala-es">10. Informar de un aviso</h2>
+<p>Ayudas a otros conductores, y ellos te ayudan a ti. Mientras conduces, abajo a la derecha, está el botón <b>Avisar</b>: tócalo y aparece un panel con <b>botones grandes</b>, fáciles de leer y de tocar. <b>Control policial</b> y <b>Radar fijo</b> están arriba, destacados; debajo encuentras:</p>
+<ul>
+<li>Control móvil</li>
+<li>Accidente</li>
+<li>Tráfico</li>
+<li>Carretera cortada (temporal)</li>
+<li>Peligro en la carretera</li>
+<li>Pórtico Tutor</li>
+<li>Radar que <b>ya no está</b></li>
+</ul>
+<p>También puedes avisar parado: <b class="t">Menú</b> › <b class="t">Avisar</b>. El aviso toma tu posición del momento. Si no hay internet, se queda en el teléfono y se envía solo en cuanto vuelve la red.</p>
+<p>Controles móviles, controles policiales, accidentes, tráfico, carreteras cortadas y peligros son visibles para los demás enseguida, durante un tiempo limitado. Los radares fijos, los Tutor y "ya no está" no se muestran a los demás: se comprueban aparte. Todo es anónimo (ver Datos y privacidad).</p>
+
+<h3>«¿Sigue ahí?»</h3>
+<p>Cuando pasas por donde otro usuario avisó de algo temporal (control móvil, control policial, accidente, tráfico, carretera cortada, peligro), la app pregunta si sigue ahí, con dos botones grandes <b>Sí</b> y <b>No</b>. Las respuestas mantienen el mapa al día: si varias personas dicen que ya no está, el aviso desaparece. En radares fijos, Tutor y otras cosas fijas no se pide confirmación a los demás usuarios: se comprueban aparte.</p>
+
+<h2 id="vicino-es">11. Buscar cerca</h2>
+<p><b class="t">Menú</b> › <b class="t">Buscar cerca</b>: <b>Gasolineras</b> (con los carburantes disponibles, GLP, metano...), <b>Puntos de carga</b> (con tipo de enchufe), <b>Aparcamientos</b>, <b>Áreas de servicio</b>. La lista se ordena por distancia; toca un elemento para verlo en el mapa y calcular la ruta. La primera vez la app pide descargar un archivo pequeño (unos 15 MB); después funciona sin conexión y se actualiza sola con Wi-Fi.</p>
+
+<h2 id="itin-es">12. Rutas guardadas</h2>
+<p>Una ruta es un destino (con salida, paradas y vehículo) que quieres volver a encontrar.</p>
+<ol>
+<li>Elige el destino y espera a que aparezcan los km y los minutos.</li>
+<li>Toca <b class="t">Guardar</b> (o <b class="t">Menú</b> › <b class="t">Ruta</b> › <b class="t">Guardar esta ruta</b>) y ponle un nombre.</li>
+</ol>
+<p>Las encuentras en <b class="t">Menú</b> › <b class="t">Rutas y tracks</b> › <b class="t">Rutas guardadas</b>. Al tocar una ruta puedes:</p>
+<ul>
+<li><b>Abrir y navegar</b> – la devuelve al mapa.</li>
+<li><b>Renombrar</b> – cambia el nombre (cambia también el nombre del archivo que compartes).</li>
+<li><b>Editar</b> – la abre en el mapa; cambia salida, destino o vehículo y luego <b class="t">Menú</b> › <b class="t">Ruta</b> › <b class="t">Actualizar ruta</b>.</li>
+<li><b>Compartir</b> – ver sección 14.</li>
+<li><b>Eliminar</b> – con confirmación.</li>
+</ul>
+
+<h3>Posiciones guardadas</h3>
+<p>Para guardar un <b>punto exacto</b> sin crear una ruta, toca la <b>chincheta</b> abajo a la derecha (o <b class="t">Menú</b> › <b class="t">Rutas y tracks</b> › <b class="t">Guardar mi posición</b>): la app propone la dirección, si la conoce, o la fecha, y puedes escribir enseguida el nombre que quieras. Con una pulsación larga en la chincheta (o <b class="t">Posiciones guardadas</b>) ves la lista: desde ahí puedes <b>ir allí</b>, verla en el mapa, <b>renombrarla</b>, <b>compartirla</b> (dirección, coordenadas y enlace) o eliminarla.</p>
+
+<h2 id="tracce-es">13. Tracks grabados</h2>
+<p>Un track es la grabación de por dónde has pasado, útil para excursiones, salidas en moto o en bici. No hacen falta salida ni llegada.</p>
+<ul>
+<li><b>Grabar:</b> <b class="t">Menú</b> › <b class="t">Rutas y tracks</b> › <b class="t">Grabar un track</b>. En el botón Menú aparece "● REC" con kilómetros y tiempo, y en la barra inferior está el botón rojo <b class="t">■ Stop REC</b>. La grabación continúa incluso con la pantalla apagada y la app en segundo plano.</li>
+<li><b>Detener:</b> toca <b class="t">■ Stop REC</b>, o <b>Stop</b> en la notificación, o <b class="t">Menú</b> › <b>Detener la grabación</b>. El track se guarda solo.</li>
+<li><b>Lista:</b> <b class="t">Tracks grabados</b>. Para cada track: <b>usar como ruta</b> (calcula una ruta desde tu posición que pasa por los puntos del track), <b>mostrar en el mapa</b>, <b>renombrar</b>, <b>acortar</b> (crea una copia sin los primeros o los últimos kilómetros; el original no cambia), <b>compartir</b>, <b>eliminar</b>.</li>
+</ul>
+<p>Los tracks son archivos GPX estándar: los leen Strava, Komoot, OsmAnd, Organic Maps y casi todas las apps de senderismo.</p>
+
+<h2 id="gpx-es">14. Compartir e importar</h2>
+<h3>Compartir</h3>
+<p>En rutas y tracks, <b>Compartir</b> pregunta qué enviar:</p>
+<ul>
+<li><b>Texto</b> – nombre, kilómetros y duración; destino con <b>dirección completa</b> y <b>coordenadas escritas</b>; enlace a Google Maps (rutas) o a OpenStreetMap (tracks). Lo entiende cualquiera, incluso sin nuestra app.</li>
+<li><b>Archivo GPX</b> – para quien quiera abrirlo en otra app de navegación. Contiene la ruta y el destino con nombre y dirección.</li>
+</ul>
+<p>Muchas apps de mensajes descartan el texto cuando hay un archivo adjunto: por eso se elige una cosa cada vez. Para enviar ambas, comparte dos veces.</p>
+<p>La dirección se obtiene sin conexión a partir de la búsqueda; si cerca del punto no hay ninguna, las coordenadas se mantienen igualmente.</p>
+<h3>Importar</h3>
+<p>Cuando recibes un archivo GPX (en un chat, por correo...), tócalo y elige IDQ Biker Maps. Un <b>track</b> va a Tracks grabados; una <b>ruta</b> se abre como ruta con salida desde tu GPS.</p>
+
+<h2 id="mappeoff-es">15. Mapas sin conexión y actualizaciones</h2>
+<h3>Qué hay en el catálogo</h3>
+<p>Para cada zona (Toda Italia, Noroeste, Noreste, Centro, Sur, Islas) hay tres archivos: <b>mapa</b>, <b>rutas</b> y <b>búsqueda de direcciones</b>.</p>
+<div class="nota"><b>Consejo:</b> descarga "Toda Italia". La app usa un solo grupo de archivos a la vez: con una sola región las rutas funcionan solo dentro de ella.</div>
+<h3>Descargar y eliminar</h3>
+<p><b class="t">Menú</b> › <b class="t">Mapas sin conexión</b> › <b class="t">Gestionar los mapas</b>. La descarga se hace en segundo plano con una notificación (y el botón Cancelar), continúa con la pantalla apagada, <b>se reanuda sola</b> tras una caída de red y comprueba que los archivos estén íntegros. Si usas datos móviles y el paquete supera los 200 MB, la app te propone <b>esperar al Wi-Fi</b>: la descarga empieza sola en cuanto hay una red Wi-Fi. Antes de descargar comprueba el espacio libre (las actualizaciones necesitan el doble, porque el archivo viejo se queda hasta verificar el nuevo). Si el teléfono se reinicia durante la descarga, se reanuda sola.</p>
+<h3>Actualizaciones</h3>
+<p>Los mapas se actualizan cada mes. Al abrirse, la app comprueba si hay nuevos y te avisa (también con una notificación). El botón <b>Actualizar</b> descarga solo lo que ha cambiado.</p>
+<p><b class="t">Menú</b> › <b class="t">Mapas sin conexión</b> › <b>Actualizar solos</b>: si está activo, el teléfono descarga solo las actualizaciones, pero únicamente con <b>Wi-Fi</b> y <b>cargando</b>, sin usar tus datos.</p>
+
+<h2 id="imp-es">16. Ajustes</h2>
+<ul>
+<li><b>Guía por voz</b> – activada/desactivada.</li>
+<li><b>Idioma y voz</b> – elige italiano, inglés, francés, alemán o español. Cambian el texto de la app, las indicaciones de giro, los avisos y la voz. Luego elige una voz <b>femenina</b> o <b>masculina</b>: toca un nombre para oír una muestra. La app se reinicia sola con el nuevo idioma. El idioma se elige también la primerísima vez que abres la app.</li>
+<li><b>Avisos en el reloj</b> – desactivados por defecto. Si se activan, durante la navegación la app envía notificaciones breves a unos 300 y 50 metros de cada giro (p. ej. "En 300 m: Gira a la derecha en Via Dante"), pensadas para los relojes conectados (Galaxy Watch, Wear OS, Xiaomi y otros que reenvían notificaciones), que las muestran y vibran en la muñeca. En el teléfono la notificación no tiene sonido ni ventana emergente (solo una breve vibración, que es la que enciende y hace vibrar el reloj) y desaparece sola: Android no permite enviar una notificación solo al reloj. En la app Galaxy Wearable comprueba que IDQ Biker Maps esté activado entre las apps que envían notificaciones. La notificación fija de navegación indica siempre maniobra, distancia y nombre de la calle. <b>App para el reloj:</b> en los Galaxy Watch y otros relojes Wear OS puedes instalar <b>IDQ Biker Maps</b>: si está instalada, las indicaciones (flecha grande, distancia, calle, tiempo y km restantes) van directamente allí, con vibraciones distintas (dos cortas a la derecha, tres a la izquierda, una larga para llegada o fuera de ruta) a unos 300 y 50 metros, y al teléfono no llega ninguna notificación duplicada. En el reloj también están los botones Voz SÍ/NO y Terminar navegación. Si el teléfono deja de enviar datos, el reloj lo indica ("Sin señal del teléfono").</li>
+<li><b>Apariencia</b> – automática (oscura entre el atardecer y el amanecer donde estés), siempre día, siempre noche.</li>
+<li><b>Información</b> – el <b>tutorial introductorio</b> (se abre solo la primera vez tras la instalación y puedes volver a verlo cuando quieras), esta guía e <b>Información y licencias</b> (versión, desarrollador, licencias, política de privacidad).</li>
+</ul>
+
+<h2 id="privacy-es">17. Datos y privacidad</h2>
+<ul>
+<li>Con los mapas descargados tu posición <b>no se envía</b> a nadie. Con los servicios en línea (rutas, búsqueda, mapa, gasolineras) la app envía a nuestro servidor solo lo necesario para responder: puntos de salida y llegada o el texto buscado. No hay cuenta y el servidor no guarda estas peticiones ni las vincula a ti.</li>
+<li>Cuando <b>informas</b> de algo, solo se envía: tipo de aviso, el punto y la hora. No se guarda tu dirección IP ni tu nombre: solo un código anónimo que cambia cada mes, usado para contar cuántas personas distintas confirman lo mismo.</li>
+<li>Mientras navegas en coche, cada unos 90 segundos la app pide al servicio los avisos cercanos a ti (hace falta internet).</li>
+<li>Los tracks y las rutas se quedan en la memoria de la app, en tu teléfono. Si los compartes, decides tú con quién.</li>
+<li>La app no tiene publicidad y no requiere cuenta.</li>
+</ul>
+
+<h2 id="prob-es">18. Problemas comunes</h2>
+<table>
+<tr><th>Problema</th><th>Qué hacer</th></tr>
+<tr><td>"Posición GPS aún no disponible"</td><td>Sal al aire libre y espera unos segundos; comprueba que la ubicación del teléfono esté activada.</td></tr>
+<tr><td>El mapa está vacío o gris</td><td>Descarga los mapas (sección 15). Si ya los has descargado, vuelve a abrir la app.</td></tr>
+<tr><td>No se encuentra la ruta</td><td>El destino debe estar en la zona de los mapas descargados. Prueba "Toda Italia".</td></tr>
+<tr><td>Sin voz</td><td>Comprueba en Ajustes que la voz esté activada y el volumen alto; instala la voz de Google de tu idioma.</td></tr>
+<tr><td>La navegación se detiene con la pantalla apagada</td><td>Concede la ubicación "Siempre" y quita la app del ahorro de batería del teléfono.</td></tr>
+<tr><td>No veo los controles móviles o los accidentes</td><td>Hacen falta internet y al menos un aviso reciente cerca de ti. Comprueba también que el tipo esté activado en Avisos en el mapa.</td></tr>
+<tr><td>El límite de velocidad falta o es discontinuo</td><td>El dato no está en OpenStreetMap: la línea discontinua indica un límite presunto.</td></tr>
+<tr><td>La descarga no empieza</td><td>Comprueba la conexión y el espacio libre: hacen falta varios GB.</td></tr>
+</table>
+<p>Si el problema continúa, escribe a <b>info.idq.26@gmail.com</b> indicando qué estabas haciendo y la versión de la app (Menú › Información).</p>
+
+<h2 id="online-es">19. Servicios en línea, búsqueda de lugares y 2D/3D</h2>
+<h3>Con internet</h3>
+<p>Sin descargar nada, cuando hay conexión la app usa nuestro servidor: el mapa, la búsqueda de direcciones, el cálculo de rutas (con límites de velocidad, avisos y calles cortadas ya incluidos) y el recálculo cuando sales de la ruta. Si no hay red o el servidor no responde, la app pasa sola a los mapas sin conexión descargados, si los tienes.</p>
+<h3>Buscar servicios y tiendas</h3>
+<p>En la barra de búsqueda escribe lo que buscas: <i>gasolinera diésel</i>, <i>gasolinera gasolina</i>, <i>punto de carga</i>, <i>restaurante</i>, <i>pizzería</i>, <i>bar</i>, <i>farmacia</i>, <i>hospital</i>, <i>aparcamiento</i>, <i>cajero</i>, <i>supermercado</i>, <i>hotel</i>, <i>camping</i>... Aparecen los más cercanos; si ya tienes una ruta, los que están a lo largo de la ruta. En las gasolineras ves el precio actualizado (datos abiertos del Ministerio italiano, autoservicio y servido) del combustible elegido. Cada resultado indica su distancia desde tu posición, en metros o kilómetros.</p>
+<h3>Mapa en 2D o 3D</h3>
+<p>En Menú › Ajustes activa o desactiva <b>Mapa en 3D (inclinado)</b>: en 3D el mapa está inclinado y los edificios en relieve; en 2D es plano. Tu elección se guarda.</p>
+<h3>Mientras navegas</h3>
+<p>El coche se queda quieto en el centro de la pantalla y se mueve el mapa; la ruta es verde. La guía por voz se activa y desactiva en Menú › Ajustes › Guía por voz: si está desactivada solo oyes pitidos.</p>
+<h2 id="crediti-es">20. Créditos</h2>
+<ul>
+<li>Datos del mapa: © OpenStreetMap contributors (licencia ODbL).</li>
+<li>Dibujo del mapa: MapLibre Native.</li>
+<li>Cálculo de rutas: Valhalla.</li>
+<li>Tipografías: Noto Sans.</li>
+<li>Desarrollo: IDQ Developer.</li>
+</ul>
+<p class="sotto">IDQ Biker Maps indica el camino pero no sustituye a la prudencia: respeta siempre el código de circulación y la señalización, y no uses el teléfono mientras conduces.</p>
+
+<script>
+function tema(n){ document.body.className = n ? 'notte' : ''; }
+</script>
+</div>
+</main>
+<footer><span class="l" data-l="it">© IDQ Developer · <a href="funzioni.html">Tutte le funzioni</a> · <a href="privacy.html">Informativa sulla privacy</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
+<span class="l" data-l="en">© IDQ Developer · <a href="funzioni.html">All features</a> · <a href="privacy.html">Privacy policy</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
+<span class="l" data-l="fr">© IDQ Developer · <a href="funzioni.html">Toutes les fonctions</a> · <a href="privacy.html">Politique de confidentialité</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
+<span class="l" data-l="de">© IDQ Developer · <a href="funzioni.html">Alle Funktionen</a> · <a href="privacy.html">Datenschutzerklärung</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
+<span class="l" data-l="es">© IDQ Developer · <a href="funzioni.html">Todas las funciones</a> · <a href="privacy.html">Política de privacidad</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
+<br>Map data © OpenStreetMap contributors (ODbL)</footer>
+<script>
+(function(){
+ var L=["it","en","fr","de","es"],q=(location.search.match(/[?&]lang=(\w\w)/)||[])[1];
+ var s=null;try{s=localStorage.getItem("l")}catch(e){}
+ var n=((navigator.language||"it").slice(0,2));
+ var l=L.indexOf(q)>=0?q:(L.indexOf(s)>=0?s:(L.indexOf(n)>=0?n:"it"));
+ function set(x){document.documentElement.setAttribute("data-l",x);document.documentElement.lang=x;try{localStorage.setItem("l",x)}catch(e){}
+  document.querySelectorAll(".lingue button").forEach(function(b){b.classList.toggle("on",b.dataset.l===x)})}
+ document.querySelectorAll(".lingue button").forEach(function(b){b.onclick=function(){set(b.dataset.l)}});
+ set(l);
+})();
+</script>
+</body></html>
