@@ -156,7 +156,15 @@ def funzioni():
     return s[:a] + ''.join(blocchi) + s[b:]
 
 import home
+def autosufficiente(h):
+    """Logo e icona dentro il file (data URI): la pagina si vede anche se si ricevono solo i file .html senza la cartella immagini."""
+    import io, base64
+    from PIL import Image
+    def uri(path, lato):
+        im = Image.open(path).convert('RGBA'); im.thumbnail((lato, lato), Image.LANCZOS); im = im.quantize(256, method=Image.Quantize.FASTOCTREE); b = io.BytesIO(); im.save(b, 'PNG', optimize=True)
+        return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
+    return h.replace('immagini/logo.png', uri('immagini/logo.png', 520)).replace('immagini/icona.png', uri('immagini/icona.png', 96))
 def index(): return home.pagina()
 if __name__ == '__main__':
     for nome, f in (('index.html', index), ('privacy.html', privacy), ('funzioni.html', funzioni)):
-        open(nome, 'w', encoding='utf-8').write(f()); print(nome, 'scritto')
+        open(nome, 'w', encoding='utf-8').write(autosufficiente(f())); print(nome, 'scritto')
