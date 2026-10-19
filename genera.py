@@ -85,7 +85,7 @@ CARTE = {
         ("Mapa 2D o 3D", "Gráficos claros de día y de noche, en 3D inclinado o en 2D plano, con la moto siempre en el centro."),
         ("Tracks y rutas", "Graba tus salidas en moto, guarda rutas y compártelas en GPX o con un enlace."),
         ("Privacidad", "Sin publicidad, sin cuenta y sin herramientas de análisis. Con los mapas descargados tu posición no sale del teléfono.")]}
-def index():
+def index_vecchio():
     s = marchio(tema(leggi(NAVI + 'index.html')))
     s = re.sub(r'<title>.*?</title>', f'<title>{NOME}</title>', s, count=1)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{NOME}: {HERO["en"][0]}. {HERO["en"][1]}">', s, count=1)
@@ -147,6 +147,8 @@ def funzioni():
     a = s.index('<main>') + len('<main>'); b = s.index('</main>')
     return s[:a] + ''.join(blocchi) + s[b:]
 
+import home
+def index(): return home.pagina()
 if __name__ == '__main__':
     for nome, f in (('index.html', index), ('privacy.html', privacy), ('funzioni.html', funzioni)):
         open(nome, 'w', encoding='utf-8').write(f()); print(nome, 'scritto')
