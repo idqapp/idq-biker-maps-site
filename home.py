@@ -4,7 +4,8 @@ con guide passo-passo. Genera solo l'HTML; viene chiamata da genera.py. Colori d
 LG = ['it', 'en', 'fr', 'de', 'es']
 def T(it, en, fr, de, es): return dict(zip(LG, (it, en, fr, de, es)))
 
-NAV = [('funzioni', T('Funzioni', 'Features', 'Fonctions', 'Funktionen', 'Funciones')),
+NAV = [('forti', T('Punti forti', 'Strengths', 'Points forts', 'Stärken', 'Puntos fuertes')),
+       ('funzioni', T('Funzioni', 'Features', 'Fonctions', 'Funktionen', 'Funciones')),
        ('prova', T('Prova gratuita', 'Free trial', 'Essai gratuit', 'Gratis testen', 'Prueba gratis')),
        ('inizio', T('Come si inizia', 'Getting started', 'Pour commencer', "So geht's los", 'Cómo empezar')),
        ('guide', T('Guide passo passo', 'Step-by-step guides', 'Guides pas à pas', 'Schritt-für-Schritt', 'Guías paso a paso')),
@@ -94,6 +95,60 @@ PIATTAFORME = [
 
 FEAT_H = T('Tutto quello che serve a chi va in moto', 'Everything a rider needs', 'Tout ce dont un motard a besoin', 'Alles, was Motorradfahrer brauchen', 'Todo lo que necesita un motorista')
 FEAT_S = T("Ogni funzione si accende e si spegne da Menu › Impostazioni › Funzioni in sella: tieni solo quello che ti serve.", "Every feature can be switched on or off from Menu › Settings › Riding features: keep only what you need.", "Chaque fonction s'active ou se désactive dans Menu › Réglages › Fonctions en selle : garde seulement ce dont tu as besoin.", "Jede Funktion lässt sich unter Menü › Einstellungen › Funktionen unterwegs ein- und ausschalten: behalte nur, was du brauchst.", "Cada función se activa o se apaga en Menú › Ajustes › Funciones en ruta: quédate solo con lo que necesitas.")
+
+FORTI_H = T('I punti forti', 'Why riders choose it', 'Les points forts', 'Das macht sie stark', 'Sus puntos fuertes')
+FORTI_S = T('Cinque cose che nessun altro navigatore ti dà tutte insieme.', 'Five things no other navigator gives you all together.', 'Cinq choses qu\'aucun autre GPS ne te donne toutes ensemble.', 'Fünf Dinge, die dir kein anderes Navi alle zusammen bietet.', 'Cinco cosas que ningún otro navegador te da todas juntas.')
+# (id, etichetta, titolo, testo, [punti], media[(tipo, file, didascalia)])
+FORTI = [
+ ('strade', T('Strade', 'Roads', 'Routes', 'Straßen', 'Carreteras'),
+  T('Le strade più belle, trovate per te', 'The best roads, found for you', 'Les plus belles routes, trouvées pour toi', 'Die schönsten Straßen, für dich gefunden', 'Las mejores carreteras, encontradas para ti'),
+  T('Dici quante ore hai e che strade ami: l\'app disegna giri ad anello da dove sei, dal più curvoso, e ti mostra su una mappa colorata dove sono le curve vere.', 'Tell it how many hours you have and what roads you love: the app draws loop rides from where you are, twistiest first, and shows on a coloured map where the real bends are.', 'Tu dis combien d\'heures tu as et quelles routes tu aimes : l\'appli dessine des boucles depuis ta position, la plus sinueuse d\'abord, et te montre sur une carte colorée où sont les vrais virages.', 'Du sagst, wie viele Stunden du hast und welche Straßen du liebst: Die App zeichnet Rundtouren ab deinem Standort, die kurvigste zuerst, und zeigt dir auf einer farbigen Karte, wo die echten Kurven sind.', 'Dices cuántas horas tienes y qué carreteras amas: la app dibuja rutas circulares desde donde estás, la más revirada primero, y te muestra en un mapa de colores dónde están las curvas de verdad.'),
+  [T('4 giri ad anello in pochi secondi, con km, durata e giudizio', '4 loop rides in seconds, with km, time and a verdict', '4 boucles en quelques secondes, avec km, durée et verdict', '4 Rundtouren in Sekunden, mit km, Dauer und Urteil', '4 rutas circulares en segundos, con km, duración y veredicto'),
+   T('548.000 tratti di strada curvosa mappati in Italia', '548,000 twisty road sections mapped in Italy', '548 000 tronçons sinueux cartographiés en Italie', '548.000 kurvige Abschnitte in Italien kartiert', '548.000 tramos reviradas mapeados en Italia'),
+   T('Profilo altimetrico e tornanti contati prima di partire', 'Elevation profile and hairpins counted before you leave', 'Profil d\'altitude et épingles comptées avant de partir', 'Höhenprofil und gezählte Kehren vor der Abfahrt', 'Perfil de altitud y horquillas contadas antes de salir')],
+  [('video', 'giri', T('Dove vado oggi?', 'Where do I ride today?', 'Où rouler aujourd\'hui ?', 'Wohin fahre ich heute?', '¿Adónde voy hoy?')), ('video', 'curve', T('La mappa delle curve', 'The bend map', 'La carte des virages', 'Die Kurvenkarte', 'El mapa de curvas'))]),
+ ('sicurezza', T('Sicurezza', 'Safety', 'Sécurité', 'Sicherheit', 'Seguridad'),
+  T('Se cadi, qualcuno lo sa', 'If you fall, someone knows', 'Si tu tombes, quelqu\'un le sait', 'Wenn du stürzt, weiß es jemand', 'Si te caes, alguien lo sabe'),
+  T('Il telefono sente l\'urto e il fermo. Se non rispondi entro 30 secondi suona una sirena e manda un SMS con la tua posizione ai contatti che hai scelto. In più: un link a tempo per farti seguire da casa e un allarme se non arrivi in orario.', 'The phone senses the impact and the stop. If you do not answer within 30 seconds a siren sounds and an SMS with your position goes to the contacts you chose. Plus: a timed link so home can follow you and an alarm if you do not arrive on time.', 'Le téléphone détecte le choc et l\'arrêt. Si tu ne réponds pas en 30 secondes une sirène retentit et un SMS avec ta position part vers les contacts que tu as choisis. En plus : un lien temporaire pour te faire suivre depuis la maison et une alarme si tu n\'arrives pas à l\'heure.', 'Das Telefon erkennt Aufprall und Stillstand. Antwortest du nicht binnen 30 Sekunden, ertönt eine Sirene und eine SMS mit deiner Position geht an die gewählten Kontakte. Dazu: ein zeitlich begrenzter Link, damit man dich von zu Hause verfolgen kann, und ein Alarm, wenn du nicht rechtzeitig ankommst.', 'El teléfono detecta el golpe y la parada. Si no respondes en 30 segundos suena una sirena y se envía un SMS con tu posición a los contactos que elegiste. Además: un enlace temporal para que te sigan desde casa y una alarma si no llegas a tiempo.'),
+  [T('Sirena propria dell\'app e conto alla rovescia di 30 secondi', 'The app\'s own siren and a 30-second countdown', 'Sirène propre à l\'appli et compte à rebours de 30 secondes', 'Eigene Sirene der App und 30-Sekunden-Countdown', 'Sirena propia de la app y cuenta atrás de 30 segundos'),
+   T('Tasto Aiuto con il tuo messaggio, sempre a portata di dito', 'Help button with your own message, always at your fingertip', 'Bouton Aide avec ton message, toujours sous le doigt', 'Hilfe-Taste mit deiner Nachricht, immer griffbereit', 'Botón Ayuda con tu mensaje, siempre al alcance del dedo'),
+   T('Spento di base: lo attivi tu, e i dati restano sul tuo telefono', 'Off by default: you switch it on, and the data stays on your phone', 'Désactivé par défaut : tu l\'actives toi-même, et les données restent sur ton téléphone', 'Standardmäßig aus: Du schaltest ihn ein, und die Daten bleiben auf deinem Telefon', 'Apagado por defecto: lo activas tú, y los datos se quedan en tu teléfono')],
+  [('video', 'allarme', T('L\'allarme di caduta', 'The fall alarm', 'L\'alarme de chute', 'Der Sturzalarm', 'La alarma de caída'))]),
+ ('meteo', T('Meteo', 'Weather', 'Météo', 'Wetter', 'Tiempo'),
+  T('Vedi la pioggia prima che arrivi', 'See the rain before it arrives', 'Vois la pluie avant qu\'elle n\'arrive', 'Sieh den Regen, bevor er kommt', 'Ve la lluvia antes de que llegue'),
+  T('Radar della Protezione Civile e previsioni lungo il tuo percorso: ti dice a quanti chilometri e minuti c\'è pioggia o temporale, e ti avvisa di vento forte, gelo ai passi e caldo estremo. Ogni avviso si accende e si spegne come vuoi.', 'Civil Protection radar and forecasts along your route: it tells you how many kilometres and minutes away rain or a thunderstorm is, and warns you of strong wind, ice at the passes and extreme heat. Every alert switches on and off as you like.', 'Radar de la Protection civile et prévisions le long de ton itinéraire : il te dit à combien de kilomètres et de minutes il y a de la pluie ou un orage, et t\'avertit du vent fort, du gel aux cols et de la chaleur extrême. Chaque alerte s\'active et se désactive comme tu veux.', 'Radar des Zivilschutzes und Vorhersagen entlang deiner Route: Es sagt dir, in wie vielen Kilometern und Minuten Regen oder Gewitter sind, und warnt vor starkem Wind, Glatteis auf Pässen und extremer Hitze. Jede Warnung lässt sich nach Wunsch ein- und ausschalten.', 'Radar de Protección Civil y previsiones a lo largo de tu ruta: te dice a cuántos kilómetros y minutos hay lluvia o tormenta, y te avisa de viento fuerte, hielo en los puertos y calor extremo. Cada aviso se activa y se apaga como quieras.'),
+  [T('Pioggia e temporali a quanti km e minuti', 'Rain and thunderstorms: how many km and minutes away', 'Pluie et orages : à combien de km et de minutes', 'Regen und Gewitter: in wie vielen km und Minuten', 'Lluvia y tormentas: a cuántos km y minutos'),
+   T('Gelo e freddo alla quota del passo, passi chiusi', 'Ice and cold at pass altitude, closed passes', 'Gel et froid à l\'altitude du col, cols fermés', 'Glatteis und Kälte auf Passhöhe, gesperrte Pässe', 'Hielo y frío a la altitud del puerto, puertos cerrados'),
+   T('Consiglio su cosa mettere, a inizio giro', 'Advice on what to wear, at the start of the ride', 'Conseil sur quoi porter, au départ', 'Kleidungstipp zu Fahrtbeginn', 'Consejo de qué ponerte, al empezar')],
+  [('img', 'funzioni', T('Ogni avviso si accende e si spegne', 'Every alert switches on and off', 'Chaque alerte s\'active et se désactive', 'Jede Warnung lässt sich ein- und ausschalten', 'Cada aviso se activa y se apaga'))]),
+ ('insieme', T('Insieme', 'Together', 'Ensemble', 'Gemeinsam', 'Juntos'),
+  T('Il giro in compagnia, senza account', 'Riding together, no account', 'Rouler ensemble, sans compte', 'Gemeinsam fahren, ohne Konto', 'Rodar juntos, sin cuenta'),
+  T('Crei un gruppo e gli altri entrano con un QR o un link: vi vedete sulla mappa, e ti avvisa se qualcuno resta indietro. A fine giro condividi un riepilogo con il tracciato e i numeri.', 'You create a group and the others join with a QR or link: you see each other on the map, and it warns you if someone falls behind. At the end of the ride you share a summary with the track and the numbers.', 'Tu crées un groupe et les autres entrent avec un QR ou un lien : vous vous voyez sur la carte, et il t\'avertit si quelqu\'un reste en arrière. En fin de sortie tu partages un résumé avec la trace et les chiffres.', 'Du erstellst eine Gruppe, und die anderen treten per QR oder Link bei: Ihr seht euch auf der Karte, und es warnt dich, wenn jemand zurückbleibt. Am Ende teilst du eine Zusammenfassung mit Strecke und Zahlen.', 'Creas un grupo y los demás entran con un QR o un enlace: os veis en el mapa y te avisa si alguien se queda atrás. Al final compartes un resumen con el trazado y los números.'),
+  [T('Nessun account: basta un link o un QR', 'No account: a link or a QR is enough', 'Aucun compte : un lien ou un QR suffit', 'Kein Konto: Ein Link oder QR genügt', 'Sin cuenta: basta un enlace o un QR'),
+   T('Anche chi non ha l\'app vi vede da una pagina web', 'Even those without the app see you on a web page', 'Même ceux sans l\'appli te voient sur une page web', 'Auch wer die App nicht hat, sieht euch auf einer Webseite', 'Incluso quien no tiene la app os ve en una página web'),
+   T('Tasti dell\'interfono Bluetooth del casco per ripetere le indicazioni', 'Helmet Bluetooth intercom buttons to repeat directions', 'Boutons de l\'interphone Bluetooth du casque pour répéter les indications', 'Tasten der Bluetooth-Gegensprechanlage im Helm zum Wiederholen der Ansagen', 'Botones del intercomunicador Bluetooth del casco para repetir las indicaciones')],
+  [('img', 'gruppo-qr', T('Invita con un QR', 'Invite with a QR', 'Invite avec un QR', 'Mit QR einladen', 'Invita con un QR')), ('card', 'riepilogo', T('Il riepilogo del giro', 'The ride summary', 'Le résumé de la sortie', 'Die Fahrtzusammenfassung', 'El resumen de la ruta'))]),
+ ('moto', T('La moto', 'The bike', 'La moto', 'Das Motorrad', 'La moto'),
+  T('La tua moto, sotto controllo', 'Your bike, under control', 'Ta moto, sous contrôle', 'Dein Motorrad im Griff', 'Tu moto, bajo control'),
+  T('Più moto in garage, ognuna con i suoi chilometri: l\'app calcola il consumo reale e il costo al chilometro, ti ricorda tagliando e catena, e ti dice quando fermarti a fare benzina e dove costa meno sul percorso.', 'Several bikes in the garage, each with its own kilometres: the app works out real consumption and cost per kilometre, reminds you of the service and the chain, and tells you when to stop for fuel and where it is cheapest on your route.', 'Plusieurs motos au garage, chacune avec ses kilomètres : l\'appli calcule la consommation réelle et le coût au kilomètre, te rappelle la révision et la chaîne, et te dit quand t\'arrêter faire le plein et où c\'est le moins cher sur l\'itinéraire.', 'Mehrere Motorräder in der Garage, jedes mit eigenen Kilometern: Die App berechnet realen Verbrauch und Kosten pro Kilometer, erinnert an Inspektion und Kette und sagt dir, wann du tanken solltest und wo es auf deiner Route am günstigsten ist.', 'Varias motos en el garaje, cada una con sus kilómetros: la app calcula el consumo real y el coste por kilómetro, te recuerda la revisión y la cadena, y te dice cuándo repostar y dónde sale más barato en tu ruta.'),
+  [T('Consumo reale e costo al km dai tuoi rifornimenti', 'Real consumption and cost per km from your refuels', 'Consommation réelle et coût au km d\'après tes pleins', 'Realer Verbrauch und Kosten pro km aus deinen Tankvorgängen', 'Consumo real y coste por km de tus repostajes'),
+   T('Distributore più conveniente sul percorso (prezzi del Ministero)', 'Cheapest petrol station on your route (Ministry prices)', 'Station la plus avantageuse sur l\'itinéraire (prix du Ministère)', 'Günstigste Tankstelle auf der Route (Preise des Ministeriums)', 'Gasolinera más económica en la ruta (precios del Ministerio)'),
+   T('Officine, parcheggi per moto e dove dormire', 'Workshops, motorcycle parking and where to sleep', 'Ateliers, parkings moto et où dormir', 'Werkstätten, Motorradparkplätze und Unterkünfte', 'Talleres, aparcamientos para moto y dónde dormir')],
+  [('img', 'garage', T('Garage e consumi', 'Garage and consumption', 'Garage et consommation', 'Garage und Verbrauch', 'Garaje y consumo')), ('img', 'profilo', T('Profilo altimetrico', 'Elevation profile', 'Profil d\'altitude', 'Höhenprofil', 'Perfil de altitud'))]),
+]
+SENZA = [(T('Funziona anche senza rete', 'Works without a connection too', 'Fonctionne aussi sans réseau', 'Funktioniert auch ohne Netz', 'Funciona también sin cobertura'), T('Online quando c\'è la rete, mappe scaricate quando manca: gallerie e montagne non ti lasciano a piedi.', 'Online when there is a connection, downloaded maps when there is not: tunnels and mountains do not leave you stranded.', 'En ligne quand il y a du réseau, cartes téléchargées quand il manque : tunnels et montagnes ne te laissent pas en plan.', 'Online mit Netz, geladene Karten ohne: Tunnel und Berge lassen dich nicht im Stich.', 'Online con cobertura, mapas descargados sin ella: túneles y montañas no te dejan tirado.')),
+          (T('Nessuna pubblicità, nessun account', 'No ads, no account', 'Aucune publicité, aucun compte', 'Keine Werbung, kein Konto', 'Sin publicidad, sin cuenta'), T('Non ti seguiamo e non ti vendiamo niente: i tuoi dati restano tuoi.', 'We do not track you and we sell you nothing: your data stays yours.', 'Nous ne te suivons pas et ne te vendons rien : tes données restent à toi.', 'Wir verfolgen dich nicht und verkaufen dir nichts: Deine Daten bleiben deine.', 'No te seguimos ni te vendemos nada: tus datos siguen siendo tuyos.')),
+          (T('In 5 lingue, anche la voce', 'In 5 languages, voice too', 'En 5 langues, voix comprise', 'In 5 Sprachen, auch die Stimme', 'En 5 idiomas, también la voz'), T('Italiano, inglese, francese, tedesco e spagnolo: parti per l\'Europa senza cambiare app.', 'Italian, English, French, German and Spanish: ride across Europe without changing app.', 'Italien, anglais, français, allemand et espagnol : pars en Europe sans changer d\'appli.', 'Italienisch, Englisch, Französisch, Deutsch und Spanisch: Fahr durch Europa, ohne die App zu wechseln.', 'Italiano, inglés, francés, alemán y español: viaja por Europa sin cambiar de app.'))]
+GALL_H = T('Guarda l\'app in azione', 'See the app in action', 'Vois l\'appli en action', 'Die App in Aktion', 'Mira la app en acción')
+GALL = [('video', 'navigazione', T('In navigazione: svolte, limiti, note rally', 'Navigating: turns, limits, rally notes', 'En navigation : virages, limites, notes rallye', 'Navigation: Abbiegen, Limits, Rallye-Aufschriebe', 'Navegando: giros, límites, notas rally')),
+        ('video', 'giri', T('Dove vado oggi?', 'Where do I ride today?', 'Où rouler aujourd\'hui ?', 'Wohin fahre ich heute?', '¿Adónde voy hoy?')),
+        ('video', 'curve', T('Mappa delle curve', 'Bend map', 'Carte des virages', 'Kurvenkarte', 'Mapa de curvas')),
+        ('video', 'allarme', T('Allarme di caduta', 'Fall alarm', 'Alarme de chute', 'Sturzalarm', 'Alarma de caída')),
+        ('img', 'giro-anello', T('Un giro ad anello nel Montefeltro', 'A loop ride in Montefeltro', 'Une boucle dans le Montefeltro', 'Eine Rundtour im Montefeltro', 'Una ruta circular en el Montefeltro')),
+        ('img', 'profilo', T('Profilo altimetrico e tornanti', 'Elevation profile and hairpins', 'Profil d\'altitude et épingles', 'Höhenprofil und Kehren', 'Perfil de altitud y horquillas')),
+        ('img', 'gruppo-qr', T('Giro di gruppo con QR', 'Group ride with QR', 'Sortie de groupe avec QR', 'Gruppenfahrt mit QR', 'Ruta en grupo con QR')),
+        ('img', 'garage', T('Garage e consumi', 'Garage and consumption', 'Garage et consommation', 'Garage und Verbrauch', 'Garaje y consumo')),
+        ('card', 'riepilogo', T('Il riepilogo da condividere', 'The shareable summary', 'Le résumé à partager', 'Die teilbare Zusammenfassung', 'El resumen para compartir'))]
 
 START_H = T('Si parte in 3 passi', 'Ready in 3 steps', 'Prêt en 3 étapes', 'In 3 Schritten startklar', 'Listo en 3 pasos')
 START = [
@@ -215,6 +270,29 @@ a.btn.s,span.btn.ip{margin:0}
 .piattaforme{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .piatt{background:var(--card);border:1px dashed var(--bd);border-radius:16px;padding:16px 20px}.piatt.on{border:1px solid var(--ac2)}
 .piatt b{display:block;font-size:19px;margin-bottom:4px}.piatt span{color:var(--mu);font-size:15px}
+
+.tel{width:min(250px,64vw);aspect-ratio:450/872;border:7px solid #20202a;border-radius:34px;overflow:hidden;background:#000;box-shadow:0 18px 50px rgba(0,0,0,.6),0 0 0 1px #3a3a46;position:relative;flex:none}
+.tel::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:34%;height:14px;border-radius:9px;background:#000;z-index:2}
+.tel video,.tel img{width:100%;height:100%;object-fit:cover;display:block}
+.tels{display:flex;gap:22px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.tels figure,.gall figure{margin:0;text-align:center}.tels figcaption,.gall figcaption{margin-top:12px;font-size:14px;color:var(--mu);max-width:250px}
+.tels figure:nth-child(2) .tel{margin-top:34px}
+.forti{padding-top:70px}
+.riga{display:grid;grid-template-columns:1.05fr 1fr;gap:54px;align-items:center;padding:46px 0;border-top:1px solid var(--bd)}
+.riga:first-of-type{border-top:0}.riga.rev .testo{order:2}
+.etichetta{display:inline-block;color:var(--ac);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
+.riga h3{font-size:clamp(26px,3.6vw,38px);line-height:1.12;margin:6px 0 14px;font-weight:900}
+.riga p.t{color:#d3d3dc;font-size:18px;margin:0 0 16px}
+.riga ul{list-style:none;margin:0;padding:0}.riga li{position:relative;padding:7px 0 7px 28px;color:#e6e6ec}
+.riga li::before{content:"";position:absolute;left:3px;top:15px;width:10px;height:10px;border-radius:3px;background:var(--ac);transform:rotate(45deg)}
+.senza{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:34px}
+.senza div{background:linear-gradient(160deg,#17171f,#101016);border:1px solid var(--bd);border-top:3px solid var(--ac2);border-radius:16px;padding:18px 20px}.senza b{display:block;color:var(--ac);margin-bottom:4px;font-size:18px}.senza span{color:#cfcfd8;font-size:15.5px}
+.gall{display:flex;gap:22px;overflow-x:auto;padding:6px 4px 22px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.gall figure{scroll-snap-align:center}
+.gall::-webkit-scrollbar{height:8px}.gall::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+.hero-tel{margin-top:44px}
+.cart{width:min(250px,64vw);height:auto;border-radius:22px;border:1px solid #3a3a46;box-shadow:0 18px 50px rgba(0,0,0,.6);display:block}.riga .cart{width:min(212px,42vw)}
+.riga .tel{width:min(212px,42vw)}.riga .tels{flex-wrap:nowrap;gap:18px}.riga .tels figcaption{max-width:212px}
+@media(max-width:800px){.hero-tel{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;padding:0 18px 10px}.hero-tel figure{scroll-snap-align:center}.hero-tel .tel{width:54vw}.hero-tel figure:nth-child(2) .tel{margin-top:0}.riga{grid-template-columns:1fr;gap:26px}.riga.rev .testo{order:0}.tels figure:nth-child(2) .tel{margin-top:0}}
 @keyframes pulsa{70%{box-shadow:0 0 0 16px rgba(255,122,0,0)}100%{box-shadow:0 0 0 0 rgba(255,122,0,0)}}
 .chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:24px}.chips>span{border:1px solid var(--bd);background:rgba(20,20,26,.8);border-radius:999px;padding:5px 14px;font-size:14px;color:#dedee6}
 .chips>span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ac2);margin-right:8px}
@@ -259,6 +337,31 @@ def L(d, tag='div', extra=''):
     return ''.join(f'<{tag} class="l" data-l="{l}"{extra}>{d[l]}</{tag}>' for l in LG)
 def S(d): return ''.join(f'<span class="l" data-l="{l}">{d[l]}</span>' for l in LG)
 
+def media(m):
+    tipo, f, cap = m
+    if tipo == 'card':   # immagine intera (non uno schermo del telefono): cartolina con bordo arrotondato
+        return f'<figure><img class="cart" src="immagini/app/{f}.jpg" alt="" loading="lazy"><figcaption>{S(cap)}</figcaption></figure>'
+    if tipo == 'video':
+        inner = f'<video muted loop playsinline preload="none" poster="immagini/app/{f}-poster.jpg" data-src="immagini/app/{f}.mp4"></video>'
+        return f'<figure><div class="tel" style="background:#000 url(immagini/app/{f}-poster.jpg) center/cover no-repeat">{inner}</div><figcaption>{S(cap)}</figcaption></figure>'
+    else:
+        inner = f'<img src="immagini/app/{f}.jpg" alt="" loading="lazy">'
+    return f'<figure><div class="tel">{inner}</div><figcaption>{S(cap)}</figcaption></figure>'
+
+def sezione_forti():
+    righe = ''
+    for i, (fid, et, tit, txt, punti, med) in enumerate(FORTI):
+        righe += (f'<div class="riga{" rev" if i % 2 else ""}" id="f-{fid}"><div class="testo"><span class="etichetta">{S(et)}</span><h3>{S(tit)}</h3><p class="t">{S(txt)}</p><ul>'
+                  + ''.join(f'<li>{S(x)}</li>' for x in punti) + '</ul></div><div class="tels">' + ''.join(media(m) for m in med) + '</div></div>')
+    senza = '<div class="senza">' + ''.join(f'<div><b>{S(t)}</b><span>{S(x)}</span></div>' for t, x in SENZA) + '</div>'
+    return f'<section id="forti" class="forti"><div class="wrap"><h2 class="t">{S(FORTI_H)}</h2><p class="sub">{S(FORTI_S)}</p>{righe}{senza}</div></section>'
+
+def sezione_galleria():
+    return f'<section id="galleria" style="background:var(--bg2);border-block:1px solid var(--bd)"><div class="wrap"><h2 class="t">{S(GALL_H)}</h2><div class="gall" style="margin-top:26px">' + ''.join(media(m) for m in GALL) + '</div></div></section>'
+
+def hero_telefoni():
+    return '<div class="tels hero-tel">' + ''.join(media(m) for m in (('video', 'navigazione', T('', '', '', '', '')), ('video', 'giri', T('', '', '', '', '')), ('video', 'curve', T('', '', '', '', '')))) + '</div>'
+
 def pagina():
     nav = ''.join(f'<a href="#{i}">{S(t)}</a>' for i, t in NAV)
     langs = ''.join(f'<button data-l="{l}">{l.upper()}</button>' for l in LG)
@@ -290,8 +393,10 @@ def pagina():
 <div class="tag">{S(HERO['tag'])}</div><h1>{L(HERO['h1'], 'span')}</h1>
 <p class="lead">{S(HERO['p'])}</p>
 <div class="btns"><span class="btn p off">{S(HERO['soon'])}</span><span class="btn ip">{S(HERO['iphone'])}</span><a class="btn s" href="#funzioni">{S(HERO['cta2'])}</a></div>
-<div class="chips">{chips}</div></div></section>
+<div class="chips">{chips}</div>{hero_telefoni()}</div></section>
 <div class="nums">{nums}</div>
+{sezione_forti()}
+{sezione_galleria()}
 <section id="funzioni"><div class="wrap"><h2 class="t">{S(FEAT_H)}</h2><p class="sub">{S(FEAT_S)}</p><div class="aree">{aree}</div>
 <div class="warn">{S(WARN)}</div></div></section>
 <section id="prova"><div class="wrap"><h2 class="t">{S(PROVA_H)}</h2><p class="sub">{S(PROVA_S)}</p><div class="steps">{prova}</div><h3 style="margin:38px 0 12px">{S(PIATTAFORME_H)}</h3><div class="piattaforme">{piatt}</div></div></section>
@@ -312,6 +417,8 @@ def pagina():
  document.querySelectorAll(".lingue button").forEach(function(b){{b.onclick=function(){{set(b.dataset.l)}}}});
  set(l);
  if(location.hash){{var d=document.querySelector(location.hash);if(d&&d.tagName==="DETAILS")d.open=true}}
+ var V=document.querySelectorAll("video[data-src]");
+ if("IntersectionObserver" in window){{var io=new IntersectionObserver(function(es){{es.forEach(function(e){{var v=e.target;if(e.isIntersecting){{if(!v.src)v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){{}})}}else v.pause()}})}},{{threshold:.35}});V.forEach(function(v){{io.observe(v)}})}}else V.forEach(function(v){{v.src=v.dataset.src;v.autoplay=true}});
 }})();
 </script></body></html>'''
 
