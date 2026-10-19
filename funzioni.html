@@ -70,6 +70,10 @@ footer{border-top:1px solid var(--bd);padding:24px 20px;text-align:center;color:
 <a href="#statistiche-it">24. Statistiche del giro</a>
 <a href="#funzioni-it">25. Funzioni in sella: scegli quelle che ti servono</a>
 <a href="#meteo-it">26. Pioggia e temporali sul percorso</a>
+<a href="#meteoesteso-it">27. Vento, freddo, caldo, abbigliamento e passi chiusi</a>
+<a href="#sella-it">28. Piccole cose in sella</a>
+<a href="#garage-it">29. Garage e rifornimenti</a>
+<a href="#sicurezza-it">30. Sicurezza: scatola nera, segui il viaggio, mancato arrivo</a>
 </nav>
 
 <h2 id="intro-it">1. Cos'è e come funziona</h2>
@@ -311,6 +315,30 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <p>Mentre navighi l'app controlla il meteo davanti a te e ti avvisa, a voce e sullo schermo, se sta arrivando <b>pioggia</b> o un <b>temporale</b>. Nei primi 80 km usa il <b>radar della pioggia</b> della Protezione Civile (si aggiorna ogni 5 minuti e vede la pioggia che c'è adesso); più avanti usa le <b>previsioni</b> di MET Norway all'ora in cui passerai di lì. Gli avvisi dicono a quanti chilometri o minuti è la pioggia e, per il radar, se è debole, moderata o forte.</p>
 <p>Si accende e si spegne da <b class="t">Menu</b> › <b class="t">Impostazioni</b> › <b class="t">Funzioni in sella</b> › <b>Avvisi di pioggia e temporale</b>. Serve internet: senza rete non ci sono avvisi.</p>
 <div class="nota"><b>Privacy:</b> al server vanno solo alcuni punti del percorso (circa uno ogni 8-25 km) con l'orario previsto, senza nome né identificativi. <b>È una previsione:</b> il tempo può cambiare e il radar non copre tutte le zone (per esempio le valli più chiuse).</div>
+<h2 id="meteoesteso-it">27. Vento, freddo, caldo, abbigliamento e passi chiusi</h2>
+<p>Oltre alla pioggia (sezione 26) l'app guarda il meteo delle prossime 3 ore lungo il percorso e ti avvisa di: <b>vento forte</b> (da circa 35 km/h; sopra i 50 km/h il messaggio dice che è pericoloso in moto), <b>freddo e rischio gelo</b> (sui passi la temperatura è calcolata alla quota del passo) e <b>caldo estremo</b> (35 °C o più). All'inizio del giro ti dà anche un <b>consiglio sull'abbigliamento</b> secondo temperatura e pioggia previste.</p>
+<p>L'<b>avviso passi chiusi</b> ti dice se un passo sul tuo percorso risulta chiuso (o chiuso d'inverno, da novembre ad aprile) secondo OpenStreetMap, oppure se un altro utente ha segnalato una strada chiusa lì vicino. Serve l'elenco dei punti d'interesse (si scarica da <b class="t">Menu</b> › <b class="t">Cerca nelle vicinanze</b>).</p>
+<p>Ogni avviso si accende e si spegne a parte da <b class="t">Menu</b> › <b class="t">Impostazioni</b> › <b class="t">Funzioni in sella</b>.</p>
+<div class="nota"><b>Sono previsioni e dati di mappa:</b> per l'Italia il vento è quello medio (non le raffiche) e i dati sui passi chiusi in OpenStreetMap sono pochi. Controlla sempre le condizioni vere prima di salire su un passo.</div>
+<h2 id="sella-it">28. Piccole cose in sella</h2>
+<p>Tutto si accende e si spegne da <b class="t">Menu</b> › <b class="t">Impostazioni</b> › <b class="t">Funzioni in sella</b>.</p>
+<ul>
+<li><b>Curve pericolose:</b> se arrivi troppo forte a una curva stretta (entro 350 m) l'app avvisa con la <b>velocità consigliata</b>. È una <b>stima</b> calcolata dalla forma della strada (raggio della curva), non tiene conto di fondo, gomme o pioggia: la decisione resta tua.</li>
+<li><b>Pausa consigliata:</b> dopo un certo tempo di guida (60, 90, 120, 150 o 180 minuti, a scelta) ti ricorda di fermarti. Una sosta di 10 minuti azzera il conto.</li>
+<li><b>Tramonto:</b> a 60, 30 e 10 minuti dal tramonto, se sei ancora in viaggio, ti avvisa che sta per fare buio.</li>
+<li><b>Batteria e calore del telefono:</b> avviso con la batteria sotto il 15% (se non è in carica) o se il telefono si scalda troppo.</li>
+<li><b>Livello della voce:</b> <i>Solo svolte</i>, <i>Svolte e pericoli</i> oppure <i>Tutto</i>. Le scritte sullo schermo restano sempre.</li>
+<li><b>Schermo scuro quando non serve</b> (spento di base): in navigazione lo schermo si abbassa al minimo e si illumina vicino alle svolte, quando l'app avvisa o se lo tocchi. Risparmia batteria.</li>
+<li><b>Blocco tocchi con la pioggia:</b> il tasto con il lucchetto, in navigazione, blocca lo schermo: restano attivi solo <b>Aiuto</b>, <b>Segnala</b> e <b>Termina</b>. Per sbloccare tieni premuto lo schermo per un secondo.</li>
+<li><b>Dove hai lasciato la moto:</b> a fine giro (navigando con il GPS) o dopo una sosta di 10 minuti l'app segna il punto. Per ritrovarlo: <b class="t">Menu</b> › <b class="t">Riportami alla moto</b> (distanza e indicazioni a piedi). Il punto è anche in <b class="t">Posizioni salvate</b> come "La mia moto".</li>
+</ul>
+<h2 id="garage-it">29. Garage e rifornimenti</h2>
+<p>In <b>Menu › Impostazioni › Garage e rifornimenti</b> puoi inserire più moto (nome, serbatoio, autonomia, chilometri del contachilometri). L'app conta i chilometri della moto in uso (segnata con ★) e li usa per l'autonomia della sezione 22.</p>
+<ol><li>Tocca <b>Aggiungi una moto</b> e compila i campi.</li><li>Dopo ogni pieno tocca <b>Menu › Ho fatto il pieno</b> o <b>Registra un rifornimento</b>: scrivi litri e costo. Con almeno due pieni l'app calcola il <b>consumo reale</b> e il <b>costo al chilometro</b>.</li><li>In <b>Scadenze di manutenzione</b> aggiungi tagliando, catena, gomme... con ogni quanti km: all'inizio del giro l'app ti avvisa quando mancano meno di 300 km.</li></ol>
+<p>Con un percorso attivo, <b>Menu › Distributore più conveniente</b> elenca i distributori sul tragitto ordinati per prezzo e deviazione (prezzi del Ministero): toccane uno per aggiungerlo come tappa. La deviazione è una stima. Tutti i dati restano sul tuo telefono; il promemoria si spegne in Funzioni in sella.</p>
+<h2 id="sicurezza-it">30. Sicurezza: scatola nera, segui il viaggio, mancato arrivo</h2>
+<p>Tre funzioni in più, accendibili da <b>Menu › Impostazioni › Funzioni in sella</b>.</p>
+<ol><li><b>Scatola nera</b> (spenta di base): registra sul telefono gli ultimi 30 minuti di giro (posizione e velocità). In <b>Menu › Scatola nera</b> vedi velocità massima e frenata più forte e puoi esportare il tracciato in GPX. Non va a nessun server.</li><li><b>Segui il mio viaggio</b>: mentre navighi tocca <b>Menu › Segui il mio viaggio</b>, scegli la durata (2, 6, 12 o 24 ore) e manda il link a chi vuoi (WhatsApp, SMS...). Chi lo riceve vede la tua posizione su una mappa, senza installare niente e senza account. Il link si chiude da solo alla scadenza, quando termini la navigazione o con <b>Smetti di condividere il viaggio</b>; il server cancella la posizione. Serve internet.</li><li><b>Allarme di mancato arrivo</b> (spento di base): se non arrivi entro l'ora prevista più la tolleranza (15, 30, 60 o 90 minuti, a scelta), l'app manda un SMS ai numeri impostati in <b>Menu › Impostazioni › SOS</b> con l'ultima posizione e, se attivo, il link del viaggio. Serve il permesso SMS e il telefono acceso. Se termini tu la navigazione, l'allarme si annulla.</li></ol>
 </div>
 <div class="l fz" data-l="en">
 <h1>IDQ Biker Maps guide</h1>
@@ -343,6 +371,10 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <a href="#statistiche-en">24. Ride statistics</a>
 <a href="#funzioni-en">25. Riding features: choose the ones you need</a>
 <a href="#meteo-en">26. Rain and thunderstorms on the route</a>
+<a href="#meteoesteso-en">27. Wind, cold, heat, clothing and closed passes</a>
+<a href="#sella-en">28. Little things in the saddle</a>
+<a href="#garage-en">29. Garage and refuelling</a>
+<a href="#sicurezza-en">30. Safety: black box, follow my trip, missed arrival</a>
 </nav>
 
 <h2 id="intro-en">1. What it is and how it works</h2>
@@ -584,6 +616,30 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <p>While you navigate, the app checks the weather ahead of you and warns you, by voice and on screen, if <b>rain</b> or a <b>thunderstorm</b> is coming. In the first 80 km it uses the Civil Protection <b>rain radar</b> (updated every 5 minutes, it sees the rain that is there now); further on it uses the MET Norway <b>forecasts</b> for the time you will pass there. The alerts say how many kilometres or minutes away the rain is and, for the radar, whether it is light, moderate or heavy.</p>
 <p>Turn it on or off from <b class="t">Menu</b> › <b class="t">Settings</b> › <b class="t">Riding features</b> › <b>Rain and thunderstorm alerts</b>. It needs internet: without a network there are no alerts.</p>
 <div class="nota"><b>Privacy:</b> only a few points of the route (about one every 8-25 km) with the expected time go to the server, with no name or identifiers. <b>It is a forecast:</b> the weather can change and the radar does not cover every area (for example the narrowest valleys).</div>
+<h2 id="meteoesteso-en">27. Wind, cold, heat, clothing and closed passes</h2>
+<p>Besides rain (section 26) the app checks the weather for the next 3 hours along the route and warns you about: <b>strong wind</b> (from about 35 km/h; above 50 km/h the message says it is dangerous on a motorcycle), <b>cold and ice risk</b> (on passes the temperature is calculated at the altitude of the pass) and <b>extreme heat</b> (35 °C or more). At the start of the ride it also gives you <b>clothing advice</b> according to the expected temperature and rain.</p>
+<p>The <b>closed pass alert</b> tells you if a pass on your route appears closed (or closed in winter, from November to April) according to OpenStreetMap, or if another user reported a closed road nearby. It needs the points-of-interest list (download it from <b class="t">Menu</b> › <b class="t">Search nearby</b>).</p>
+<p>Each alert can be turned on or off separately from <b class="t">Menu</b> › <b class="t">Settings</b> › <b class="t">Riding features</b>.</p>
+<div class="nota"><b>These are forecasts and map data:</b> for Italy the wind is the average wind (not gusts) and OpenStreetMap has little data on closed passes. Always check the real conditions before climbing a pass.</div>
+<h2 id="sella-en">28. Little things in the saddle</h2>
+<p>Everything can be turned on or off from <b class="t">Menu</b> › <b class="t">Settings</b> › <b class="t">Riding features</b>.</p>
+<ul>
+<li><b>Dangerous bends:</b> if you approach a tight bend too fast (within 350 m) the app warns you with the <b>recommended speed</b>. It is an <b>estimate</b> calculated from the shape of the road (bend radius); it does not consider surface, tyres or rain: the decision is yours.</li>
+<li><b>Recommended break:</b> after a set riding time (60, 90, 120, 150 or 180 minutes, your choice) it reminds you to stop. A 10-minute stop resets the count.</li>
+<li><b>Sunset:</b> at 60, 30 and 10 minutes before sunset, if you are still riding, it warns you that it will soon be dark.</li>
+<li><b>Phone battery and heat:</b> an alert when the battery is below 15% (and not charging) or when the phone gets too hot.</li>
+<li><b>Voice level:</b> <i>Turns only</i>, <i>Turns and hazards</i> or <i>Everything</i>. The on-screen messages always stay.</li>
+<li><b>Dark screen when not needed</b> (off by default): while navigating the screen dims to the minimum and lights up near turns, when the app warns you or when you touch it. It saves battery.</li>
+<li><b>Touch lock in the rain:</b> the padlock button, while navigating, locks the screen: only <b>Help</b>, <b>Report</b> and <b>End</b> stay active. To unlock, press and hold the screen for a second.</li>
+<li><b>Where you left the motorcycle:</b> at the end of a ride (navigating with the GPS) or after a 10-minute stop the app marks the spot. To find it again: <b class="t">Menu</b> › <b class="t">Take me back to the bike</b> (distance and walking directions). The spot is also in <b class="t">Saved places</b> as "My motorcycle".</li>
+</ul>
+<h2 id="garage-en">29. Garage and refuelling</h2>
+<p>In <b>Menu › Settings › Garage and refuelling</b> you can enter several motorcycles (name, tank, range, odometer kilometres). The app counts the kilometres of the bike in use (marked ★) and uses them for the range in section 22.</p>
+<ol><li>Tap <b>Add a motorcycle</b> and fill in the fields.</li><li>After each fill-up tap <b>Menu › I filled the tank</b> or <b>Record a refuel</b>: enter litres and cost. With at least two full tanks the app works out <b>real consumption</b> and <b>cost per kilometre</b>.</li><li>In <b>Maintenance deadlines</b> add service, chain, tyres... with an interval in km: at the start of a ride the app warns you when fewer than 300 km remain.</li></ol>
+<p>With an active route, <b>Menu › Cheapest petrol station</b> lists the stations along the way sorted by price and detour (Ministry prices): tap one to add it as a stop. The detour is an estimate. All data stays on your phone; the reminder can be switched off in Riding features.</p>
+<h2 id="sicurezza-en">30. Safety: black box, follow my trip, missed arrival</h2>
+<p>Three more features, switchable in <b>Menu › Settings › Riding features</b>.</p>
+<ol><li><b>Black box</b> (off by default): records the last 30 minutes of the ride (position and speed) on the phone. In <b>Menu › Black box</b> you see top speed and hardest braking and can export the track as GPX. It goes to no server.</li><li><b>Follow my trip</b>: while navigating tap <b>Menu › Follow my trip</b>, pick the duration (2, 6, 12 or 24 hours) and send the link to anyone (WhatsApp, SMS...). The receiver sees your position on a map, with nothing to install and no account. The link closes by itself when it expires, when you end navigation or with <b>Stop sharing the trip</b>; the server deletes the position. Needs internet.</li><li><b>Missed-arrival alarm</b> (off by default): if you do not arrive by the expected time plus the tolerance (15, 30, 60 or 90 minutes, your choice), the app sends an SMS to the numbers set in <b>Menu › Settings › SOS</b> with the last position and, if active, the trip link. Needs the SMS permission and the phone switched on. If you end navigation yourself, the alarm is cancelled.</li></ol>
 </div>
 <div class="l fz" data-l="fr">
 <h1>Guide d'IDQ Biker Maps</h1>
@@ -616,6 +672,10 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <a href="#statistiche-fr">24. Statistiques du trajet</a>
 <a href="#funzioni-fr">25. Fonctions en selle : choisissez celles qu'il vous faut</a>
 <a href="#meteo-fr">26. Pluie et orages sur l'itinéraire</a>
+<a href="#meteoesteso-fr">27. Vent, froid, chaleur, tenue et cols fermés</a>
+<a href="#sella-fr">28. Petites choses en selle</a>
+<a href="#garage-fr">29. Garage et ravitaillements</a>
+<a href="#sicurezza-fr">30. Sécurité : boîte noire, suivre mon trajet, arrivée manquée</a>
 </nav>
 
 <h2 id="intro-fr">1. Ce que c'est et comment ça marche</h2>
@@ -857,6 +917,30 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <p>Pendant la navigation, l'application surveille la météo devant vous et vous prévient, à la voix et à l'écran, si de la <b>pluie</b> ou un <b>orage</b> arrive. Sur les 80 premiers km, elle utilise le <b>radar de pluie</b> de la Protection civile (mis à jour toutes les 5 minutes, il voit la pluie qui tombe maintenant) ; plus loin, elle utilise les <b>prévisions</b> de MET Norway à l'heure de votre passage. Les alertes indiquent à combien de kilomètres ou de minutes se trouve la pluie et, pour le radar, si elle est faible, modérée ou forte.</p>
 <p>On l'active ou la désactive dans <b class="t">Menu</b> › <b class="t">Réglages</b> › <b class="t">Fonctions en selle</b> › <b>Alertes de pluie et d'orage</b>. Il faut internet : sans réseau, pas d'alertes.</p>
 <div class="nota"><b>Confidentialité :</b> seuls quelques points de l'itinéraire (environ un tous les 8 à 25 km) avec l'heure prévue vont au serveur, sans nom ni identifiant. <b>C'est une prévision :</b> le temps peut changer et le radar ne couvre pas toutes les zones (par exemple les vallées les plus encaissées).</div>
+<h2 id="meteoesteso-fr">27. Vent, froid, chaleur, tenue et cols fermés</h2>
+<p>En plus de la pluie (section 26), l'application surveille la météo des 3 prochaines heures le long de l'itinéraire et vous prévient : <b>vent fort</b> (à partir d'environ 35 km/h ; au-dessus de 50 km/h le message dit que c'est dangereux à moto), <b>froid et risque de gel</b> (sur les cols la température est calculée à l'altitude du col) et <b>chaleur extrême</b> (35 °C ou plus). Au début du trajet, elle donne aussi un <b>conseil de tenue</b> selon la température et la pluie prévues.</p>
+<p>L'<b>alerte cols fermés</b> vous dit si un col de votre itinéraire semble fermé (ou fermé en hiver, de novembre à avril) selon OpenStreetMap, ou si un autre utilisateur a signalé une route fermée tout près. Il faut la liste des points d'intérêt (à télécharger dans <b class="t">Menu</b> › <b class="t">Rechercher à proximité</b>).</p>
+<p>Chaque alerte s'active ou se désactive séparément dans <b class="t">Menu</b> › <b class="t">Réglages</b> › <b class="t">Fonctions en selle</b>.</p>
+<div class="nota"><b>Ce sont des prévisions et des données de carte :</b> pour l'Italie le vent est le vent moyen (pas les rafales) et OpenStreetMap a peu de données sur les cols fermés. Vérifiez toujours les conditions réelles avant de monter à un col.</div>
+<h2 id="sella-fr">28. Petites choses en selle</h2>
+<p>Tout s'active et se désactive dans <b class="t">Menu</b> › <b class="t">Réglages</b> › <b class="t">Fonctions en selle</b>.</p>
+<ul>
+<li><b>Virages dangereux :</b> si vous arrivez trop vite sur un virage serré (à moins de 350 m), l'application vous prévient avec la <b>vitesse conseillée</b>. C'est une <b>estimation</b> calculée d'après la forme de la route (rayon du virage), qui ne tient pas compte de l'adhérence, des pneus ou de la pluie : la décision vous appartient.</li>
+<li><b>Pause conseillée :</b> après une durée de conduite choisie (60, 90, 120, 150 ou 180 minutes), elle vous rappelle de vous arrêter. Un arrêt de 10 minutes remet le compteur à zéro.</li>
+<li><b>Coucher du soleil :</b> à 60, 30 et 10 minutes du coucher, si vous roulez encore, elle vous prévient que la nuit va tomber.</li>
+<li><b>Batterie et chaleur du téléphone :</b> alerte quand la batterie est sous 15 % (hors charge) ou quand le téléphone chauffe trop.</li>
+<li><b>Niveau de la voix :</b> <i>Virages seulement</i>, <i>Virages et dangers</i> ou <i>Tout</i>. Les messages à l'écran restent toujours.</li>
+<li><b>Écran sombre quand ce n'est pas nécessaire</b> (désactivé par défaut) : en navigation, l'écran se met au minimum et s'allume près des virages, quand l'application vous prévient ou si vous le touchez. Cela économise la batterie.</li>
+<li><b>Verrouillage tactile sous la pluie :</b> le bouton cadenas, en navigation, verrouille l'écran : seuls <b>Aide</b>, <b>Signaler</b> et <b>Terminer</b> restent actifs. Pour déverrouiller, maintenez l'écran appuyé une seconde.</li>
+<li><b>Où vous avez laissé la moto :</b> à la fin du trajet (en navigation GPS) ou après un arrêt de 10 minutes, l'application note l'endroit. Pour le retrouver : <b class="t">Menu</b> › <b class="t">Ramène-moi à la moto</b> (distance et itinéraire à pied). L'endroit est aussi dans <b class="t">Lieux enregistrés</b> sous « Ma moto ».</li>
+</ul>
+<h2 id="garage-fr">29. Garage et ravitaillements</h2>
+<p>Dans <b>Menu › Réglages › Garage et ravitaillements</b> tu peux saisir plusieurs motos (nom, réservoir, autonomie, kilomètres du compteur). L'appli compte les kilomètres de la moto utilisée (marquée ★) et s'en sert pour l'autonomie de la section 22.</p>
+<ol><li>Touche <b>Ajouter une moto</b> et remplis les champs.</li><li>Après chaque plein touche <b>Menu › J'ai fait le plein</b> ou <b>Enregistrer un plein</b> : saisis litres et coût. Avec au moins deux pleins l'appli calcule la <b>consommation réelle</b> et le <b>coût au kilomètre</b>.</li><li>Dans <b>Échéances d'entretien</b> ajoute révision, chaîne, pneus... avec un intervalle en km : au début du trajet l'appli te prévient quand il reste moins de 300 km.</li></ol>
+<p>Avec un itinéraire actif, <b>Menu › Station-service la plus avantageuse</b> liste les stations du trajet classées par prix et détour (prix du Ministère) : touches-en une pour l'ajouter comme étape. Le détour est une estimation. Toutes les données restent sur ton téléphone ; le rappel se désactive dans Fonctions en selle.</p>
+<h2 id="sicurezza-fr">30. Sécurité : boîte noire, suivre mon trajet, arrivée manquée</h2>
+<p>Trois fonctions de plus, à activer dans <b>Menu › Réglages › Fonctions en selle</b>.</p>
+<ol><li><b>Boîte noire</b> (désactivée par défaut) : enregistre sur le téléphone les 30 dernières minutes du trajet (position et vitesse). Dans <b>Menu › Boîte noire</b> tu vois la vitesse maximale et le freinage le plus fort et tu peux exporter la trace en GPX. Rien n'est envoyé à un serveur.</li><li><b>Suivre mon trajet</b> : en navigation touche <b>Menu › Suivre mon trajet</b>, choisis la durée (2, 6, 12 ou 24 heures) et envoie le lien à qui tu veux (WhatsApp, SMS...). Le destinataire voit ta position sur une carte, sans rien installer et sans compte. Le lien se ferme tout seul à l'expiration, quand tu termines la navigation ou avec <b>Arrêter de partager le trajet</b> ; le serveur efface la position. Internet nécessaire.</li><li><b>Alarme d'arrivée manquée</b> (désactivée par défaut) : si tu n'arrives pas à l'heure prévue plus la tolérance (15, 30, 60 ou 90 minutes, au choix), l'appli envoie un SMS aux numéros réglés dans <b>Menu › Réglages › SOS</b> avec la dernière position et, si actif, le lien du trajet. Nécessite l'autorisation SMS et le téléphone allumé. Si tu termines toi-même la navigation, l'alarme est annulée.</li></ol>
 </div>
 <div class="l fz" data-l="de">
 <h1>Anleitung zu IDQ Biker Maps</h1>
@@ -889,6 +973,10 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <a href="#statistiche-de">24. Fahrtstatistik</a>
 <a href="#funzioni-de">25. Funktionen unterwegs: wählen Sie, was Sie brauchen</a>
 <a href="#meteo-de">26. Regen und Gewitter auf der Route</a>
+<a href="#meteoesteso-de">27. Wind, Kälte, Hitze, Kleidung und gesperrte Pässe</a>
+<a href="#sella-de">28. Kleine Helfer unterwegs</a>
+<a href="#garage-de">29. Garage und Tanken</a>
+<a href="#sicurezza-de">30. Sicherheit: Blackbox, Fahrt verfolgen, Nichtankunft</a>
 </nav>
 
 <h2 id="intro-de">1. Was es ist und wie es funktioniert</h2>
@@ -1130,6 +1218,30 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <p>Während der Navigation prüft die App das Wetter vor Ihnen und warnt Sie per Sprache und auf dem Bildschirm, wenn <b>Regen</b> oder ein <b>Gewitter</b> naht. In den ersten 80 km nutzt sie das <b>Regenradar</b> des Zivilschutzes (alle 5 Minuten aktualisiert, es sieht den Regen, der jetzt fällt); weiter voraus nutzt sie die <b>Vorhersagen</b> von MET Norway für die Zeit, zu der Sie dort vorbeikommen. Die Warnungen nennen, wie viele Kilometer oder Minuten der Regen entfernt ist und beim Radar, ob er leicht, mäßig oder stark ist.</p>
 <p>Ein- und ausschalten unter <b class="t">Menü</b> › <b class="t">Einstellungen</b> › <b class="t">Funktionen unterwegs</b> › <b>Regen- und Gewitterwarnungen</b>. Internet wird benötigt: ohne Netz gibt es keine Warnungen.</p>
 <div class="nota"><b>Datenschutz:</b> Zum Server gehen nur einige Punkte der Route (etwa einer alle 8–25 km) mit der erwarteten Zeit, ohne Namen oder Kennungen. <b>Es ist eine Vorhersage:</b> das Wetter kann sich ändern, und das Radar deckt nicht jedes Gebiet ab (zum Beispiel die engsten Täler).</div>
+<h2 id="meteoesteso-de">27. Wind, Kälte, Hitze, Kleidung und gesperrte Pässe</h2>
+<p>Außer dem Regen (Abschnitt 26) prüft die App das Wetter der nächsten 3 Stunden entlang der Route und warnt Sie vor: <b>starkem Wind</b> (ab etwa 35 km/h; über 50 km/h sagt die Meldung, dass es auf dem Motorrad gefährlich ist), <b>Kälte und Glättegefahr</b> (auf Pässen wird die Temperatur auf der Höhe des Passes berechnet) und <b>extremer Hitze</b> (35 °C oder mehr). Zu Beginn der Fahrt gibt sie Ihnen außerdem eine <b>Kleidungsempfehlung</b> nach erwarteter Temperatur und Regen.</p>
+<p>Die <b>Warnung vor gesperrten Pässen</b> sagt Ihnen, ob ein Pass auf Ihrer Route laut OpenStreetMap gesperrt (oder im Winter gesperrt, November bis April) erscheint oder ob ein anderer Nutzer in der Nähe eine gesperrte Straße gemeldet hat. Dafür wird die Liste der Points of Interest gebraucht (Download unter <b class="t">Menü</b> › <b class="t">In der Nähe suchen</b>).</p>
+<p>Jede Warnung lässt sich unter <b class="t">Menü</b> › <b class="t">Einstellungen</b> › <b class="t">Funktionen unterwegs</b> einzeln ein- und ausschalten.</p>
+<div class="nota"><b>Das sind Vorhersagen und Kartendaten:</b> für Italien ist der Wind der mittlere Wind (keine Böen), und OpenStreetMap hat wenige Daten zu gesperrten Pässen. Prüfen Sie vor einem Pass immer die tatsächlichen Bedingungen.</div>
+<h2 id="sella-de">28. Kleine Helfer unterwegs</h2>
+<p>Alles lässt sich unter <b class="t">Menü</b> › <b class="t">Einstellungen</b> › <b class="t">Funktionen unterwegs</b> ein- und ausschalten.</p>
+<ul>
+<li><b>Gefährliche Kurven:</b> Nähern Sie sich einer engen Kurve zu schnell (innerhalb von 350 m), warnt die App mit der <b>empfohlenen Geschwindigkeit</b>. Das ist eine <b>Schätzung</b> aus der Form der Straße (Kurvenradius); Fahrbahn, Reifen und Regen sind nicht berücksichtigt: Die Entscheidung liegt bei Ihnen.</li>
+<li><b>Empfohlene Pause:</b> nach einer gewählten Fahrzeit (60, 90, 120, 150 oder 180 Minuten) erinnert sie Sie ans Anhalten. Eine Pause von 10 Minuten setzt den Zähler zurück.</li>
+<li><b>Sonnenuntergang:</b> 60, 30 und 10 Minuten vor Sonnenuntergang warnt sie Sie, falls Sie noch unterwegs sind, dass es bald dunkel wird.</li>
+<li><b>Akku und Hitze des Handys:</b> Warnung, wenn der Akku unter 15 % liegt (ohne Ladegerät) oder das Handy zu heiß wird.</li>
+<li><b>Sprachumfang:</b> <i>Nur Abbiegungen</i>, <i>Abbiegungen und Gefahren</i> oder <i>Alles</i>. Die Meldungen auf dem Bildschirm bleiben immer.</li>
+<li><b>Dunkler Bildschirm, wenn er nicht gebraucht wird</b> (standardmäßig aus): Bei der Navigation wird der Bildschirm auf das Minimum gedimmt und leuchtet bei Abbiegungen, Warnungen oder Berührung auf. Spart Akku.</li>
+<li><b>Touch-Sperre bei Regen:</b> Die Schloss-Taste sperrt bei der Navigation den Bildschirm: Nur <b>Hilfe</b>, <b>Melden</b> und <b>Beenden</b> bleiben aktiv. Zum Entsperren den Bildschirm eine Sekunde gedrückt halten.</li>
+<li><b>Wo Sie das Motorrad abgestellt haben:</b> am Ende der Fahrt (Navigation mit GPS) oder nach einer Pause von 10 Minuten markiert die App den Ort. Wiederfinden: <b class="t">Menü</b> › <b class="t">Zurück zum Motorrad</b> (Entfernung und Fußweg). Der Ort steht auch unter <b class="t">Gespeicherte Orte</b> als „Mein Motorrad“.</li>
+</ul>
+<h2 id="garage-de">29. Garage und Tanken</h2>
+<p>Unter <b>Menü › Einstellungen › Garage und Tanken</b> kannst du mehrere Motorräder eintragen (Name, Tank, Reichweite, Tachostand). Die App zählt die Kilometer des Motorrads im Einsatz (mit ★ markiert) und nutzt sie für die Reichweite in Abschnitt 22.</p>
+<ol><li>Tippe auf <b>Motorrad hinzufügen</b> und fülle die Felder aus.</li><li>Tippe nach jedem Tanken auf <b>Menü › Ich habe vollgetankt</b> oder <b>Tankvorgang eintragen</b>: Liter und Kosten eingeben. Ab zwei vollen Tankfüllungen berechnet die App den <b>realen Verbrauch</b> und die <b>Kosten pro Kilometer</b>.</li><li>Unter <b>Wartungstermine</b> trägst du Inspektion, Kette, Reifen... mit Intervall in km ein: zu Beginn der Fahrt warnt dich die App, wenn weniger als 300 km bleiben.</li></ol>
+<p>Bei aktiver Route listet <b>Menü › Günstigste Tankstelle</b> die Tankstellen auf der Strecke nach Preis und Umweg (Preise des Ministeriums): Tippe auf eine, um sie als Zwischenziel hinzuzufügen. Der Umweg ist eine Schätzung. Alle Daten bleiben auf deinem Telefon; die Erinnerung lässt sich in den Funktionen unterwegs ausschalten.</p>
+<h2 id="sicurezza-de">30. Sicherheit: Blackbox, Fahrt verfolgen, Nichtankunft</h2>
+<p>Drei weitere Funktionen, einstellbar unter <b>Menü › Einstellungen › Funktionen unterwegs</b>.</p>
+<ol><li><b>Blackbox</b> (standardmäßig aus): zeichnet die letzten 30 Minuten der Fahrt (Position und Geschwindigkeit) auf dem Telefon auf. Unter <b>Menü › Blackbox</b> siehst du Höchstgeschwindigkeit und stärkste Bremsung und kannst die Strecke als GPX exportieren. Nichts geht an einen Server.</li><li><b>Meine Fahrt verfolgen</b>: Tippe während der Navigation auf <b>Menü › Meine Fahrt verfolgen</b>, wähle die Dauer (2, 6, 12 oder 24 Stunden) und sende den Link, an wen du willst (WhatsApp, SMS...). Der Empfänger sieht deine Position auf einer Karte, ohne Installation und ohne Konto. Der Link endet von selbst bei Ablauf, wenn du die Navigation beendest oder mit <b>Fahrt nicht mehr teilen</b>; der Server löscht die Position. Internet erforderlich.</li><li><b>Alarm bei Nichtankunft</b> (standardmäßig aus): Kommst du nicht bis zur geplanten Zeit plus Toleranz (15, 30, 60 oder 90 Minuten, deine Wahl) an, sendet die App eine SMS an die unter <b>Menü › Einstellungen › SOS</b> eingetragenen Nummern mit der letzten Position und, falls aktiv, dem Fahrtlink. Erfordert die SMS-Berechtigung und ein eingeschaltetes Telefon. Beendest du die Navigation selbst, wird der Alarm abgebrochen.</li></ol>
 </div>
 <div class="l fz" data-l="es">
 <h1>Guía de IDQ Biker Maps</h1>
@@ -1162,6 +1274,10 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <a href="#statistiche-es">24. Estadísticas del recorrido</a>
 <a href="#funzioni-es">25. Funciones en ruta: elige las que necesites</a>
 <a href="#meteo-es">26. Lluvia y tormentas en la ruta</a>
+<a href="#meteoesteso-es">27. Viento, frío, calor, equipamiento y puertos cerrados</a>
+<a href="#sella-es">28. Pequeñas cosas en ruta</a>
+<a href="#garage-es">29. Garaje y repostajes</a>
+<a href="#sicurezza-es">30. Seguridad: caja negra, seguir mi viaje, llegada no producida</a>
 </nav>
 
 <h2 id="intro-es">1. Qué es y cómo funciona</h2>
@@ -1403,6 +1519,30 @@ function tema(n){ document.body.className = n ? 'notte' : ''; }
 <p>Mientras navegas, la app vigila el tiempo que tienes por delante y te avisa, por voz y en pantalla, si llega <b>lluvia</b> o una <b>tormenta</b>. En los primeros 80 km usa el <b>radar de lluvia</b> de Protección Civil (se actualiza cada 5 minutos y ve la lluvia que hay ahora); más adelante usa las <b>previsiones</b> de MET Norway a la hora en que pasarás por allí. Los avisos dicen a cuántos kilómetros o minutos está la lluvia y, con el radar, si es débil, moderada o fuerte.</p>
 <p>Se activa y desactiva en <b class="t">Menú</b> › <b class="t">Ajustes</b> › <b class="t">Funciones en ruta</b> › <b>Avisos de lluvia y tormenta</b>. Necesita internet: sin red no hay avisos.</p>
 <div class="nota"><b>Privacidad:</b> al servidor solo van algunos puntos de la ruta (uno cada 8-25 km aprox.) con la hora prevista, sin nombre ni identificadores. <b>Es una previsión:</b> el tiempo puede cambiar y el radar no cubre todas las zonas (por ejemplo los valles más cerrados).</div>
+<h2 id="meteoesteso-es">27. Viento, frío, calor, equipamiento y puertos cerrados</h2>
+<p>Además de la lluvia (sección 26), la app vigila el tiempo de las próximas 3 horas a lo largo de la ruta y te avisa de: <b>viento fuerte</b> (desde unos 35 km/h; por encima de 50 km/h el mensaje dice que es peligroso en moto), <b>frío y riesgo de hielo</b> (en los puertos la temperatura se calcula a la altitud del puerto) y <b>calor extremo</b> (35 °C o más). Al empezar la ruta te da también un <b>consejo de equipamiento</b> según la temperatura y la lluvia previstas.</p>
+<p>El <b>aviso de puertos cerrados</b> te dice si un puerto de tu ruta figura cerrado (o cerrado en invierno, de noviembre a abril) según OpenStreetMap, o si otro usuario ha avisado de una carretera cortada cerca. Hace falta la lista de puntos de interés (se descarga en <b class="t">Menú</b> › <b class="t">Buscar cerca</b>).</p>
+<p>Cada aviso se activa o desactiva por separado en <b class="t">Menú</b> › <b class="t">Ajustes</b> › <b class="t">Funciones en ruta</b>.</p>
+<div class="nota"><b>Son previsiones y datos de mapa:</b> para Italia el viento es el viento medio (no las rachas) y OpenStreetMap tiene pocos datos de puertos cerrados. Comprueba siempre las condiciones reales antes de subir un puerto.</div>
+<h2 id="sella-es">28. Pequeñas cosas en ruta</h2>
+<p>Todo se activa y desactiva en <b class="t">Menú</b> › <b class="t">Ajustes</b> › <b class="t">Funciones en ruta</b>.</p>
+<ul>
+<li><b>Curvas peligrosas:</b> si llegas demasiado rápido a una curva cerrada (a menos de 350 m), la app te avisa con la <b>velocidad recomendada</b>. Es una <b>estimación</b> calculada a partir de la forma de la carretera (radio de la curva); no considera el firme, los neumáticos ni la lluvia: la decisión es tuya.</li>
+<li><b>Pausa recomendada:</b> tras un tiempo de conducción a elegir (60, 90, 120, 150 o 180 minutos) te recuerda parar. Una parada de 10 minutos pone el contador a cero.</li>
+<li><b>Puesta de sol:</b> a 60, 30 y 10 minutos de la puesta de sol, si sigues conduciendo, te avisa de que va a anochecer.</li>
+<li><b>Batería y calor del teléfono:</b> aviso con la batería por debajo del 15% (sin cargar) o si el teléfono se calienta demasiado.</li>
+<li><b>Nivel de la voz:</b> <i>Solo giros</i>, <i>Giros y peligros</i> o <i>Todo</i>. Los mensajes en pantalla siempre se quedan.</li>
+<li><b>Pantalla oscura cuando no hace falta</b> (apagada por defecto): en navegación la pantalla baja al mínimo y se ilumina cerca de los giros, cuando la app avisa o si la tocas. Ahorra batería.</li>
+<li><b>Bloqueo táctil con lluvia:</b> el botón del candado, en navegación, bloquea la pantalla: solo quedan activos <b>Ayuda</b>, <b>Avisar</b> y <b>Terminar</b>. Para desbloquear, mantén pulsada la pantalla un segundo.</li>
+<li><b>Dónde has dejado la moto:</b> al final de la ruta (navegando con GPS) o tras una parada de 10 minutos, la app marca el punto. Para encontrarlo: <b class="t">Menú</b> › <b class="t">Llévame a la moto</b> (distancia e indicaciones a pie). El punto también está en <b class="t">Lugares guardados</b> como «Mi moto».</li>
+</ul>
+<h2 id="garage-es">29. Garaje y repostajes</h2>
+<p>En <b>Menú › Ajustes › Garaje y repostajes</b> puedes introducir varias motos (nombre, depósito, autonomía, kilómetros del cuentakilómetros). La app cuenta los kilómetros de la moto en uso (marcada con ★) y los usa para la autonomía de la sección 22.</p>
+<ol><li>Toca <b>Añadir una moto</b> y rellena los campos.</li><li>Tras cada repostaje toca <b>Menú › He llenado el depósito</b> o <b>Registrar un repostaje</b>: escribe litros y coste. Con al menos dos depósitos llenos la app calcula el <b>consumo real</b> y el <b>coste por kilómetro</b>.</li><li>En <b>Vencimientos de mantenimiento</b> añade revisión, cadena, neumáticos... con un intervalo en km: al empezar la ruta la app te avisa cuando faltan menos de 300 km.</li></ol>
+<p>Con una ruta activa, <b>Menú › Gasolinera más económica</b> lista las gasolineras del trayecto por precio y desvío (precios del Ministerio): toca una para añadirla como parada. El desvío es una estimación. Todos los datos quedan en tu teléfono; el recordatorio se apaga en Funciones en ruta.</p>
+<h2 id="sicurezza-es">30. Seguridad: caja negra, seguir mi viaje, llegada no producida</h2>
+<p>Tres funciones más, activables en <b>Menú › Ajustes › Funciones en ruta</b>.</p>
+<ol><li><b>Caja negra</b> (apagada por defecto): registra en el teléfono los últimos 30 minutos de ruta (posición y velocidad). En <b>Menú › Caja negra</b> ves la velocidad máxima y la frenada más fuerte y puedes exportar el trazado en GPX. No va a ningún servidor.</li><li><b>Seguir mi viaje</b>: mientras navegas toca <b>Menú › Seguir mi viaje</b>, elige la duración (2, 6, 12 o 24 horas) y envía el enlace a quien quieras (WhatsApp, SMS...). Quien lo recibe ve tu posición en un mapa, sin instalar nada y sin cuenta. El enlace se cierra solo al caducar, al terminar la navegación o con <b>Dejar de compartir el viaje</b>; el servidor borra la posición. Requiere internet.</li><li><b>Alarma de llegada</b> (apagada por defecto): si no llegas a la hora prevista más la tolerancia (15, 30, 60 o 90 minutos, a tu elección), la app envía un SMS a los números fijados en <b>Menú › Ajustes › SOS</b> con la última posición y, si está activo, el enlace del viaje. Requiere el permiso de SMS y el teléfono encendido. Si terminas tú la navegación, la alarma se cancela.</li></ol>
 </div>
 </main>
 <footer><span class="l" data-l="it">© IDQ Developer · <a href="funzioni.html">Tutte le funzioni</a> · <a href="privacy.html">Informativa sulla privacy</a> · <a href="mailto:info.idq.26@gmail.com">info.idq.26@gmail.com</a></span>
