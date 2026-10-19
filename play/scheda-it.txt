@@ -32,6 +32,6 @@ ALTRO
 Mappa 2D o 3D, tema giorno e notte automatico, schermo sempre acceso in navigazione, finestra piccola (Picture-in-Picture), guida completa e tutorial nell'app.
 
 PRIVACY
-Nessun account, nessuna pubblicità, nessun tracciamento. Con le mappe scaricate la tua posizione non lascia il telefono; con i servizi online l'app invia al nostro server solo ciò che serve per rispondere, senza account né identificatori.
+Nessun account, nessuna pubblicità, nessun tracciamento. Senza internet (con le mappe scaricate) la tua posizione non lascia il telefono; con i servizi online l'app invia al nostro server solo ciò che serve per rispondere, senza account né identificatori.
 
 Dati di mappa © OpenStreetMap contributors (ODbL). Rispetta sempre il Codice della Strada: l'app è un aiuto alla guida.

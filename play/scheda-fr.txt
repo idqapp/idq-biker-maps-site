@@ -32,6 +32,6 @@ ET AUSSI
 Carte 2D ou 3D, thème jour et nuit automatique, écran toujours allumé en navigation, petite fenêtre (Picture-in-Picture), guide complet et tutoriel dans l'application.
 
 CONFIDENTIALITÉ
-Aucun compte, aucune publicité, aucun suivi. Avec les cartes téléchargées, votre position ne quitte pas le téléphone ; avec les services en ligne, l'application envoie à notre serveur seulement ce qu'il faut pour répondre, sans compte ni identifiant.
+Aucun compte, aucune publicité, aucun suivi. Sans internet (avec les cartes téléchargées), votre position ne quitte pas le téléphone ; avec les services en ligne, l'application envoie à notre serveur seulement ce qu'il faut pour répondre, sans compte ni identifiant.
 
 Données de carte © OpenStreetMap contributors (ODbL). Respectez toujours le code de la route : l'application est une aide à la conduite.

@@ -32,6 +32,6 @@ MORE
 2D or 3D map, automatic day and night theme, screen always on while navigating, small window (Picture-in-Picture), full guide and tutorial in the app.
 
 PRIVACY
-No account, no ads, no tracking. With downloaded maps your position never leaves the phone; with online services the app sends our server only what is needed to answer, with no account or identifiers.
+No account, no ads, no tracking. Without internet (with downloaded maps) your position never leaves the phone; with online services the app sends our server only what is needed to answer, with no account or identifiers.
 
 Map data © OpenStreetMap contributors (ODbL). Always obey the traffic rules: the app is a driving aid.

@@ -106,6 +106,14 @@ def privacy():
         s = s.replace(vecchio, nuovo)
     for h, nuovo in METEO_PRIVACY.items():
         if h in s: s = s.replace(h, nuovo + VIAGGIO_PRIVACY[h] + GRUPPO_PRIVACY[h] + h, 1)
+
+    # con internet l'app e' "online first" e usa il nostro server: l'affermazione "non invia niente" vale solo senza internet
+    for vecchio, nuovo in (("con le mappe scaricate: in quel caso la tua posizione non viene inviata a nessuno", "con le mappe scaricate e senza internet: in quel caso la tua posizione non viene inviata a nessuno"),
+                           ("with downloaded maps: in that case your position is not sent to anyone", "with downloaded maps and no internet: in that case your position is not sent to anyone"),
+                           ("avec les cartes téléchargées : dans ce cas votre position n'est envoyée à personne", "avec les cartes téléchargées et sans internet : dans ce cas votre position n'est envoyée à personne"),
+                           ("Mit heruntergeladenen Karten können Sie sie vollständig auf dem Telefon nutzen: dann wird", "Mit heruntergeladenen Karten und ohne Internet können Sie sie vollständig auf dem Telefon nutzen: dann wird"),
+                           ("con los mapas descargados: en ese caso tu posición no se envía a nadie", "con los mapas descargados y sin internet: en ese caso tu posición no se envía a nadie")):
+        s = s.replace(vecchio, nuovo)
     print('privacy: ancora "auto":', len(re.findall(r'in auto|by car|en voiture|im Auto|en coche', s)))
     for vecchio, nuovo in (("16 ottobre 2026", "18 ottobre 2026"), ("16 October 2026", "18 October 2026"), ("16 octobre 2026", "18 octobre 2026"),
                            ("16. Oktober 2026", "18. Oktober 2026"), ("16 de octubre de 2026", "18 de octubre de 2026")):
