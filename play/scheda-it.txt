@@ -35,3 +35,6 @@ PRIVACY
 Nessun account, nessuna pubblicità, nessun tracciamento. Senza internet (con le mappe scaricate) la tua posizione non lascia il telefono; con i servizi online l'app invia al nostro server solo ciò che serve per rispondere, senza account né identificatori.
 
 Dati di mappa © OpenStreetMap contributors (ODbL). Rispetta sempre il Codice della Strada: l'app è un aiuto alla guida.
+
+PROVA GRATUITA E SBLOCCO
+Scarichi l'app gratis e per 15 giorni hai la versione completa, con tutte le funzioni. Puoi sbloccarla anche subito, senza aspettare, con un acquisto unico su Google Play: nessun abbonamento, nessuna pubblicità. Se disinstalli e reinstalli, la prova non riparte.

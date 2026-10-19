@@ -35,3 +35,6 @@ CONFIDENTIALITÉ
 Aucun compte, aucune publicité, aucun suivi. Sans internet (avec les cartes téléchargées), votre position ne quitte pas le téléphone ; avec les services en ligne, l'application envoie à notre serveur seulement ce qu'il faut pour répondre, sans compte ni identifiant.
 
 Données de carte © OpenStreetMap contributors (ODbL). Respectez toujours le code de la route : l'application est une aide à la conduite.
+
+ESSAI GRATUIT ET DÉBLOCAGE
+Télécharge l'appli gratuitement et pendant 15 jours tu as la version complète, avec toutes les fonctions. Tu peux aussi la débloquer tout de suite, sans attendre, avec un achat unique sur Google Play : pas d'abonnement, pas de publicité. Si tu désinstalles et réinstalles, l'essai ne repart pas.

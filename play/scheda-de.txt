@@ -35,3 +35,6 @@ DATENSCHUTZ
 Kein Konto, keine Werbung, kein Tracking. Ohne Internet (mit geladenen Karten) verlässt Ihre Position nie das Handy; bei Online-Diensten sendet die App unserem Server nur das, was zur Antwort nötig ist, ohne Konto oder Kennungen.
 
 Kartendaten © OpenStreetMap contributors (ODbL). Beachten Sie stets die Verkehrsregeln: Die App ist eine Fahrhilfe.
+
+KOSTENLOSE TESTPHASE UND FREISCHALTUNG
+Lade die App kostenlos, und 15 Tage lang hast du die Vollversion mit allen Funktionen. Du kannst sie auch sofort freischalten, ohne zu warten, mit einem Einmalkauf bei Google Play: kein Abo, keine Werbung. Wenn du deinstallierst und neu installierst, startet die Testphase nicht neu.
