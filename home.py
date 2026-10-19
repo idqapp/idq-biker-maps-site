@@ -290,6 +290,8 @@ a.btn.s,span.btn.ip{margin:0}
 .gall{display:flex;gap:22px;overflow-x:auto;padding:6px 4px 22px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.gall figure{scroll-snap-align:center}
 .gall::-webkit-scrollbar{height:8px}.gall::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
 .hero-tel{margin-top:44px}
+.tel .l,.cartw .l{display:none!important}
+html[data-l=it] .tel .l[data-l=it],html[data-l=en] .tel .l[data-l=en],html[data-l=fr] .tel .l[data-l=fr],html[data-l=de] .tel .l[data-l=de],html[data-l=es] .tel .l[data-l=es],html[data-l=it] .cartw .l[data-l=it],html[data-l=en] .cartw .l[data-l=en],html[data-l=fr] .cartw .l[data-l=fr],html[data-l=de] .cartw .l[data-l=de],html[data-l=es] .cartw .l[data-l=es]{display:block!important}
 .cart{width:min(250px,64vw);height:auto;border-radius:22px;border:1px solid #3a3a46;box-shadow:0 18px 50px rgba(0,0,0,.6);display:block}.riga .cart{width:min(212px,42vw)}
 .riga .tel{width:min(212px,42vw)}.riga .tels{flex-wrap:nowrap;gap:18px}.riga .tels figcaption{max-width:212px}
 @media(max-width:800px){.hero-tel{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;padding:0 18px 10px}.hero-tel figure{scroll-snap-align:center}.hero-tel .tel{width:54vw}.hero-tel figure:nth-child(2) .tel{margin-top:0}.riga{grid-template-columns:1fr;gap:26px}.riga.rev .testo{order:0}.tels figure:nth-child(2) .tel{margin-top:0}}
@@ -337,15 +339,20 @@ def L(d, tag='div', extra=''):
     return ''.join(f'<{tag} class="l" data-l="{l}"{extra}>{d[l]}</{tag}>' for l in LG)
 def S(d): return ''.join(f'<span class="l" data-l="{l}">{d[l]}</span>' for l in LG)
 
+STILL = {'giri': 'giro-anello', 'curve': 'curve', 'allarme': 'allarme', 'navigazione': 'navigazione'}   # lingua diversa dall'italiano: al posto del video, la schermata nella sua lingua
+def percorso_img(f, l): return f'immagini/app/{f}.jpg' if l == 'it' else f'immagini/app/{l}/{f}.jpg'
+
 def media(m):
+    """Schermata o video dentro una cornice da telefono. I video sono in italiano; nelle altre lingue si vede la schermata tradotta."""
     tipo, f, cap = m
-    if tipo == 'card':   # immagine intera (non uno schermo del telefono): cartolina con bordo arrotondato
-        return f'<figure><img class="cart" src="immagini/app/{f}.jpg" alt="" loading="lazy"><figcaption>{S(cap)}</figcaption></figure>'
+    if tipo == 'card':   # immagine intera (non uno schermo del telefono): cartolina con bordo arrotondato, nella lingua scelta
+        imgs = ''.join(f'<img class="cart l" data-l="{l}" src="{percorso_img(f, l)}" alt="" loading="lazy">' for l in LG)
+        return f'<figure><div class="cartw">{imgs}</div><figcaption>{S(cap)}</figcaption></figure>'
     if tipo == 'video':
-        inner = f'<video muted loop playsinline preload="none" poster="immagini/app/{f}-poster.jpg" data-src="immagini/app/{f}.mp4"></video>'
+        inner = f'<video class="l" data-l="it" muted loop playsinline preload="none" poster="immagini/app/{f}-poster.jpg" data-src="immagini/app/{f}.mp4"></video>'
+        inner += ''.join(f'<img class="l" data-l="{l}" src="{percorso_img(STILL[f], l)}" alt="" loading="lazy">' for l in LG if l != 'it')
         return f'<figure><div class="tel" style="background:#000 url(immagini/app/{f}-poster.jpg) center/cover no-repeat">{inner}</div><figcaption>{S(cap)}</figcaption></figure>'
-    else:
-        inner = f'<img src="immagini/app/{f}.jpg" alt="" loading="lazy">'
+    inner = ''.join(f'<img class="l" data-l="{l}" src="{percorso_img(f, l)}" alt="" loading="lazy">' for l in LG)
     return f'<figure><div class="tel">{inner}</div><figcaption>{S(cap)}</figcaption></figure>'
 
 def sezione_forti():
