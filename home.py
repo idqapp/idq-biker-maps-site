@@ -20,7 +20,6 @@ HERO = {
         "Rundtouren von kurvig bis flott, Kurvenkarte, Wetter auf der Strecke, Sturz-SOS und Gruppenfahrten. Alles in einer App, in 5 Sprachen, ohne Werbung und ohne Konto.",
         "Rutas circulares de la más revirada a la más tranquila, mapa de curvas, tiempo en la ruta, SOS en caso de caída y rutas en grupo. Todo en una sola app, en 5 idiomas, sin publicidad y sin cuenta."),
  'soon': T('Presto su Google Play', 'Coming soon on Google Play', 'Bientôt sur Google Play', 'Bald bei Google Play', 'Próximamente en Google Play'),
- 'iphone': T('iPhone: prossimamente', 'iPhone: coming soon', 'iPhone : bientôt', 'iPhone: bald', 'iPhone: próximamente'),
  'prova': T('Prova gratis 15 giorni · versione completa', 'Try free for 15 days · full version', 'Essai gratuit 15 jours · version complète', '15 Tage gratis testen · Vollversion', 'Prueba gratis 15 días · versión completa'),
  'cta2': T('Scopri le funzioni', 'See the features', 'Découvre les fonctions', 'Funktionen ansehen', 'Descubre las funciones'),
 }
@@ -90,7 +89,6 @@ PROVA = [
 PIATTAFORME_H = T('Dove la trovi', 'Where to get it', 'Où la trouver', 'Wo du sie bekommst', 'Dónde encontrarla')
 PIATTAFORME = [
  (T('Android', 'Android', 'Android', 'Android', 'Android'), T('Presto su Google Play', 'Coming soon on Google Play', 'Bientôt sur Google Play', 'Bald bei Google Play', 'Próximamente en Google Play'), True),
- (T('iPhone', 'iPhone', 'iPhone', 'iPhone', 'iPhone'), T("Prossimamente anche per iPhone: se riceverà abbastanza richieste, la portiamo avanti. Il sito si aggiornerà qui.", "Coming soon for iPhone too: if there is enough demand, we will go ahead. This site will be updated here.", "Bientôt aussi pour iPhone : s'il y a assez de demandes, nous irons de l'avant. Le site sera mis à jour ici.", "Bald auch für iPhone: Gibt es genug Nachfrage, setzen wir es um. Diese Seite wird hier aktualisiert.", "Próximamente también para iPhone: si hay suficiente demanda, lo llevaremos adelante. El sitio se actualizará aquí."), False),
 ]
 
 FEAT_H = T('Tutto quello che serve a chi va in moto', 'Everything a rider needs', 'Tout ce dont un motard a besoin', 'Alles, was Motorradfahrer brauchen', 'Todo lo que necesita un motorista')
@@ -224,8 +222,6 @@ FAQ = [
   T("Sì. Dall'avviso iniziale (\"Sblocca ora\") o da Menu › Informazioni puoi pagare subito: i giorni di prova che restano non servono più.", "Yes. From the first message (\"Unlock now\") or from Menu › Information you can pay right away: the remaining trial days are no longer needed.", "Oui. Depuis le message de départ (« Débloquer maintenant ») ou depuis Menu › Informations tu peux payer tout de suite : les jours d'essai restants ne servent plus.", "Ja. Über die erste Meldung („Jetzt freischalten“) oder Menü › Informationen kannst du sofort zahlen: Die restlichen Testtage werden nicht mehr gebraucht.", "Sí. Desde el aviso inicial («Desbloquear ahora») o desde Menú › Información puedes pagar ya: los días de prueba que quedan ya no hacen falta.")),
  (T('Se la disinstallo e la reinstallo ricomincia la prova?', 'If I uninstall and reinstall, does the trial start again?', 'Si je la désinstalle et la réinstalle, l\'essai recommence-t-il ?', 'Startet die Testphase neu, wenn ich deinstalliere und neu installiere?', 'Si la desinstalo y la reinstalo, ¿empieza otra vez la prueba?'),
   T("No: la prova continua dal punto in cui era, perché il nostro server ricorda la data di primo avvio con un codice anonimo del telefono. Se hai già pagato, \"Ho già acquistato l'app\" ti sblocca senza pagare di nuovo.", "No: the trial continues from where it was, because our server remembers the first-launch date with an anonymous phone code. If you have already paid, \"I already bought the app\" unlocks you without paying again.", "Non : l'essai continue là où il était, car notre serveur retient la date de premier lancement avec un code anonyme du téléphone. Si tu as déjà payé, « J'ai déjà acheté l'appli » te débloque sans payer de nouveau.", "Nein: Die Testphase läuft dort weiter, wo sie war, weil unser Server das Datum des ersten Starts mit einem anonymen Telefoncode speichert. Hast du schon bezahlt, schaltet „Ich habe die App schon gekauft“ ohne erneute Zahlung frei.", "No: la prueba continúa por donde iba, porque nuestro servidor recuerda la fecha del primer arranque con un código anónimo del teléfono. Si ya has pagado, «Ya he comprado la app» te desbloquea sin pagar de nuevo.")),
- (T('Esiste per iPhone?', 'Is there an iPhone version?', 'Existe-t-elle pour iPhone ?', 'Gibt es sie für iPhone?', '¿Existe para iPhone?'),
-  T("Per ora è per Android. Stiamo valutando una versione per iPhone: se ci sarà abbastanza interesse la portiamo avanti e lo scriveremo qui.", "For now it is for Android. We are considering an iPhone version: if there is enough interest we will go ahead and say so here.", "Pour l'instant elle est pour Android. Nous étudions une version iPhone : s'il y a assez d'intérêt, nous irons de l'avant et nous l'écrirons ici.", "Vorerst ist sie für Android. Wir prüfen eine iPhone-Version: Gibt es genug Interesse, setzen wir sie um und schreiben es hier.", "Por ahora es para Android. Estamos valorando una versión para iPhone: si hay suficiente interés la llevaremos adelante y lo anunciaremos aquí.")),
  (T('Dove funziona?', 'Where does it work?', 'Où fonctionne-t-elle ?', 'Wo funktioniert es?', '¿Dónde funciona?'),
   T("Le mappe offline sono quelle dell'Italia. Meteo, giri, curve e quote sono per l'Italia; la mappa online e i percorsi funzionano anche nei paesi vicini quando hai la rete.", "Offline maps cover Italy. Weather, rides, bends and elevations are for Italy; the online map and routes also work in neighbouring countries when you have a connection.", "Les cartes hors ligne couvrent l'Italie. Météo, boucles, virages et altitudes concernent l'Italie ; la carte en ligne et les itinéraires fonctionnent aussi dans les pays voisins avec du réseau.", "Die Offline-Karten decken Italien ab. Wetter, Touren, Kurven und Höhen gelten für Italien; die Online-Karte und Routen funktionieren mit Netz auch in Nachbarländern.", "Los mapas sin conexión cubren Italia. Tiempo, rutas, curvas y altitudes son para Italia; el mapa online y las rutas también funcionan en países vecinos cuando tienes cobertura.")),
  (T('Cosa succede ai miei dati?', 'What happens to my data?', 'Que deviennent mes données ?', 'Was passiert mit meinen Daten?', '¿Qué pasa con mis datos?'),
@@ -265,8 +261,7 @@ nav.menu{display:flex;gap:4px;flex-wrap:wrap}nav.menu a{color:var(--mu);text-dec
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
 .btn{display:inline-block;border-radius:999px;padding:13px 26px;font-weight:700;text-decoration:none}
 .btn.p{background:var(--ac);color:#000}.btn.s{border:2px solid var(--ac2);color:#fff}.btn.p.off{cursor:default;box-shadow:0 0 0 0 rgba(255,122,0,.6);animation:pulsa 2.4s infinite}
-a.btn.s,span.btn.ip{margin:0}
-.btn.ip{border:2px dashed var(--mu);color:var(--mu);cursor:default;font-weight:600}
+a.btn.s{margin:0}
 .piattaforme{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .piatt{background:var(--card);border:1px dashed var(--bd);border-radius:16px;padding:16px 20px}.piatt.on{border:1px solid var(--ac2)}
 .piatt b{display:block;font-size:19px;margin-bottom:4px}.piatt span{color:var(--mu);font-size:15px}
@@ -399,7 +394,7 @@ def pagina():
 <section class="hero" style="padding-bottom:70px">{STRADA}<div class="wrap"><img class="logo" src="immagini/logo.png" alt="IDQ Biker Maps">
 <div class="tag">{S(HERO['tag'])}</div><h1>{L(HERO['h1'], 'span')}</h1>
 <p class="lead">{S(HERO['p'])}</p>
-<div class="btns"><span class="btn p off">{S(HERO['soon'])}</span><span class="btn ip">{S(HERO['iphone'])}</span><a class="btn s" href="#funzioni">{S(HERO['cta2'])}</a></div>
+<div class="btns"><span class="btn p off">{S(HERO['soon'])}</span><a class="btn s" href="#funzioni">{S(HERO['cta2'])}</a></div>
 <div class="chips">{chips}</div>{hero_telefoni()}</div></section>
 <div class="nums">{nums}</div>
 {sezione_forti()}
