@@ -170,3 +170,5 @@ def index(): return home.pagina()
 if __name__ == '__main__':
     for nome, f in (('index.html', index), ('privacy.html', privacy), ('funzioni.html', funzioni)):
         open(nome, 'w', encoding='utf-8').write(autosufficiente(f()).replace('info.idq.26@gmail.com', 'info@idq-developer.com')); print(nome, 'scritto')
+    import tester_patch; tester_patch.main_dir = None
+    _h = open('index.html', encoding='utf-8').read(); open('index.html', 'w', encoding='utf-8').write(tester_patch.patch(_h)); print('index.html: pagina tester (date in tester_patch.py)')
