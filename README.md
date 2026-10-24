@@ -9,4 +9,4 @@ Sito di IDQ Biker Maps (pagina dell'app, funzioni e informativa sulla privacy, i
 - `home.py` - pagina principale (testi in 5 lingue, punti forti, galleria)
 - `genera.py` - rigenera le tre pagine (parte dal sito di IDQ Navigator e dalle guide di Biker Maps)
 
-Contatto: info.idq.26@gmail.com · Dati di mappa © OpenStreetMap contributors (ODbL)
+Contatto: info@idq-developer.com · Dati di mappa © OpenStreetMap contributors (ODbL)

@@ -169,4 +169,4 @@ def autosufficiente(h):
 def index(): return home.pagina()
 if __name__ == '__main__':
     for nome, f in (('index.html', index), ('privacy.html', privacy), ('funzioni.html', funzioni)):
-        open(nome, 'w', encoding='utf-8').write(autosufficiente(f())); print(nome, 'scritto')
+        open(nome, 'w', encoding='utf-8').write(autosufficiente(f()).replace('info.idq.26@gmail.com', 'info@idq-developer.com')); print(nome, 'scritto')
