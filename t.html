@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Traccia condivisa - IDQ Biker Maps</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--bg:#07070a;--tx:#f4f4f6;--mu:#a9a9b4;--ac:#ff7a00;--ac2:#2f8cff;--card:#14141a;--bd:#2a2a33}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--ac)}
+header{padding:14px 18px;border-bottom:1px solid var(--bd);display:flex;gap:10px;align-items:center}
+header img{width:34px;height:34px;border-radius:50%}header b em{font-style:normal;color:var(--ac)}
+main{max-width:900px;margin:0 auto;padding:16px 18px 40px}
+h1{font-size:clamp(24px,5vw,34px);margin:6px 0 2px;line-height:1.15}
+.sub{color:var(--mu);margin:0 0 14px}
+#mappa{height:min(58vh,520px);border-radius:16px;border:1px solid var(--bd);background:#101016}
+.az{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 6px}
+.btn{display:inline-block;border:0;border-radius:999px;padding:12px 22px;font:inherit;font-weight:800;text-decoration:none;cursor:pointer;background:var(--ac);color:#000}
+.btn.s{background:transparent;border:2px solid var(--ac2);color:#fff}
+h2{font-size:20px;margin:22px 0 4px}
+.nota{color:var(--mu);font-size:14px}
+.errore{display:none;background:var(--card);border:1px solid var(--ac);border-radius:14px;padding:16px;margin:20px 0}
+.cta{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px 18px;margin-top:26px}
+</style></head>
+<body>
+<header><img src="immagini/logo.png" alt="" onerror="this.style.display='none'"><b>IDQ <em>Biker Maps</em></b></header>
+<main>
+<div id="errore" class="errore"><b>Link non valido.</b><br>Il link della traccia sembra incompleto: chiedi a chi te l'ha mandato di condividerlo di nuovo, scegliendo "Link web".</div>
+<div id="corpo" style="display:none">
+<h1 id="nome">Traccia</h1>
+<p class="sub" id="info"></p>
+<div id="mappa"></div>
+<div class="az" id="azioni"></div>
+<p class="nota" id="notaGM"></p>
+<h2>Altre app di navigazione</h2>
+<div class="az"><button class="btn s" id="gpx" type="button">Scarica GPX</button><button class="btn s" id="kml" type="button">Scarica KML</button></div>
+<p class="nota">Il file GPX si apre con OsmAnd, Organic Maps, Kurviger, Calimoto, Komoot e altre. Google Maps non apre file: usa i pulsanti qui sopra. La traccia è semplificata (circa 300 punti).</p>
+</div>
+<div class="cta"><b>Hai IDQ Biker Maps?</b> Apri questo link dal telefono con l'app installata per salvare la traccia.<br><a href="https://idq-developer.com/biker/">Scopri l'app per moto</a> &middot; <a href="https://idq-developer.com/biker/privacy.html">Privacy</a><br><span class="nota">La traccia è contenuta nel link: non viene salvata su nessun server.</span></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  function erroreFine(){document.getElementById("errore").style.display="block"}
+  var h=location.hash.replace(/^#/,""),par={};
+  h.split("&").forEach(function(x){var i=x.indexOf("=");if(i>0)par[x.slice(0,i)]=decodeURIComponent(x.slice(i+1).replace(/\+/g," "))});
+  if(!par.p){erroreFine();return}
+  // formato: base64url di numeri interi (varint con segno a zigzag): prima partenza assoluta (lat, lon x 1e5), poi differenze
+  var pts=[];
+  try{
+    var b=par.p.replace(/-/g,"+").replace(/_/g,"/");while(b.length%4)b+="=";
+    var bin=atob(b),by=[];for(var i=0;i<bin.length;i++)by.push(bin.charCodeAt(i));
+    var pos=0;function leggi(){var r=0,s=0,c;do{c=by[pos++];if(c===undefined)throw 0;r+=(c&127)*Math.pow(2,s);s+=7}while(c&128);return (r%2===0)?r/2:-(r+1)/2}
+    var la=0,lo=0;while(pos<by.length){la+=leggi();lo+=leggi();pts.push([la/1e5,lo/1e5])}
+  }catch(e){pts=[]}
+  if(pts.length<2){erroreFine();return}
+  function d(a,b){var R=6371000,p1=a[0]*Math.PI/180,p2=b[0]*Math.PI/180,dl=(b[1]-a[1])*Math.PI/180,dp=p2-p1,h=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)*Math.sin(dl/2);return 2*R*Math.asin(Math.sqrt(h))}
+  var m=0;for(var i=1;i<pts.length;i++)m+=d(pts[i-1],pts[i]);
+  var km=parseFloat(par.k)||m/1000, nome=par.n||"Traccia condivisa";
+  document.title=nome+" - IDQ Biker Maps";
+  document.getElementById("nome").textContent=nome;
+  document.getElementById("info").textContent=km.toFixed(1).replace(".",",")+" km";
+  document.getElementById("corpo").style.display="block";
+  var mp=L.map("mappa");
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:18,attribution:"&copy; OpenStreetMap contributors"}).addTo(mp);
+  var linea=L.polyline(pts,{color:"#ff7a00",weight:5}).addTo(mp);
+  L.circleMarker(pts[0],{radius:8,color:"#fff",fillColor:"#2fbf4a",fillOpacity:1,weight:2}).addTo(mp).bindTooltip("Partenza");
+  L.circleMarker(pts[pts.length-1],{radius:8,color:"#fff",fillColor:"#e03030",fillOpacity:1,weight:2}).addTo(mp).bindTooltip("Arrivo");
+  mp.fitBounds(linea.getBounds(),{padding:[20,20]});
+  // punti scelti sulle curve vere (come nell'app): ogni link Google Maps ne accetta 10 (partenza, 8 tappe, arrivo)
+  function semplifica(p,mx){
+    if(p.length<=mx)return p.slice();
+    var k=Math.cos(p[Math.floor(p.length/2)][0]*Math.PI/180);
+    function dist(q,a,b){var ax=a[1]*k,ay=a[0],bx=b[1]*k,by=b[0],qx=q[1]*k,qy=q[0],dx=bx-ax,dy=by-ay,l2=dx*dx+dy*dy;
+      var t=l2===0?0:Math.max(0,Math.min(1,((qx-ax)*dx+(qy-ay)*dy)/l2));var ex=ax+t*dx-qx,ey=ay+t*dy-qy;return Math.sqrt(ex*ex+ey*ey)}
+    var ten=[0,p.length-1];
+    while(ten.length<mx){var best=-1,md=0;
+      for(var s=0;s<ten.length-1;s++)for(var i=ten[s]+1;i<ten[s+1];i++){var dd=dist(p[i],p[ten[s]],p[ten[s+1]]);if(dd>md){md=dd;best=i}}
+      if(best<0)break;ten.push(best);ten.sort(function(a,b){return a-b})}
+    return ten.map(function(i){return p[i]});
+  }
+  var n=Math.max(1,Math.min(30,Math.ceil(km/50))),sp=semplifica(pts,9*n+1);n=Math.max(1,Math.ceil((sp.length-1)/9));
+  function c(p){return p[0].toFixed(6)+","+p[1].toFixed(6)}
+  var az=document.getElementById("azioni");
+  for(var j=0;j<n;j++){
+    var sub=sp.slice(j*9,Math.min(j*9+10,sp.length));if(sub.length<2)continue;
+    var u="https://www.google.com/maps/dir/?api=1&origin="+c(sub[0])+"&destination="+c(sub[sub.length-1])+(sub.length>2?"&waypoints="+sub.slice(1,-1).map(c).join("%7C"):"")+"&travelmode=driving";
+    var a=document.createElement("a");a.className="btn";a.href=u;a.target="_blank";a.rel="noopener";
+    a.textContent=n===1?"Apri in Google Maps":"Google Maps - parte "+(j+1)+" di "+n;az.appendChild(a);
+  }
+  document.getElementById("notaGM").textContent=n===1?"Google Maps calcola la strada tra i punti: può non coincidere in tutto con la traccia.":"Il percorso è lungo: Google Maps accetta pochi punti per volta, quindi è diviso in "+n+" parti da aprire in ordine. Google calcola la strada tra i punti e può non coincidere in tutto con la traccia.";
+  function scarica(nomeFile,mime,testo){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([testo],{type:mime}));a.download=nomeFile;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+  function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+  var file=nome.replace(/[^A-Za-z0-9._-]+/g,"_").replace(/^_+|_+$/g,"").slice(0,60)||"traccia";
+  document.getElementById("gpx").onclick=function(){
+    var s='<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="IDQ Biker Maps" xmlns="http://www.topografix.com/GPX/1/1">\n<trk><name>'+esc(nome)+'</name><trkseg>\n';
+    pts.forEach(function(p){s+='<trkpt lat="'+p[0].toFixed(6)+'" lon="'+p[1].toFixed(6)+'"></trkpt>\n'});
+    scarica(file+".gpx","application/gpx+xml",s+'</trkseg></trk>\n</gpx>\n')};
+  document.getElementById("kml").onclick=function(){
+    var s='<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>'+esc(nome)+'</name>\n<Placemark><name>'+esc(nome)+'</name><LineString><tessellate>1</tessellate><coordinates>\n';
+    pts.forEach(function(p){s+=p[1].toFixed(6)+","+p[0].toFixed(6)+",0\n"});
+    scarica(file+".kml","application/vnd.google-earth.kml+xml",s+'</coordinates></LineString></Placemark></Document></kml>\n')};
+})();
+</script>
+</body></html>
