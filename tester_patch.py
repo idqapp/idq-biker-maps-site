@@ -8,7 +8,7 @@ import re, sys
 LINK = "https://play.google.com/apps/testing/it.idq.bikermaps"   # opt-in del test chiuso (Play Console > Test chiusi > Alpha > Tester)
 GRUPPO = "https://groups.google.com/g/idq-biker-maps-tester"
 CODICE = "https://play.google.com/redeem?code=TESTREVISIONE"
-INIZIO = "2026-10-25"   # il codice promozionale e' valido dal 24/10/2026 alle 23:30
+INIZIO = "2026-10-24"   # il codice promozionale e' valido dal 24/10/2026 alle 23:30; pagina tester attiva da subito per provarla
 FINE = "2027-01-22"     # dopo questa data la pagina e' di nuovo quella originale
 
 CSS = """
