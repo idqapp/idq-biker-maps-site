@@ -77,11 +77,32 @@ def patch(h):
     return h
 
 
+# Voci che parlano della prova di 7 giorni: nascoste durante il periodo tester (classe "orig"), tornano alla fine
+SENZA_PROVA = [
+    ('<a href="#prova">', '<a class="orig" href="#prova">'),
+    ('<section id="prova">', '<section id="prova" class="orig">'),
+    ('<a href="#prezzi">', '<a class="orig" href="#prezzi">'),
+    ('<section id="prezzi">', '<section id="prezzi" class="orig">'),
+    ('<span><span class="l" data-l="it">Prova gratis 7 giorni', '<span class="orig"><span class="l" data-l="it">Prova gratis 7 giorni'),
+    ('<details class="f"><summary><span class="l" data-l="it">Quanto costa', '<details class="f orig"><summary><span class="l" data-l="it">Quanto costa'),
+    ('<details class="f"><summary><span class="l" data-l="it">Posso provare', '<details class="f orig"><summary><span class="l" data-l="it">Posso provare'),
+]
+
+
+def senza_prova(h):
+    for a, b in SENZA_PROVA:
+        if b in h:
+            continue
+        assert h.count(a) == 1, 'non trovato: ' + a[:50]
+        h = h.replace(a, b)
+    return h
+
+
 if __name__ == '__main__':
     for d in (sys.argv[1:] or ['.']):
         p = d.rstrip('/') + '/index.html'
         h = open(p, encoding='utf-8').read()
-        o = patch(h)
+        o = senza_prova(patch(h))
         if o != h:
             open(p, 'w', encoding='utf-8').write(o); print(p, 'ok: pagina tester dal', INIZIO, 'al', FINE)
         else:
