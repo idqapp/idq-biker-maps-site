@@ -36,5 +36,5 @@ Nessun account, nessuna pubblicità, nessun tracciamento. Senza internet (con le
 
 Dati di mappa © OpenStreetMap contributors (ODbL). Rispetta sempre il Codice della Strada: l'app è un aiuto alla guida.
 
-PROVA GRATUITA E SBLOCCO
-Scarichi l'app gratis e per 15 giorni hai la versione completa, con tutte le funzioni. Puoi sbloccarla anche subito, senza aspettare, con un acquisto unico su Google Play: nessun abbonamento, nessuna pubblicità. Se disinstalli e reinstalli, la prova non riparte.
+ABBONAMENTO
+Scarichi l'app gratis e la usi con un abbonamento su Google Play: tutte le funzioni, nessuna pubblicità, disdici quando vuoi. Se l'abbonamento scade o lo annulli, l'app si blocca finché non ti abboni di nuovo. Se reinstalli l'app o cambi telefono, "Ripristina acquisti" ritrova il tuo abbonamento. Piani: annuale (7 giorni di prova gratuita per i nuovi abbonati, poi 19,99 € il primo anno e 29,99 €/anno dal rinnovo) o mensile (2,99 €/mese). Annullabile in qualsiasi momento da Google Play. Se disinstalli e reinstalli, la prova non riparte.
