@@ -43,11 +43,11 @@ FIN = f"""<div id="fin" role="dialog" aria-modal="true" aria-labelledby="fint"><
 <li>Iscriviti al <a href="{GRUPPO}" target="_blank" rel="noopener">gruppo dei tester</a>: tocca "Partecipa al gruppo". Se Google chiede conferme, accetta.</li>
 <li>Tocca "Vai al download" qui sotto e poi "Diventa un tester".</li>
 <li>Tocca il link per scaricare l'app da Google Play e installa. <b>Se vedi una pagina bianca o "non trovata" non è un errore:</b> succede sul computer o se Google non ti ha ancora riconosciuto come tester. Apri l'app <b>Play Store</b> del telefono e cerca "IDQ Biker Maps". Se non compare, aspetta 10-60 minuti (Google aggiorna l'elenco dei tester con calma) e riprova, controllando di essere con lo stesso account del gruppo.</li>
-<li>Riscatta il codice gratuito con "Riscatta il codice": si apre Google Play, tocca "Riscatta".</li>
-<li>Apri l'app e tocca "Ripristina acquisti".</li>
+<li>Apri l'app: compare la schermata dei piani. Tocca <b>Abbonati</b> sul piano annuale.</li>
+<li>Nella finestra di pagamento di Google Play tocca la <b>freccia accanto al metodo di pagamento</b>, poi <b>Riscatta codice</b>, scrivi <b>TESTREVISIONE</b> (tutto maiuscolo, senza spazi) e conferma. Il codice funziona solo da qui, non dal campo "Riscatta codice" del Play Store. L'abbonamento parte a 0 € per 90 giorni.</li>
 </ol>
 <p class="nota">Ti chiediamo di tenere l'app installata per 14 giorni e di scriverci se trovi problemi: <a href="mailto:info@idq-developer.com">info@idq-developer.com</a>. Dopo 90 giorni l'abbonamento si rinnova a pagamento (19,99 € il primo anno) se non lo annulli da Google Play: Pagamenti e abbonamenti, Abbonamenti, IDQ Biker Maps, Annulla.</p>
-<div class="az"><a class="btn p" href="{LINK}" target="_blank" rel="noopener">Vai al download</a><a class="btn s" href="{CODICE}" target="_blank" rel="noopener">Riscatta il codice</a><button class="btn s" id="chiudi" type="button">Chiudi</button></div>
+<div class="az"><a class="btn p" href="{LINK}" target="_blank" rel="noopener">Vai al download</a><button class="btn s" id="chiudi" type="button">Chiudi</button></div>
 </div></div>
 """
 JS = f"""<script>
